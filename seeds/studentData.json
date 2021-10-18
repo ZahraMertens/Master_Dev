@@ -1,0 +1,23 @@
+[
+    {
+        "firstName": "Joe",
+        "lastName": "Doe",
+        "email": "joe.doe@test.com",
+        "userType": "Student",
+        "password": "test1234"
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@test.com",
+        "userType": "Student",
+        "password": "test1234"
+    },
+    {
+        "firstName": "Jenna",
+        "lastName": "Doe",
+        "email": "jenna.doe@test.com",
+        "userType": "Student",
+        "password": "test1234"
+    }
+]

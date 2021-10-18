@@ -1,0 +1,23 @@
+[
+    {
+        "firstName": "Jeff",
+        "lastName": "Doe",
+        "email": "joe.doe@test.com",
+        "userType": "Tutor",
+        "password": "test1234"
+    },
+    {
+        "firstName": "Jason",
+        "lastName": "Doe",
+        "email": "jane.doe@test.com",
+        "userType": "Tutor",
+        "password": "test1234"
+    },
+    {
+        "firstName": "Brad",
+        "lastName": "Doe",
+        "email": "jenna.doe@test.com",
+        "userType": "Tutor",
+        "password": "test1234"
+    }
+]
