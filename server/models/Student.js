@@ -25,12 +25,12 @@ const studentSchema = new Schema({
     type: String,
     required: true,
   },
-  tutor: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Tutor",
-    },
-  ],
+  // tutor: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Tutor",
+  //   },
+  // ],
 });
 
 const Student = model("Student", studentSchema);

@@ -2,10 +2,11 @@ if(process.env.NODE_ENV !== "production"){
     require("dotenv").config() //or load()
 }
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
+// const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+// const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
 const express = require("express");
+const { ApolloServer } = require('apollo-server-express');
 const path = require("path");
 const db = require("./config/connection");
 const routes = require("./routes");

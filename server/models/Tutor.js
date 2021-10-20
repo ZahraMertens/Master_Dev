@@ -72,12 +72,12 @@ const tutorSchema = new Schema({
   //     },
   //   },
   // ],
-  tutor: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Student",
-    },
-  ],
+  // student: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Student",
+  //   },
+  // ],
 });
 
 const Tutor = model("Tutor", tutorSchema);
