@@ -28,6 +28,7 @@ const typeDefs = gql`
     type Query {
         students: [Student]
         tutors: [Tutor]
+        searchtutor(language: String): [Tutor]
     }
 `
 

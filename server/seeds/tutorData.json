@@ -18,7 +18,7 @@
         "userType": "Tutor",
         "phone": "0412123456",
         "describtion": "I have been tutoring for 100 years",
-        "language": "JavaScript",
+        "language": "Python",
         "degree": "Master in Computer Science",
         "hourRate": 30,
         "password": "test1234"
