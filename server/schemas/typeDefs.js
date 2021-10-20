@@ -11,8 +11,23 @@ const typeDefs = gql`
         userType: String
     }
 
+    type Tutor {
+        _id: ID
+        firstName: String
+        lastName: String
+        email: String
+        phone: String
+        pasword: String
+        userType: String
+        describtion: String
+        language: String
+        degree: String
+        hourRate: Int
+    }
+
     type Query {
         students: [Student]
+        tutors: [Tutor]
     }
 `
 

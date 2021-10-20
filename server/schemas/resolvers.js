@@ -6,6 +6,9 @@ const resolvers = {
         students: async () => {
             return Student.find();
         },
+        tutors: async () => {
+            return Tutor.find();
+        },
     }
 }
 
