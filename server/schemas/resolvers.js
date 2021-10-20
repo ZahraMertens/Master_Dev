@@ -3,7 +3,7 @@ const { Student, Tutor } = require("../models");
 
 const resolvers = {
     Query: {
-        users: async () => {
+        students: async () => {
             return Student.find();
         },
     }
