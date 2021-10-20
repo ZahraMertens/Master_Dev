@@ -30,6 +30,12 @@ const typeDefs = gql`
         tutors: [Tutor]
         searchtutor(language: String): [Tutor]
     }
+
+    type Mutation {
+        addstudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!)
+        addtutor
+        login(email: String!, password: String!): Auth
+    }
 `
 
 module.exports = typeDefs;
