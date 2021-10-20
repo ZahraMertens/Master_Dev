@@ -19,7 +19,8 @@ const resolvers = {
         addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
             const student = await Student.create({ firstName, lastName, email, password, userType });
             return student
-        }
+        },
+        addtutor: async 
     }
 }
 
