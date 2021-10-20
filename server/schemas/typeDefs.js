@@ -17,7 +17,7 @@ const typeDefs = gql`
         lastName: String
         email: String
         phone: String
-        pasword: String
+        password: String
         userType: String
         describtion: String
         language: String
