@@ -14,6 +14,12 @@ const tutorSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!'],
+  },
+  phone: {
+    type: String,
+    required: true
   },
   password: {
     type: String,
@@ -23,10 +29,10 @@ const tutorSchema = new Schema({
     type: String,
     required: true,
   },
-  filename: {
-    type: String,
-    required: true,
-  },
+  // filename: {
+  //   type: String,
+  //   required: true,
+  // },
   describtion: {
     type: String,
     required: true,
@@ -40,13 +46,32 @@ const tutorSchema = new Schema({
     required: true,
   },
   hourRate: {
-    type: String,
-    required: true,
-  },
-  availability: {
     type: Number,
     required: true,
   },
+  // availability: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // comments: [
+  //   {
+  //     commentText: {
+  //       type: String,
+  //       required: true,
+  //       minlength: 1,
+  //       maxlength: 280,
+  //     },
+  //     commentAuthor: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     createdAt: {
+  //       type: Date,
+  //       default: Date.now,
+  //       get: (timestamp) => dateFormat(timestamp),
+  //     },
+  //   },
+  // ],
   tutor: [
     {
       type: Schema.Types.ObjectId,
