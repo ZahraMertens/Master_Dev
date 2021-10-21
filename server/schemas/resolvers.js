@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Student, Tutor } = require("../models");
+const { signToken } = require("../utils/auth")
 
 const resolvers = {
     Query: {
@@ -12,17 +13,28 @@ const resolvers = {
         searchtutor: async (parent, {language}) => {
             const params = language ? { language } : {};
             return Tutor.find(params);
-        }
+        },
+        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+        currentstudent: async (parent, args, context) => {
+            if (context.user.userType === "Student") {
+                return Student.findOne({ _id: context.user._id });
+            } else if (context.user.userType === "Tutor"){
+                return Tutor.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
 
     Mutation: {
         addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
             const student = await Student.create({ firstName, lastName, email, password, userType });
-            return student
+            const token = signToken(student)
+            return { token, student}
         },
         addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
             const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
-            return tutor
+            const token = signToken(tutor)
+            return { token, tutor}
         }
     }
 }
