@@ -33,6 +33,21 @@ const studentSchema = new Schema({
   // ],
 });
 
+//Before save bcrypt password
+studentSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+//Compare password with the existinh hahsed password
+studentSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
 const Student = model("Student", studentSchema);
 
 module.exports = Student;

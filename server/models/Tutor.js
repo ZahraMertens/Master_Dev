@@ -80,6 +80,21 @@ const tutorSchema = new Schema({
   // ],
 });
 
+//Before save bcrypt password
+tutorSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+//Compare password with the existinh hahsed password
+tutorSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
 const Tutor = model("Tutor", tutorSchema);
 
 module.exports = Tutor;
