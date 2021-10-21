@@ -35,6 +35,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+//Attach authentication to header of request
 function App() {
   return (
     <ApolloProvider client={client}>

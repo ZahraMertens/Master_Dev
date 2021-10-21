@@ -8,6 +8,8 @@ if(process.env.NODE_ENV !== "production"){
 const express = require("express");
 const { ApolloServer } = require('apollo-server-express');
 const path = require("path");
+//Import middleware to configure with apollo server
+const { authMiddleware } = require("./utils/auth");
 const db = require("./config/connection");
 const { typeDefs, resolvers } = require('./schemas');
 
@@ -17,6 +19,8 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  //Add middleware as contect property so data from authMiddleware can be parsed to the resolver
+  context: authMiddleware,
 });
 
 server.start().then(res => {
