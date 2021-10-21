@@ -11,7 +11,7 @@ import Footer from "./components/Footer/index";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: '/graphql', //Uniform resource identifier
 });
 
 //Middelware has acces to the headers from request
@@ -32,12 +32,14 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache(), //Cache we are going to use
 });
 
 //Attach authentication to header of request
 function App() {
   return (
+    // Use apolloProvider to parse the client to all childs
+    //Makes it able to access to the client prop from all child components
     <ApolloProvider client={client}>
     <Router>
       <Header />
