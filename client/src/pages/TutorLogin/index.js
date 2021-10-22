@@ -7,3 +7,13 @@
 //Mutation
 // const [addProfile, {error, data}] = useMutation(ADD_PROFILE)
 //then call function in handle form submit
+
+import "./tutorlogin.css"
+
+export default function TutorLogin() {
+    return (
+        <div>
+            
+        </div>
+    )
+}

@@ -10,43 +10,43 @@ import WhyUs from "../../assets/images/whyus2.png"
 export default function Home() {
   return (
     <div>
-      <div id="search" class="hero-main">
-        <div class="hero-wrapper">
-          <div class="row justify-content-center align-middle">
-            <div class="header1">
-              <div class="row justify-content-center align-middle">
-                <div class="col">
+      <div id="search" className="hero-main">
+        <div className="hero-wrapper">
+          <div className="row justify-content-center align-middle">
+            <div className="header1">
+              <div className="row justify-content-center align-middle">
+                <div className="col">
                   <h1>Let us help you to become a master in web development</h1>
                 </div>
               </div>
-              <div class="row justify-content-center align-middle">
-                <div class="col">
+              <div className="row justify-content-center align-middle">
+                <div className="col">
                   <h1>And find the perfect online tutor for you today</h1>
                 </div>
               </div>
-              <div class="row justify-content-center align-middle">
-                <div class="col">
+              <div className="row justify-content-center align-middle">
+                <div className="col">
                   <p>Affordable one-on-one tutition</p>
                 </div>
               </div>
-              <div class="row justify-content-center align-middle">
-                <div class="col-4 search-hero">
-                  <div class="input-group input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">
-                      <i class="fas fa-search"></i>
+              <div className="row justify-content-center align-middle">
+                <div className="col-4 search-hero">
+                  <div className="input-group input-group-lg">
+                    <span className="input-group-text" id="inputGroup-sizing-lg">
+                      <i className="fas fa-search"></i>
                     </span>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       aria-label="Sizing example input"
                       aria-describedby="inputGroup-sizing-lg"
                     />
                   </div>
                 </div>
-                <div class="col-2 btn-container-hero">
+                <div className="col-2 btn-container-hero">
                   <button
                     type="button"
-                    class="btn btn-lg btn-search-hero align-start"
+                    className="btn btn-lg btn-search-hero align-start"
                   >
                     FIND A TUTOR
                   </button>
@@ -56,11 +56,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="advert-main">
-        <div class="advert-wrapper">
-          <div class="row">
-            <div class="col">
-              <video class="advert-video" controls>
+      <div className="advert-main">
+        <div className="advert-wrapper">
+          <div className="row">
+            <div className="col">
+              <video className="advert-video" controls>
                 <source
                   src={Video}
                   type="video/mp4"
@@ -69,9 +69,9 @@ export default function Home() {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div class="col justify-content-center">
-              <div class="row text-advert-container">
-                <div class="col-6">
+            <div className="col justify-content-center">
+              <div className="row text-advert-container">
+                <div className="col-6">
                   <h1>Improve your coding skills with online tutoring</h1>
                   <p>
                     E learning gives the student and tutor more flexibility.
@@ -86,23 +86,23 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="how-itworks-main">
-        <div class="howitworks-wrapper">
-          <div class="row justify-content-center">
-            <div class="col">
-              <h1 class="howitworks-header">How it works</h1>
+      <div className="how-itworks-main">
+        <div className="howitworks-wrapper">
+          <div className="row justify-content-center">
+            <div className="col">
+              <h1 className="howitworks-header">How it works</h1>
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col">
+          <div className="row align-items-center">
+            <div className="col">
               <img
-                class="howitworks-img"
+                className="howitworks-img"
                 src={Works1}
                 alt=""
               />
             </div>
-            <div class="col">
-              <h1 class="howitworks-section-header">
+            <div className="col">
+              <h1 className="howitworks-section-header">
                 Search for a tutor by your prefered programming language
               </h1>
               <p>
@@ -115,32 +115,32 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col">
-              <h1 class="howitworks-section-header">Book a session</h1>
+          <div className="row align-items-center">
+            <div className="col">
+              <h1 className="howitworks-section-header">Book a session</h1>
               <p>
                 View the the tutors profile and if you like what the tutor has
                 to offer click on the 'book now' button and book a session.
               </p>
             </div>
-            <div class="col">
+            <div className="col">
               <img
-                class="howitworks-img"
+                className="howitworks-img"
                 src={Works2}
                 alt=""
               />
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col">
+          <div className="row align-items-center">
+            <div className="col">
               <img
-                class="howitworks-img"
+                className="howitworks-img"
                 src={Works3}
                 alt=""
               />
             </div>
-            <div class="col">
-              <h1 class="howitworks-section-header">
+            <div className="col">
+              <h1 className="howitworks-section-header">
                 Your journey to become a tech master starts now!
               </h1>
               <p>
@@ -148,7 +148,7 @@ export default function Home() {
                 experienced web developers!
               </p>
               <a href="#search">
-                <button type="button" class="btn btn-lg btn-getstarted">
+                <button type="button" className="btn btn-lg btn-getstarted">
                   Get started!
                 </button>
               </a>
@@ -156,17 +156,17 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="benefits-main">
-        <div class="benefits-wrapper">
-          <div class="row justify-content-center">
-            <div class="col">
-              <h1 class="whyus-header">Why us?</h1>
+      <div className="benefits-main">
+        <div className="benefits-wrapper">
+          <div className="row justify-content-center">
+            <div className="col">
+              <h1 className="whyus-header">Why us?</h1>
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col">
-              <div class="row">
-                <div class="col">
+          <div className="row align-items-center">
+            <div className="col">
+              <div className="row">
+                <div className="col">
                   <h1>one-on-one tutoring</h1>
                   <p>
                     Allows the student to ask specific questions and the tutor
@@ -174,8 +174,8 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
+              <div className="row">
+                <div className="col">
                   <h1>Screen Sharing</h1>
                   <p>
                     Show your real time work and allow the tutor to inspect your
@@ -184,12 +184,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div class="col">
-              <img class="whyus-img" src={WhyUs} alt="Why us" />
+            <div className="col">
+              <img className="whyus-img" src={WhyUs} alt="Why us" />
             </div>
-            <div class="col">
-              <div class="row">
-                <div class="col">
+            <div className="col">
+              <div className="row">
+                <div className="col">
                   <h1>Screen Sharing</h1>
                   <p>
                     Show your real time work and allow the tutor to inspect your
@@ -197,8 +197,8 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
+              <div className="row">
+                <div className="col">
                   <h1>Screen Sharing</h1>
                   <p>
                     Show your real time work and allow the tutor to inspect your
@@ -210,21 +210,21 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="startnow-main">
-        <div class="startnow-wrapper">
-          <div class="row align-items-center">
-            <div class="col student-container">
+      <div className="startnow-main">
+        <div className="startnow-wrapper">
+          <div className="row align-items-center">
+            <div className="col student-container">
               <h1>Student</h1>
               <ul>
                 <li>Online access 24x7</li>
                 <li>Starts from 20$</li>
                 <li>Learn any language from home</li>
               </ul>
-              <button type="button" class="btn signup-btn">
+              <button type="button" className="btn signup-btn">
                 SIGN UP
               </button>
             </div>
-            <div class="col tutor-container">
+            <div className="col tutor-container">
               <h1>Tutor</h1>
               <ul>
                 <li>
@@ -233,7 +233,7 @@ export default function Home() {
                 <li>Get paid straight and save into your bank account</li>
                 <li>Work from home</li>
               </ul>
-              <button type="button" class="btn signup-btn">
+              <button type="button" className="btn signup-btn">
                 SIGN UP
               </button>
             </div>
