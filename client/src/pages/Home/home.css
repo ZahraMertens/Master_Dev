@@ -32,6 +32,16 @@ body {
     transform: translate(-50%, -50%);
 }
 
+form {
+    display: inline!important;
+}
+
+.search-hero {
+    margin-right: 0px!important;
+}
+
+
+
 .btn-search-hero {
     background-color: #12C3CB!important;
     color: white!important;

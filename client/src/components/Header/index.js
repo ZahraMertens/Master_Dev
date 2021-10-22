@@ -5,12 +5,12 @@ import Logo from "../../assets/images/logo.png"
 
 export default function Header() {
   return (
-    <header class="fixed-top">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <img src={Logo} class="logo" alt="test" />
+    <header className="fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <img src={Logo} className="logo" alt="test" />
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -18,30 +18,30 @@ export default function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            class="collapse navbar-collapse justify-content-end"
+            className="collapse navbar-collapse justify-content-end"
             id="navbarNav"
           >
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#home">
+            <ul className="nav">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#home">
                   Test Nav
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#home">
+              <li className="nav-item">
+                <a className="nav-link" href="#home">
                   Test Nav
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#home">
+              <li className="nav-item">
+                <a className="nav-link" href="#home">
                   Test Nav
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#home">
+              <li className="nav-item">
+                <a className="nav-link" href="#home">
                   Test Nav
                 </a>
               </li>

@@ -1,13 +1,38 @@
+import React, { useState } from "react";
+
 import "./home.css";
 
-import Video from "../../assets/images/e-learning-app-ad-copy.mp4"
-import Works1 from "../../assets/images/howitworks1.png"
-import Works2 from "../../assets/images/howitworks2.png"
-import Works3 from "../../assets/images/howitworks3.png"
-import WhyUs from "../../assets/images/whyus2.png"
+import { FaSearch } from "react-icons/fa";
 
+import Video from "../../assets/images/e-learning-app-ad-copy.mp4";
+import Works1 from "../../assets/images/howitworks1.png";
+import Works2 from "../../assets/images/howitworks2.png";
+import Works3 from "../../assets/images/howitworks3.png";
+import WhyUs from "../../assets/images/whyus2.png";
 
 export default function Home() {
+  const [language, setLanguage] = useState("");
+
+  const handleChange = (event) => {
+    const { target } = event;
+    const inputValue = target.value;
+    const inputType = target.name;
+
+    if (inputType === "language") {
+      setLanguage(inputValue);
+    }
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    console.log(language);
+
+    
+
+    setLanguage("")
+  }
+
   return (
     <div>
       <div id="search" className="hero-main">
@@ -30,27 +55,35 @@ export default function Home() {
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
-                <div className="col-4 search-hero">
-                  <div className="input-group input-group-lg">
-                    <span className="input-group-text" id="inputGroup-sizing-lg">
-                      <i className="fas fa-search"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      aria-label="Sizing example input"
-                      aria-describedby="inputGroup-sizing-lg"
-                    />
+                  <div className="col-4 search-hero">
+                    <div className="input-group input-group-lg">
+                      <span
+                        className="input-group-text"
+                        id="inputGroup-sizing-lg"
+                      >
+                        <FaSearch />
+                      </span>
+                      <input
+                        value={language}
+                        name="language"
+                        type="text"
+                        placeholder="Java Script"
+                        onChange={handleChange}
+                        className="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-lg"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="col-2 btn-container-hero">
-                  <button
-                    type="button"
-                    className="btn btn-lg btn-search-hero align-start"
-                  >
-                    FIND A TUTOR
-                  </button>
-                </div>
+                  <div className="col-2 btn-container-hero">
+                    <button
+                      type="button"
+                      className="btn btn-lg btn-search-hero align-start"
+                      onClick={handleClick}
+                    >
+                      FIND A TUTOR
+                    </button>
+                  </div>
               </div>
             </div>
           </div>
@@ -61,10 +94,7 @@ export default function Home() {
           <div className="row">
             <div className="col">
               <video className="advert-video" controls>
-                <source
-                  src={Video}
-                  type="video/mp4"
-                />
+                <source src={Video} type="video/mp4" />
                 <source src="movie.ogg" type="video/ogg" />
                 Your browser does not support the video tag.
               </video>
@@ -95,11 +125,7 @@ export default function Home() {
           </div>
           <div className="row align-items-center">
             <div className="col">
-              <img
-                className="howitworks-img"
-                src={Works1}
-                alt=""
-              />
+              <img className="howitworks-img" src={Works1} alt="" />
             </div>
             <div className="col">
               <h1 className="howitworks-section-header">
@@ -124,20 +150,12 @@ export default function Home() {
               </p>
             </div>
             <div className="col">
-              <img
-                className="howitworks-img"
-                src={Works2}
-                alt=""
-              />
+              <img className="howitworks-img" src={Works2} alt="" />
             </div>
           </div>
           <div className="row align-items-center">
             <div className="col">
-              <img
-                className="howitworks-img"
-                src={Works3}
-                alt=""
-              />
+              <img className="howitworks-img" src={Works3} alt="" />
             </div>
             <div className="col">
               <h1 className="howitworks-section-header">

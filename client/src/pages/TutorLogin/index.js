@@ -13,143 +13,143 @@ import "./tutorlogin.css";
 export default function TutorLogin() {
   return (
     <div>
-      <div class="tutorsignup-main">
-        <div class="signup-wrapper">
-          <div class="row">
-            <div class="col">
-              <form class="row">
-                <div class="col-12">
+      <div className="tutorsignup-main">
+        <div className="signup-wrapper">
+          <div className="row">
+            <div className="col">
+              <form className="row">
+                <div className="col-12">
                   <h1>Tutor Sign Up</h1>
                 </div>
-                <div class="col-6">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-6">
+                  <label for="validationCustom01" className="form-label">
                     First name
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="Mark"
                     required
                   />
                 </div>
-                <div class="col-6">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-6">
+                  <label for="validationCustom01" className="form-label">
                     Last Name
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="Doe"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     Phone Number
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="0123123123"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     Email address
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="mark.doe@test.com"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     Degree
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="Master in Computer Science"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     Hourly Rate $
                   </label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
+                  <div className="input-group mb-3">
+                    <span className="input-group-text">$</span>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       aria-label="Amount (to the nearest dollar)"
                     />
-                    <span class="input-group-text">.00</span>
+                    <span className="input-group-text">.00</span>
                   </div>
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     About Me (Short Describtion)
                   </label>
                   <textarea
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="mark.doe@test.com"
                     required
                   ></textarea>
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     Create Password
                   </label>
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="Mark1234"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="validationCustom01" class="form-label">
+                <div className="col-12">
+                  <label for="validationCustom01" className="form-label">
                     Confirm Password
                   </label>
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="validationCustom01"
                     value="Mark1234"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <div class="form-check">
+                <div className="col-12">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value=""
                       id="invalidCheck"
                       required
                     />
-                    <label class="form-check-label" for="invalidCheck">
+                    <label className="form-check-label" for="invalidCheck">
                       Agree to terms and conditions
                     </label>
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       You must agree before submitting.
                     </div>
                   </div>
                 </div>
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">
+                <div className="col-12">
+                  <button className="btn btn-primary" type="submit">
                     Submit form
                   </button>
                 </div>
