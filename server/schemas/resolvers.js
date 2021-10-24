@@ -14,6 +14,9 @@ const resolvers = {
             const params = language ? { language } : {};
             return Tutor.find(params);
         },
+        onetutor: async (parent, { tutorId }) => {
+            return Tutor.findOne({ _id: tutorId });
+        }
         // By adding context to our query, we can retrieve the logged in user without specifically searching for them
         // currentstudent: async (parent, args, context) => {
         //     if (context.user.userType === "Student") {

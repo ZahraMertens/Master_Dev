@@ -29,6 +29,7 @@ const typeDefs = gql`
         students: [Student]
         tutors: [Tutor]
         searchtutor(language: String): [Tutor]
+        onetutor(tutorId: ID!): Tutor
     }
 
     
