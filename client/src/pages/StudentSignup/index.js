@@ -5,14 +5,14 @@ export default function StudentSignup() {
     <div>
       <div className="studentsignup-main">
         <div className="signup-wrapper">
-          <div className="row">
+          <div className="row form-studentsignup">
             <div className="col">
-              <form className="row form-studentsignup">
+              <form className="row">
                 <div className="col-12">
                   <h1>Student Sign Up</h1>
                 </div>
                 <div className="col-6">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     First name
                   </label>
                   <input
@@ -24,7 +24,7 @@ export default function StudentSignup() {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Last Name
                   </label>
                   <input
@@ -36,7 +36,7 @@ export default function StudentSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Phone Number
                   </label>
                   <input
@@ -48,7 +48,7 @@ export default function StudentSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     mail address
                   </label>
                   <input
@@ -60,7 +60,7 @@ export default function StudentSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Create Password
                   </label>
                   <input
@@ -72,7 +72,7 @@ export default function StudentSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Confirm Password
                   </label>
                   <input
@@ -92,7 +92,7 @@ export default function StudentSignup() {
                       id="invalidCheck"
                       required
                     />
-                    <label className="form-check-label" for="invalidCheck">
+                    <label className="form-check-label" htmlFor="invalidCheck">
                       Agree to terms and conditions
                     </label>
                     <div className="invalid-feedback">

@@ -15,14 +15,14 @@ export default function TutorSignup() {
     <div>
       <div className="tutorsignup-main">
         <div className="signup-wrapper">
-          <div className="row">
+          <div className="row form-tutorsignup">
             <div className="col">
-              <form className="row form-tutorsignup">
+              <form className="row">
                 <div className="col-12">
                   <h1>Tutor Sign Up</h1>
                 </div>
                 <div className="col-6">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     First name
                   </label>
                   <input
@@ -34,7 +34,7 @@ export default function TutorSignup() {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Last Name
                   </label>
                   <input
@@ -46,7 +46,7 @@ export default function TutorSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Phone Number
                   </label>
                   <input
@@ -58,7 +58,7 @@ export default function TutorSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Email address
                   </label>
                   <input
@@ -70,7 +70,7 @@ export default function TutorSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Degree
                   </label>
                   <input
@@ -82,7 +82,7 @@ export default function TutorSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Hourly Rate $
                   </label>
                   <div className="input-group mb-3">
@@ -96,7 +96,7 @@ export default function TutorSignup() {
                   </div>
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     About Me (Short Describtion)
                   </label>
                   <textarea
@@ -108,7 +108,7 @@ export default function TutorSignup() {
                   ></textarea>
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Create Password
                   </label>
                   <input
@@ -120,7 +120,7 @@ export default function TutorSignup() {
                   />
                 </div>
                 <div className="col-12">
-                  <label for="validationCustom01" className="form-label">
+                  <label htmlFor="validationCustom01" className="form-label">
                     Confirm Password
                   </label>
                   <input
@@ -140,7 +140,7 @@ export default function TutorSignup() {
                       id="invalidCheck"
                       required
                     />
-                    <label className="form-check-label" for="invalidCheck">
+                    <label className="form-check-label" htmlFor="invalidCheck">
                       Agree to terms and conditions
                     </label>
                     <div className="invalid-feedback">

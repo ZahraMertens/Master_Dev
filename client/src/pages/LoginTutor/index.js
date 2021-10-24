@@ -51,7 +51,6 @@ export default function LoginTutor() {
             <h1 className="header-login">Tutor Login:</h1>
             <form>
               <label
-                for="validationCustom01"
                 className="form-label label-login"
               >
                 Email
@@ -66,7 +65,6 @@ export default function LoginTutor() {
                 required
               />
               <label
-                for="validationCustom01"
                 className="form-label label-login"
               >
                 Password

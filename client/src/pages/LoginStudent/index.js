@@ -51,7 +51,7 @@ export default function LoginStudent() {
           <div className="col">
             <h1 className="header-login">Student Login:</h1>
             <form onSubmit={handleFormSubmit}>
-              <label for="validationCustom01" className="form-label label-login">
+              <label className="form-label label-login">
                 Email
               </label>
               <input
@@ -63,7 +63,7 @@ export default function LoginStudent() {
                 onChange={handleChange}
                 required
               />
-              <label for="validationCustom01" className="form-label label-login">
+              <label className="form-label label-login">
                 Password
               </label>
               <input

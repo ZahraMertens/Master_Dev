@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
         <div className="row">
             <div className="col">
-                <h1 class="copyright">© 2021 Master Dev</h1>
+                <h1 className="copyright">© 2021 Master Dev</h1>
             </div>
         </div>
       </div>

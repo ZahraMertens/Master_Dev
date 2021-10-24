@@ -1,9 +1,10 @@
 .studentsignup-main {
-  height: 100vh;
+  height: 100%;
   background-image: url(../../assets/images/studentsignup.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin-bottom: 100px;
 }
 
 .signup-wrapper {
@@ -22,7 +23,7 @@
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  form {
+  .form-studentsignup {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(5px);
   }
