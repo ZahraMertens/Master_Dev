@@ -67,55 +67,29 @@
     </header>
 
     <main>
-      <div class="profile-main">
-      <div class="profile-wrapper">
-        <div class="row">
-          <div class="col">
-            <img src="./images/placeholder.jpg" class="placeholder-img" alt="">
-          </div>
-          <div class="col">
-            <h1>Name Name</h1>
-            <h2>Language:</h2>
-            <h3>JavaScript</h3>
-          </div>
-          <div class="col">
-            <h1><i class="fas fa-dollar-sign"></i> 30 /hr</h1>
-            <button class="btn btn-ld btn-warning"><i class="fas fa-shopping-cart"></i> BOOK A SESSION</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="describtion-container">
-              <h1>Describtion:</h1>
-              <p>Test Test Test</p>
+      <div class="book-main">
+        <div class="book-wrapper">
+            <form action="http://formspree.io/YOUR_FORM_ID" 
+            method="post" id="payment-form"
+          >
+            <label for="name">Name</label>
+            <input type="text" name="name" required/>
+          
+            <label for="email">Email</label>
+            <input type="email" name="email" required/>
+          
+            <label for="card-element">Credit or debit card</label>
+            <div id="card-element">
+              <!-- A Stripe Element will be inserted here. -->
             </div>
-            <div class="method-container">
-              <h1>Methology:</h1>
-              <p>Test</p>
-            </div>
-          </div>
-          <div class="col">
-            <div class="degree-container">
-              <h1>Degree:</h1>
-              <h2>Master in Computer Science</h2>
-            </div>
-            <div class="background-container">
-              <h1>Background:</h1>
-              <p>Test</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <h1>Rates:</h1>
-            <p>One hour online session: <span>$30/h</span></p>
-            <p>Five hour online session: <span>$120</span></p>
-            <p>Whole day (8 hours) online session: <span>$220</span></p>
-          </div>
+          
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+          
+            <input type="submit" value="Submit Payment"/>
+          </form>
         </div>
       </div>
-    </div>
-      
     </main>
 
     <footer class="footer"></footer>
