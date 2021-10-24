@@ -8,7 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 import Home from "./pages/Home/index";
-import StudentSignup from "./pages/StudentSignup/index"
+import StudentSignup from "./pages/StudentSignup/index";
+import Results from "./pages/SearchResults/index";
+import Profile from './pages/Profile';
 
 
 // Construct our main GraphQL API endpoint
@@ -42,7 +44,7 @@ function App() {
   return (
     // Use apolloProvider to parse the client to all childs
     //Makes it able to access to the client prop from all child components
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
     <Router>
       <Header />
       <main>
@@ -51,6 +53,12 @@ function App() {
         </Route>
         <Route exact path="/signup-student">
           <StudentSignup />
+        </Route>
+        <Route exact path="/results/:language">
+          <Results />
+        </Route>
+        <Route exact path="/tutor/:tutorId">
+          <Profile />
         </Route>
       </main>
       <Footer />

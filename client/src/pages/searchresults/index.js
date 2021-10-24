@@ -1,6 +1,30 @@
 import "./results.css";
 
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+
+import { GET_TUTORS } from "../../utils/queries";
+
+import ResultCard from "../../components/ResultCard";
+
 export default function Results() {
+
+  const { language } = useParams();
+
+  const { loading, data } = useQuery(GET_TUTORS, {
+    variables: { language: language },
+  });
+
+  const tutors = data?.searchtutor || {};
+
+  console.log(tutors) // gives {}
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
       <div className="anothersearch-main">
@@ -21,12 +45,12 @@ export default function Results() {
               </div>
             </div>
             <div className="col-2 btn-container-hero">
-              <button
-                type="button"
-                className="btn btn-lg anothersearch-btn align-start"
+              <Link
+                className="btn btn-lg btn-search-hero align-start"
+                to={`/results/${language}`}
               >
                 FIND A TUTOR
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -34,28 +58,7 @@ export default function Results() {
       </div>
       <div className="results-main">
         <div className="results-wrapper">
-          <div className="results-card">
-            <div className="row">
-              <div className="col-2">
-                {/* <img src="./images/placeholder.jpg" className="profile-img" alt=""> */}
-              </div>
-              <div className="col-6">
-                <h1>Name Name</h1>
-                <p>Degree</p>
-                <p>Describtion</p>
-                <h2>
-                  <span>Language:</span> Java Script
-                </h2>
-                <button className="btn btn-sm btn-warning">
-                  View Full Profile
-                </button>
-              </div>
-              <div className="col-4">
-                <h1>30 /hr</h1>
-                <button className="btn btn-md btn-success">BOOK NOW</button>
-              </div>
-            </div>
-          </div>
+          <ResultCard tutors={tutors}/>
         </div>
       </div>
     </div>
