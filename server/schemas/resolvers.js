@@ -18,12 +18,12 @@ const resolvers = {
       return Tutor.findOne({ _id: tutorId });
     },
 
-    // By adding context to our query, we can retrieve the logged in student without specifically searching for them
+    // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     // currentstudent: async (parent, args, context) => {
-    //     if (context.student.userType === "Student") {
-    //         return Student.findOne({ _id: context.student._id });
-    //     } else if (context.student.userType === "Tutor"){
-    //         return Tutor.findOne({ _id: context.student._id });
+    //     if (context.user.userType === "Student") {
+    //         return Student.findOne({ _id: context.user._id });
+    //     } else if (context.user.userType === "Tutor"){
+    //         return Tutor.findOne({ _id: context.user._id });
     //     }
     //     throw new AuthenticationError('You need to be logged in!');
     // },
@@ -34,9 +34,8 @@ const resolvers = {
         const student = await Student.findOne({ email });
 
         if (!student) {
-          await Student.findOne({ email });
           throw new AuthenticationError(
-            "No student found with this email address"
+            "No user found with this email address"
           );
         }
 
@@ -50,26 +49,25 @@ const resolvers = {
 
         return { token, student };
     },
-    loginTutor: async (parent, { email, password }) => {
-        const tutor = await Tutor.findOne({ email });
+    // loginTutor: async (parent, { email, password }) => {
+    //     const user = await Tutor.findOne({ email });
 
-        if (!tutor) {
-          await Student.findOne({ email });
-          throw new AuthenticationError(
-            "No student found with this email address"
-          );
-        }
+    //     if (!user) {
+    //       throw new AuthenticationError(
+    //         "No user found with this email address"
+    //       );
+    //     }
 
-        const correctPw = await tutor.isCorrectPassword(password);
+    //     const correctPw = await user.isCorrectPassword(password);
 
-        if (!correctPw) {
-          throw new AuthenticationError("Incorrect credentials");
-        }
+    //     if (!correctPw) {
+    //       throw new AuthenticationError("Incorrect credentials");
+    //     }
 
-        const token = signToken(tutor);
+    //     const token = signToken(user);
 
-        return { token, tutor };
-    },
+    //     return { token, user };
+    // },
     // addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
     //     const student = await Student.create({ firstName, lastName, email, password, userType });
     //     const token = signToken(student)

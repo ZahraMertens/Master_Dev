@@ -25,18 +25,16 @@ module.exports = {
         //retunr payload data and add to user
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-    } catch {
-      console.log("Invalid token");
+    } catch (error) {
+      console.log(error);
     }
 
-    // return the request object so it can be passed to the resolver as `context`
+    // return the request object so it can be parsed to the resolver as `context`
     return req;
   },
 
-  signToken: function ({ email, username, _id }) {
-    const payload = { email, username, _id };
+  signToken: function ({ email, firstName, lastName, _id }) {
+    const payload = { email, firstName, lastName, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
-
-//QUESTION: TOEKN FOR STUDENT AND TUTOR OR ONLY ONE?

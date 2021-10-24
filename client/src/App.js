@@ -12,7 +12,8 @@ import StudentSignup from "./pages/StudentSignup/index";
 import TutorSignup from "./pages/TutorSignup"
 import Results from "./pages/SearchResults/index";
 import Profile from './pages/Profile';
-import Login from './pages/Login';
+import LoginStudent from './pages/LoginStudent';
+import LoginTutor from "./pages/LoginTutor"
 
 
 // Construct our main GraphQL API endpoint
@@ -65,8 +66,11 @@ function App() {
         <Route exact path="/tutor/:tutorId">
           <Profile />
         </Route>
-        <Route exact path="/login">
-          <Login />
+        <Route exact path="/login-student">
+          <LoginStudent />
+        </Route>
+        <Route exact path="/login-tutor">
+          <LoginTutor />
         </Route>
         {/* <Route exact path="/book/:tutorId/:rate">
           <Stripe />
