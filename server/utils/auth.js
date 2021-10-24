@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const secret = "seeeccreeet";
 const expiration = "2h";
 
+// 1. JWT
+
 module.exports = {
   //check if there is an existing token in request
   //if there is an existing token we will verify and decode the token
@@ -33,8 +35,11 @@ module.exports = {
     return req;
   },
 
+  //Receives information which we want to include in the payload
   signToken: function ({ email, firstName, lastName, _id }) {
+    //Create payload object
     const payload = { email, firstName, lastName, _id };
+    //Asign the values to the jwt token
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

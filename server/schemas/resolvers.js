@@ -68,11 +68,14 @@ const resolvers = {
 
     //     return { token, user };
     // },
-    // addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
-    //     const student = await Student.create({ firstName, lastName, email, password, userType });
-    //     const token = signToken(student)
-    //     return { token, student}
-    // },
+    //Parse all attributes from signup page to args param and deconstruct
+    addStudent: async (parent, {firstName, lastName, email, password, userType}) => {
+        const student = await Student.create({ firstName, lastName, email, password, userType });
+        //Imported sign token 
+        const token = signToken(student)
+        //Return token and profile
+        return { token, student }
+    },
     // addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
     //     const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
     //     const token = signToken(tutor)

@@ -1,12 +1,60 @@
 import "./studentsignup.css";
 
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { useMutation } from '@apollo/client';
+import { ADD_STUDENT } from '../../utils/mutations';
+
+import Auth from '../../utils/auth';
+
 export default function StudentSignup() {
+
+  const [formState, setFormState] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
+  const [addStudent, { error, data }] = useMutation(ADD_STUDENT);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await addStudent({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addStudent.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div>
       <div className="studentsignup-main">
         <div className="signup-wrapper">
           <div className="row form-studentsignup">
             <div className="col">
+            {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
               <form className="row">
                 <div className="col-12">
                   <h1>Student Sign Up</h1>
@@ -19,7 +67,10 @@ export default function StudentSignup() {
                     type="text"
                     className="form-control"
                     id="validationCustom01"
-                    value="Mark"
+                    placeholder="Mark"
+                    name="firstName"
+                    value={formState.firstName}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -31,7 +82,10 @@ export default function StudentSignup() {
                     type="text"
                     className="form-control"
                     id="validationCustom01"
-                    value="Doe"
+                    placeholder="Doe"
+                    name="lastName"
+                    value={formState.lastName}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -43,43 +97,38 @@ export default function StudentSignup() {
                     type="text"
                     className="form-control"
                     id="validationCustom01"
-                    value="0123123123"
+                    name="phone"
+                    value={formState.phone}
+                    onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
-                    mail address
+                    Email address
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     id="validationCustom01"
-                    value="mark.doe@test.com"
+                    placeholder="john.doe@gmail.com"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
-                    Create Password
+                    Password
                   </label>
                   <input
                     type="password"
                     className="form-control"
                     id="validationCustom01"
-                    value="Mark1234"
-                    required
-                  />
-                </div>
-                <div className="col-12">
-                  <label htmlFor="validationCustom01" className="form-label">
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="validationCustom01"
-                    value="Mark1234"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -106,6 +155,13 @@ export default function StudentSignup() {
                   </button>
                 </div>
               </form>
+              )}
+
+              {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+              )}
             </div>
           </div>
         </div>
