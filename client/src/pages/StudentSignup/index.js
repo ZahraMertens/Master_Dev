@@ -1,4 +1,4 @@
-import "./studentsignup.css";
+import "./studentsignup";
 
 export default function StudentSignup() {
   return (
