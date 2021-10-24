@@ -2,3 +2,30 @@
     height: 30vh;
     background-color: rgb(20, 20, 20);
 }
+
+.footer-wrapper {
+    padding-top: 40px;
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-icon {
+    color: white!important;
+}
+
+.footer-header {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 40px!important;
+}
+
+.copyright {
+    color: rgb(184, 184, 184);
+    font-size: 17px;
+}
+
+.p-footer {
+    color: white;
+}
