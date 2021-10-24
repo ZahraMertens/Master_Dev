@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function BookFrom({ tutor }) {
+
+    const [rate, setRate] = useState("")
 
     const handleChange = (event) => {
 
@@ -11,14 +13,15 @@ export default function BookFrom({ tutor }) {
 
         console.log(checkedValue)
 
-        return checkedValue;
+        setRate(checkedValue)
     }
 
 
   return (
     <div className="col">
       <h1>
-        {/* <i className="fas fa-dollar-sign"></i> {rate} */}
+        <i className="fas fa-dollar-sign"></i> 
+        {rate}
       </h1>
       <form>
         <input
