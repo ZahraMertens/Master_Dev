@@ -198,61 +198,61 @@ li {
   padding-top: 200px;
 }
 
-form {
+/* form {
   box-shadow: 0 5px 15px rgba(179, 179, 179, 0.5);
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.4);
   padding: 20px !important;
   z-index: 3;
-}
+} */
 
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+/* @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   form {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(5px);
   }
-}
+} */
 
 /* results */
 .anothersearch-main {
-    height: 100%;
-    padding-bottom: 100px;
-    position: relative;
-    overflow: hidden;
+  height: 100%;
+  padding-bottom: 100px;
+  position: relative;
+  overflow: hidden;
 }
 
-.anothersearch-wrapper{
-    margin-top: 300px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #12c3cb;
-    height: 200px;
-    border-radius: 10px;
-    padding-top: 80px;
-    z-index: 5!important;
+.anothersearch-wrapper {
+  margin-top: 300px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #12c3cb;
+  height: 200px;
+  border-radius: 10px;
+  padding-top: 80px;
+  z-index: 5 !important;
 }
 
 .anothersearch-btn {
-    border: 2px solid black!important;
-    background-color: white!important;
+  border: 2px solid black !important;
+  background-color: white !important;
 }
 
 .results-wrapper {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile-img {
-    width: 200px;
-    padding: 20px;
+  width: 200px;
+  padding: 20px;
 }
 
 .results-card {
-    background-color: rgb(243, 243, 243);
-    border-radius: 10px;
-    margin-top: 50px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 10px;
+  margin-top: 50px;
 }
 
 .banner-result-img {
@@ -260,7 +260,7 @@ form {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1!important;
+  z-index: 1 !important;
 }
 
 /* PROFILE */
@@ -301,3 +301,56 @@ form {
   height: 100%;
 }
 
+/* LOGIN */
+
+.login-main {
+  height: 100vh;
+  position: relative;
+  background-image: url(./images/tutoring.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.login-wrapper {
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 400px;
+  box-shadow: 0 5px 15px rgba(179, 179, 179, 0.5);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.671);
+  z-index: 3;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .login-wrapper {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+.header-login {
+  padding: 20px;
+}
+
+.input-login {
+  width: 90% !important;
+  margin-left: 20px;
+}
+
+.label-login {
+  width: 90% !important;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.btn-login {
+  margin: 20px;
+}

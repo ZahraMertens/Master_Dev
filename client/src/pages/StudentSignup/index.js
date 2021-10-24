@@ -7,7 +7,7 @@ export default function StudentSignup() {
         <div className="signup-wrapper">
           <div className="row">
             <div className="col">
-              <form className="row">
+              <form className="row form-studentsignup">
                 <div className="col-12">
                   <h1>Student Sign Up</h1>
                 </div>

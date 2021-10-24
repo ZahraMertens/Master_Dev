@@ -57,6 +57,20 @@ export default function Header() {
                   Home
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link 
+                className="nav-link"
+                to={`/login-tutor`}>
+                  Tutor Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link 
+                className="nav-link"
+                to={`/login-student`}>
+                  Student Login
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
