@@ -15,28 +15,28 @@ const resolvers = {
             return Tutor.find(params);
         },
         // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-        currentstudent: async (parent, args, context) => {
-            if (context.user.userType === "Student") {
-                return Student.findOne({ _id: context.user._id });
-            } else if (context.user.userType === "Tutor"){
-                return Tutor.findOne({ _id: context.user._id });
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
+        // currentstudent: async (parent, args, context) => {
+        //     if (context.user.userType === "Student") {
+        //         return Student.findOne({ _id: context.user._id });
+        //     } else if (context.user.userType === "Tutor"){
+        //         return Tutor.findOne({ _id: context.user._id });
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
     },
 
-    Mutation: {
-        addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
-            const student = await Student.create({ firstName, lastName, email, password, userType });
-            const token = signToken(student)
-            return { token, student}
-        },
-        addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
-            const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
-            const token = signToken(tutor)
-            return { token, tutor}
-        }
-    }
+    // Mutation: {
+    //     addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
+    //         const student = await Student.create({ firstName, lastName, email, password, userType });
+    //         const token = signToken(student)
+    //         return { token, student}
+    //     },
+    //     addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
+    //         const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
+    //         const token = signToken(tutor)
+    //         return { token, tutor}
+    //     }
+    // }
 }
 
 module.exports = resolvers;

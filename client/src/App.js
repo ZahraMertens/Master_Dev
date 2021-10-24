@@ -5,16 +5,18 @@ import { setContext } from '@apollo/client/link/context';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Home from "./pages/Home/index";
 import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
+import Home from "./pages/Home/index";
+import StudentSignup from "./pages/StudentSignup/index"
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql', //Uniform resource identifier
 });
 
-//Middelware has acces to the headers from request
+// Middelware has access to the headers from request
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -46,6 +48,9 @@ function App() {
       <main>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/signup-student">
+          <StudentSignup />
         </Route>
       </main>
       <Footer />

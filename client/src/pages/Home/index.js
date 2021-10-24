@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { GET_TUTORS } from "../../utils/queries";
 
 import "./home.css";
 
@@ -11,6 +13,10 @@ import Works3 from "../../assets/images/howitworks3.png";
 import WhyUs from "../../assets/images/whyus2.png";
 
 export default function Home() {
+
+  // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
+  // const language = data?.language || [];
+  const [searchtutor, { data }] = useLazyQuery(GET_TUTORS)
   const [language, setLanguage] = useState("");
 
   const handleChange = (event) => {
@@ -23,15 +29,40 @@ export default function Home() {
     }
   };
 
-  const handleClick = (event) => {
+  const getTutors = async (event) => {
     event.preventDefault();
 
-    console.log(language);
+    searchtutor({
+      variables: { language }, 
+      suspend: false
+    })
+
+    if (data){
+      console.log(data)
+    }
+
+    // try {
+
+    //   const {result} = await searchtutor({
+    //     variables: {language}
+    //   });
+
+    //   console.log(result)
+
+    // } catch (error) {
+    //   console.error(error)
+    // }
+  }
+
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+
+  //   console.log(language);
 
     
 
-    setLanguage("")
-  }
+  //   setLanguage("")
+  // }
 
   return (
     <div>
@@ -79,7 +110,7 @@ export default function Home() {
                     <button
                       type="button"
                       className="btn btn-lg btn-search-hero align-start"
-                      onClick={handleClick}
+                      onClick={getTutors}
                     >
                       FIND A TUTOR
                     </button>

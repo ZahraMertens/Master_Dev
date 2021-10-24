@@ -1,6 +1,6 @@
-import "./studentlogin.css";
+import "./studentsignup.css";
 
-export default function StudentLogin() {
+export default function StudentSignup() {
   return (
     <div>
       <div className="studentsignup-main">

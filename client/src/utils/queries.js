@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client"
 
-export const GET_TUTOR = gql `
+export const GET_TUTORS = gql `
    query searchtutor($language: String) {
      searchtutor(language: $language) {
        _id

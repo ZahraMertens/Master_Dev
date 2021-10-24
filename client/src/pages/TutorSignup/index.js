@@ -8,9 +8,9 @@
 // const [addProfile, {error, data}] = useMutation(ADD_PROFILE)
 //then call function in handle form submit
 
-import "./tutorlogin.css";
+import "./tutorsignup.css";
 
-export default function TutorLogin() {
+export default function TutorSignup() {
   return (
     <div>
       <div className="tutorsignup-main">

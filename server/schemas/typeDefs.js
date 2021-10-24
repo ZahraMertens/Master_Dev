@@ -31,13 +31,16 @@ const typeDefs = gql`
         searchtutor(language: String): [Tutor]
     }
 
-    type Mutation {
-        addstudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): Auth
-        addtutor(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!, userType: String!, describtion: String!, language: String!, degree: String!, hourRate: Int!): Auth
-    }
+    
 `
 
 module.exports = typeDefs;
+
+// type Mutation {
+//         addstudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): Auth
+//         addtutor(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!, userType: String!, describtion: String!, language: String!, degree: String!, hourRate: Int!): Auth
+//     }
+
 
 //for query without authentication
 // addstudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): Student
