@@ -32,7 +32,10 @@ const typeDefs = gql`
         onetutor(tutorId: ID!): Tutor
     }
 
-    
+    type Mutation {
+        loginStudent(email: String!, password: String!): Auth 
+        loginTutor(email: String!, password: String!): Auth
+    }  
 `
 
 module.exports = typeDefs;

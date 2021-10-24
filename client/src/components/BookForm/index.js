@@ -16,7 +16,6 @@ export default function BookFrom({ tutor }) {
         setRate(checkedValue)
     }
 
-
   return (
     <div className="col">
       <h1>
@@ -63,7 +62,7 @@ export default function BookFrom({ tutor }) {
         </label>
         <Link 
             classNameName="btn btn-ld btn-warning" 
-            to={`/book/${tutor.id}/${handleChange}`}>
+            to={`/book/${tutor.id}/${rate}`}>
           <i classNameName="fas fa-shopping-cart"></i> BOOK A SESSION
         </Link>
       </form>

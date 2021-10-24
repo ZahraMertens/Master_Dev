@@ -1,46 +1,87 @@
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError } = require("apollo-server-express");
 const { Student, Tutor } = require("../models");
-const { signToken } = require("../utils/auth")
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
-    Query: {
-        students: async () => {
-            return Student.find();
-        },
-        tutors: async () => {
-            return Tutor.find();
-        },
-        searchtutor: async (parent, {language}) => {
-            const params = language ? { language } : {};
-            return Tutor.find(params);
-        },
-        onetutor: async (parent, { tutorId }) => {
-            return Tutor.findOne({ _id: tutorId });
-        }
-        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-        // currentstudent: async (parent, args, context) => {
-        //     if (context.user.userType === "Student") {
-        //         return Student.findOne({ _id: context.user._id });
-        //     } else if (context.user.userType === "Tutor"){
-        //         return Tutor.findOne({ _id: context.user._id });
-        //     }
-        //     throw new AuthenticationError('You need to be logged in!');
-        // },
+  Query: {
+    students: async () => {
+      return Student.find();
+    },
+    tutors: async () => {
+      return Tutor.find();
+    },
+    searchtutor: async (parent, { language }) => {
+      const params = language ? { language } : {};
+      return Tutor.find(params);
+    },
+    onetutor: async (parent, { tutorId }) => {
+      return Tutor.findOne({ _id: tutorId });
     },
 
-    // Mutation: {
-    //     addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
-    //         const student = await Student.create({ firstName, lastName, email, password, userType });
-    //         const token = signToken(student)
-    //         return { token, student}
-    //     },
-    //     addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
-    //         const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
-    //         const token = signToken(tutor)
-    //         return { token, tutor}
+    // By adding context to our query, we can retrieve the logged in student without specifically searching for them
+    // currentstudent: async (parent, args, context) => {
+    //     if (context.student.userType === "Student") {
+    //         return Student.findOne({ _id: context.student._id });
+    //     } else if (context.student.userType === "Tutor"){
+    //         return Tutor.findOne({ _id: context.student._id });
     //     }
+    //     throw new AuthenticationError('You need to be logged in!');
+    // },
+  },
+
+  Mutation: {
+    loginStudent: async (parent, { email, password }) => {
+        const student = await Student.findOne({ email });
+
+        if (!student) {
+          await Student.findOne({ email });
+          throw new AuthenticationError(
+            "No student found with this email address"
+          );
+        }
+
+        const correctPw = await student.isCorrectPassword(password);
+
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        const token = signToken(student);
+
+        return { token, student };
+    },
+    loginTutor: async (parent, { email, password }) => {
+        const tutor = await Tutor.findOne({ email });
+
+        if (!tutor) {
+          await Student.findOne({ email });
+          throw new AuthenticationError(
+            "No student found with this email address"
+          );
+        }
+
+        const correctPw = await tutor.isCorrectPassword(password);
+
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        const token = signToken(tutor);
+
+        return { token, tutor };
+    },
+    // addstudent: async (parent, {firstName, lastName, email, password, userType}) => {
+    //     const student = await Student.create({ firstName, lastName, email, password, userType });
+    //     const token = signToken(student)
+    //     return { token, student}
+    // },
+    // addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
+    //     const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
+    //     const token = signToken(tutor)
+    //     return { token, tutor}
     // }
-}
+  },
+};
 
 module.exports = resolvers;
 
@@ -69,7 +110,7 @@ module.exports = resolvers;
 //       _id
 //     }
 //   }
-  
+
 //   mutation AddstudentMutation($firstName: String!, $lastName: String!, $email: String!, $password: String!, $userType: String!) {
 //     addstudent(firstName: $firstName, lastName: $lastName, email: $email, password: $password, userType: $userType) {
 //       firstName
@@ -79,7 +120,7 @@ module.exports = resolvers;
 //       userType
 //     }
 //   }
-  
+
 //   query tutors {
 //     tutors {
 //       _id
@@ -95,7 +136,7 @@ module.exports = resolvers;
 //       hourRate
 //     }
 //   }
-  
+
 //   query searchtutor($language: String) {
 //     searchtutor(language: $language) {
 //       _id
@@ -111,9 +152,7 @@ module.exports = resolvers;
 //       hourRate
 //     }
 //   }
-  
-  
-  
+
 //   mutation addtutor($firstName: String!, $lastName: String!, $email: String!, $password: String!, $userType: String!, $phone: String!, $describtion: String!, $language: String!, $degree: String!, $hourRate: Int!) {
 //     addtutor(firstName: $firstName, lastName: $lastName, email: $email, phone: $phone, password: $password, userType: $userType, describtion: $describtion, language: $language, degree: $degree, hourRate: $hourRate) {
 //       firstName
