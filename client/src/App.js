@@ -9,6 +9,7 @@ import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 import Home from "./pages/Home/index";
 import StudentSignup from "./pages/StudentSignup/index";
+import TutorSignup from "./pages/TutorSignup"
 import Results from "./pages/SearchResults/index";
 import Profile from './pages/Profile';
 
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route exact path="/signup-student">
           <StudentSignup />
+        </Route>
+        <Route exact path="/signup-tutor">
+          <TutorSignup />
         </Route>
         <Route exact path="/results/:language">
           <Results />

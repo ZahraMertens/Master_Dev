@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// Import `<Link>` component from React Router for internal hyperlinks
 import { Link } from 'react-router-dom';
 
 import "./home.css";
@@ -231,9 +230,12 @@ export default function Home() {
                 <li>Starts from 20$</li>
                 <li>Learn any language from home</li>
               </ul>
-              <button type="button" className="btn signup-btn">
+              <Link  
+                className="btn signup-btn"
+                to={`/signup-student`}
+                >
                 SIGN UP
-              </button>
+              </Link>
             </div>
             <div className="col tutor-container">
               <h1>Tutor</h1>
@@ -244,9 +246,12 @@ export default function Home() {
                 <li>Get paid straight and save into your bank account</li>
                 <li>Work from home</li>
               </ul>
-              <button type="button" className="btn signup-btn">
+              <Link  
+                className="btn signup-btn"
+                to={`/signup-tutor`}
+                >
                 SIGN UP
-              </button>
+              </Link>
             </div>
           </div>
         </div>

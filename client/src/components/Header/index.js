@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./header.css";
 
 import Logo from "../../assets/images/logo.png"
@@ -26,24 +27,35 @@ export default function Header() {
           >
             <ul className="nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#home">
-                  Test Nav
-                </a>
+                <Link 
+                  className="nav-link active" aria-current="page" 
+                  to={`/signup-tutor`}
+                  >
+                  Become a tutor
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#home">
-                  Test Nav
-                </a>
+                <Link 
+                  className="nav-link" 
+                  to={`/signup-student`}
+                  >
+                  Become a student
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#home">
-                  Test Nav
-                </a>
+                <Link
+                 className="nav-link" 
+                 to={`/`}
+                 >
+                  Find a tutor
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#home">
-                  Test Nav
-                </a>
+                <Link 
+                className="nav-link"
+                to={`/`}>
+                  Home
+                </Link>
               </li>
             </ul>
           </div>
