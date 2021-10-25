@@ -66,7 +66,7 @@ function App() {
         <Route exact path="/results/:language">
           <Results />
         </Route>
-        <Route exact path="/tutor/:tutorId">
+        <Route exact path="/profile/:id">
           <Profile />
         </Route>
         <Route exact path="/login-student">

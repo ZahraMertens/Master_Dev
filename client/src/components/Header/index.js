@@ -2,9 +2,17 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import "./header.css";
 
+import Auth from '../../utils/auth';
+
 import Logo from "../../assets/images/logo.png"
 
 export default function Header() {
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   return (
     <header className="fixed-top">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,6 +65,26 @@ export default function Header() {
                   Home
                 </Link>
               </li>
+              {Auth.loggedIn() ? (
+                <>
+                <li className="nav-item">
+                  <Link 
+                  className="nav-link"
+                  to={`/profile/:${Auth.getProfile().data._id}`}>
+                    My Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button 
+                  className="nav-link"
+                  onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+              ) : (
+                <>
               <li className="nav-item">
                 <Link 
                 className="nav-link"
@@ -71,6 +99,8 @@ export default function Header() {
                   Student Login
                 </Link>
               </li>
+              </>
+              )}
             </ul>
           </div>
         </div>
