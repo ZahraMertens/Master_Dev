@@ -10,7 +10,6 @@ export default function ResultCard({ tutors, language }) {
         <img src={noResult} className="noResult-img" alt="no result found"/>
         <h3>Sorry, we couldn't find any tutors who teach {language}.</h3>
       </div>
-      
     );
   }
 

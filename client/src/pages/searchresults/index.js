@@ -22,8 +22,8 @@ export default function Results() {
 
   const tutors = data?.searchtutor || {};
 
-  console.log(tutors) // gives {}
-  
+  console.log(tutors) 
+    
   if (loading) {
     return <div>Loading...</div>;
   }

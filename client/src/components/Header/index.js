@@ -14,6 +14,7 @@ export default function Header() {
     window.location.reload(false);
   };
 
+  //Only when user logged in
   // console.log(Auth.getProfile().data.userType)
 
   return (
@@ -70,6 +71,27 @@ export default function Header() {
               </li>
               {Auth.loggedIn() ? (
                 <>
+                {/* {Auth.getProfile().data.userType === "Student" ? (
+                  <>
+                  <li className="nav-item">
+                  <Link 
+                  className="nav-link active5"
+                  to={`/student/:${Auth.getProfile().data._id}`}>
+                    My Profile
+                  </Link>
+                </li>
+                </>
+                ) : (
+                  <>
+                  <li className="nav-item">
+                  <Link 
+                  className="nav-link active5"
+                  to={`/tutor/:${Auth.getProfile().data._id}`}>
+                    My Profile
+                  </Link>
+                </li>
+                  </>
+                ) */}
                 <li className="nav-item">
                   <Link 
                   className="nav-link active5"
