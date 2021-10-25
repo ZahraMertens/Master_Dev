@@ -11,6 +11,7 @@ export default function Header() {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    window.location.reload(false);
   };
 
   // console.log(Auth.getProfile().data.userType)
@@ -38,7 +39,7 @@ export default function Header() {
             <ul className="nav">
               <li className="nav-item">
                 <Link 
-                  className="nav-link active" aria-current="page" 
+                  className="nav-link active1" aria-current="page" 
                   to={`/signup-tutor`}
                   >
                   Become a tutor
@@ -46,7 +47,7 @@ export default function Header() {
               </li>
               <li className="nav-item">
                 <Link 
-                  className="nav-link" 
+                  className="nav-link active2" 
                   to={`/signup-student`}
                   >
                   Become a student
@@ -54,7 +55,7 @@ export default function Header() {
               </li>
               <li className="nav-item">
                 <Link
-                 className="nav-link" 
+                 className="nav-link active3" 
                  to={`/`}
                  >
                   Find a tutor
@@ -62,7 +63,7 @@ export default function Header() {
               </li>
               <li className="nav-item">
                 <Link 
-                className="nav-link"
+                className="nav-link active4"
                 to={`/`}>
                   Home
                 </Link>
@@ -71,32 +72,32 @@ export default function Header() {
                 <>
                 <li className="nav-item">
                   <Link 
-                  className="nav-link"
+                  className="nav-link active5"
                   to={`/profile/:${Auth.getProfile().data._id}`}>
                     My Profile
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <button
-                  className="btn btn-danger"
+                  <p
+                  className="nav-link logout-btn"
                   onClick={logout}
                   >
                     Logout
-                  </button>
+                  </p>
                 </li>
               </>
               ) : (
                 <>
               <li className="nav-item">
                 <Link 
-                className="nav-link"
+                className="nav-link active6"
                 to={`/login-tutor`}>
                   Tutor Login
                 </Link>
               </li>
               <li className="nav-item">
                 <Link 
-                className="nav-link"
+                className="nav-link active7"
                 to={`/login-student`}>
                   Student Login
                 </Link>

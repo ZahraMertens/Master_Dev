@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ResultCard({ tutors }) {
+import noResult from "../../assets/images/noResult.jpg"
+
+export default function ResultCard({ tutors, language }) {
   if (!tutors.length) {
     return (
-      <h3>There are no tutors available who teach this programming language</h3>
+      <div className="not-found">
+        <img src={noResult} className="noResult-img" alt="no result found"/>
+        <h3>Sorry, we couldn't find any tutors who teach {language}.</h3>
+      </div>
+      
     );
   }
 
   return (
     <div>
       {tutors.map((tutor) => (
-        <div key={tutor.id} className="results-card">
+        <div key={tutor._id} className="results-card">
           <div className="row">
             <div className="col-2">
               {/* <img src="./images/placeholder.jpg" className="profile-img" alt=""> */}
@@ -25,7 +31,7 @@ export default function ResultCard({ tutors }) {
               </h2>
               <Link 
                 className="btn btn-sm btn-warning"
-                to={`/tutor/${tutor.id}`}
+                to={`/profile/${tutor._id}`}
                 >
                 View Full Profile
               </Link>

@@ -3,6 +3,7 @@
   padding-bottom: 150px;
   height: 100%;
 }
+
 .profile-wrapper {
   width: 80%;
   margin-left: auto;
@@ -24,4 +25,9 @@
 .placeholder-img {
   width: 400px;
   padding: 20px;
+}
+
+.verified-img {
+  margin-top: 10px;
+  width: 80px!important;
 }

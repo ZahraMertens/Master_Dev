@@ -8,7 +8,6 @@ export const GET_TUTORS = gql`
       lastName
       email
       phone
-      pasword
       userType
       describtion
       language
@@ -26,7 +25,6 @@ export const TUTOR_BY_ID = gql`
       lastName
       email
       phone
-      pasword
       userType
       describtion
       language

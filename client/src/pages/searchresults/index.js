@@ -1,4 +1,6 @@
 import "./results.css";
+import { FaSearch } from "react-icons/fa";
+import Banner from "../../assets/images/bannerresult.jpg"
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -28,12 +30,12 @@ export default function Results() {
   return (
     <div>
       <div className="anothersearch-main">
-        <div className="anothersearch-wrapper">
+        <div className="container anothersearch-wrapper">
           <div className="row justify-content-center">
             <div className="col-4">
               <div className="input-group input-group-lg">
                 <span className="input-group-text" id="inputGroup-sizing-lg">
-                  <i className="fas fa-search"></i>
+                  <FaSearch />
                 </span>
                 <input
                   type="text"
@@ -46,7 +48,7 @@ export default function Results() {
             </div>
             <div className="col-2 btn-container-hero">
               <Link
-                className="btn btn-lg btn-search-hero align-start"
+                className="btn btn-light btn-lg anothersearch-btn"
                 to={`/results/${language}`}
               >
                 FIND A TUTOR
@@ -54,11 +56,11 @@ export default function Results() {
             </div>
           </div>
         </div>
-        {/* <!-- <img src="./images/bannerresult.jpg" className="banner-result-img" alt=""> --> */}
+        <img src={Banner} className="banner-result-img" alt="banner"/>
       </div>
       <div className="results-main">
         <div className="results-wrapper">
-          <ResultCard tutors={tutors}/>
+          <ResultCard tutors={tutors} language={language}/>
         </div>
       </div>
     </div>

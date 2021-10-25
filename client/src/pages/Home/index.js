@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 import "./home.css";
 
@@ -12,7 +13,6 @@ import Works3 from "../../assets/images/howitworks3.png";
 import WhyUs from "../../assets/images/whyus2.png";
 
 export default function Home() {
-
   // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
   const [language, setLanguage] = useState("");
 
@@ -48,15 +48,15 @@ export default function Home() {
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
-                  <div className="col-4 search-hero">
-                    <div className="input-group input-group-lg">
-                      <span
-                        className="input-group-text"
-                        id="inputGroup-sizing-lg"
-                      >
-                        <FaSearch />
-                      </span>
-                      <input
+                <div className="col-4 search-hero">
+                  <div className="input-group input-group-lg">
+                    {/* <span
+                      className="input-group-text"
+                      id="inputGroup-sizing-lg"
+                    >
+                      <FaSearch />
+                    </span> */}
+                    {/* <input
                         value={language}
                         name="language"
                         type="text"
@@ -65,17 +65,31 @@ export default function Home() {
                         className="form-control"
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-lg"
+                      /> */}
+                    <InputGroup size="lg">
+                      <InputGroup.Text id="basic-addon1">
+                        <FaSearch />
+                      </InputGroup.Text>
+                      <FormControl
+                        value={language}
+                        name="language"
+                        type="text"
+                        placeholder="JavaScript"
+                        onChange={handleChange}
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
                       />
-                    </div>
+                    </InputGroup>
                   </div>
-                  <div className="col-2 btn-container-hero">
-                    <Link
-                      className="btn btn-lg btn-search-hero align-start"
-                      to={`/results/${language}`}
-                    >
-                      FIND A TUTOR
-                    </Link>
-                  </div>
+                </div>
+                <div className="col-2 btn-container-hero">
+                  <Link
+                    className="btn btn-lg btn-search-hero align-start"
+                    to={`/results/${language}`}
+                  >
+                    FIND A TUTOR
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -230,10 +244,7 @@ export default function Home() {
                 <li>Starts from 20$</li>
                 <li>Learn any language from home</li>
               </ul>
-              <Link  
-                className="btn signup-btn"
-                to={`/signup-student`}
-                >
+              <Link className="btn signup-btn" to={`/signup-student`}>
                 SIGN UP
               </Link>
             </div>
@@ -246,10 +257,7 @@ export default function Home() {
                 <li>Get paid straight and save into your bank account</li>
                 <li>Work from home</li>
               </ul>
-              <Link  
-                className="btn signup-btn"
-                to={`/signup-tutor`}
-                >
+              <Link className="btn signup-btn" to={`/signup-tutor`}>
                 SIGN UP
               </Link>
             </div>

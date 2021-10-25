@@ -1,8 +1,38 @@
+.navbar {
+  background-color: rgb(255, 255, 255)!important;
+}
+
 .nav-link {
   color: rgb(49, 49, 49) !important;
   font-size: 20px !important;
 }
 
+.nav-item {
+  padding-left: 5px!important;
+  padding-right: 5px!important;
+}
+
 .logo {
   width: 400px;
+}
+
+.logout-btn {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  color: red!important;
+  cursor: pointer!important;
+}
+
+.active1:hover,
+.active2:hover,
+.active3:hover,
+.active4:hover,
+.active5:hover,
+.active6:hover,
+.active7:hover {
+  color:#12c3cb!important;
+  font-weight: bold!important;
 }
