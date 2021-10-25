@@ -55,3 +55,45 @@ export const ADD_STUDENT = gql`
     }
   }
 `;
+
+export const ADD_TUTOR = gql`
+  mutation addTutor(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $phone: String!
+    $describtion: String!
+    $language: String!
+    $degree: String! 
+    $hourRate: ID!
+    $password: String!
+    $userType: String!
+  ) {
+    addTutor(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+      userType: $userType
+      phone: $phone
+      describtion: $describtion
+      language: $language
+      degree: $degree
+      hourRate: $hourRate
+    ) {
+      token
+      tutor {
+        _id
+        firstName
+        lastName
+        email
+        userType
+        phone
+        describtion
+        language
+        degree
+        hourRate
+      }
+    }
+  }
+`;

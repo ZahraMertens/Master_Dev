@@ -22,7 +22,7 @@ const typeDefs = gql`
         describtion: String
         language: String
         degree: String
-        hourRate: Int
+        hourRate: ID
     }
 
     type AuthStudent {
@@ -46,7 +46,7 @@ const typeDefs = gql`
         loginStudent(email: String!, password: String!): AuthStudent 
         loginTutor(email: String!, password: String!): AuthTutor
         addStudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): AuthStudent
-        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: String!, password: String!, userType: String!): AuthTutor
+        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!): AuthTutor
     }  
 `
 
