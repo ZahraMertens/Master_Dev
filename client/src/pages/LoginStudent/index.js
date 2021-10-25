@@ -10,7 +10,7 @@ import "./loginstudent.css";
 export default function LoginStudent() {
   const [formState, setFormState] = useState({ email: "", password: "" });
 
-  const [login, { error, data }] = useMutation(LOGIN_STUDENT);
+  const [loginStudent, { error, data }] = useMutation(LOGIN_STUDENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -27,13 +27,13 @@ export default function LoginStudent() {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await login({
+      const { data } = await loginStudent({
         variables: { ...formState },
       });
 
-      console.log(data.login.token)
+      console.log(data)
 
-      Auth.login(data.login.token);
+      Auth.login(data.loginStudent.token);
     } catch (e) {
       console.error(e);
     }
