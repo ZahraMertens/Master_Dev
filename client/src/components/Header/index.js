@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import "./header.css";
 
+import UserProfile from "../UserProfile/UserProfile";
+
 import Auth from '../../utils/auth';
 
 import Logo from "../../assets/images/logo.png"
@@ -71,34 +73,14 @@ export default function Header() {
               </li>
               {Auth.loggedIn() ? (
                 <>
-                {/* {Auth.getProfile().data.userType === "Student" ? (
-                  <>
-                  <li className="nav-item">
-                  <Link 
-                  className="nav-link active5"
-                  to={`/student/:${Auth.getProfile().data._id}`}>
-                    My Profile
-                  </Link>
-                </li>
-                </>
-                ) : (
-                  <>
-                  <li className="nav-item">
-                  <Link 
-                  className="nav-link active5"
-                  to={`/tutor/:${Auth.getProfile().data._id}`}>
-                    My Profile
-                  </Link>
-                </li>
-                  </>
-                ) */}
-                <li className="nav-item">
+                <UserProfile userType={Auth.getProfile().data.userType} userId={Auth.getProfile().data._id} />
+                {/* <li className="nav-item">
                   <Link 
                   className="nav-link active5"
                   to={`/profile/:${Auth.getProfile().data._id}`}>
                     My Profile
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <p
                   className="nav-link logout-btn"

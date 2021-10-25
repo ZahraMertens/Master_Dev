@@ -2,7 +2,7 @@
     {
         "firstName": "Jeff",
         "lastName": "Doe",
-        "email": "joe.doe@test.com",
+        "email": "joe2.doe@test.com",
         "userType": "Tutor",
         "phone": "0412123456",
         "describtion": "I have been tutoring for 100 years",
@@ -14,7 +14,7 @@
     {
         "firstName": "Jason",
         "lastName": "Doe",
-        "email": "jane.doe@test.com",
+        "email": "jane2.doe@test.com",
         "userType": "Tutor",
         "phone": "0412123456",
         "describtion": "I have been tutoring for 100 years",
@@ -26,7 +26,7 @@
     {
         "firstName": "Brad",
         "lastName": "Doe",
-        "email": "jenna.doe@test.com",
+        "email": "jenna2.doe@test.com",
         "userType": "Tutor",
         "phone": "0412123456",
         "describtion": "I have been tutoring for 100 years",
