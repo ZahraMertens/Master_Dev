@@ -49,25 +49,25 @@ const resolvers = {
 
         return { token, student };
     },
-    // loginTutor: async (parent, { email, password }) => {
-    //     const user = await Tutor.findOne({ email });
+    loginTutor: async (parent, { email, password }) => {
+        const tutor = await Tutor.findOne({ email });
 
-    //     if (!user) {
-    //       throw new AuthenticationError(
-    //         "No user found with this email address"
-    //       );
-    //     }
+        if (!tutor) {
+          throw new AuthenticationError(
+            "No user found with this email address"
+          );
+        }
 
-    //     const correctPw = await user.isCorrectPassword(password);
+        const correctPw = await tutor.isCorrectPassword(password);
 
-    //     if (!correctPw) {
-    //       throw new AuthenticationError("Incorrect credentials");
-    //     }
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
 
-    //     const token = signToken(user);
+        const token = signToken(tutor);
 
-    //     return { token, user };
-    // },
+        return { token, tutor };
+    },
     //Parse all attributes from signup page to args param and deconstruct
     addStudent: async (parent, {firstName, lastName, email, password, userType}) => {
         const student = await Student.create({ firstName, lastName, email, password, userType });
@@ -76,11 +76,11 @@ const resolvers = {
         //Return token and profile
         return { token, student }
     },
-    // addtutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
-    //     const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
-    //     const token = signToken(tutor)
-    //     return { token, tutor}
-    // }
+    addTutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
+        const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
+        const token = signToken(tutor)
+        return { token, tutor }
+    }
   },
 };
 

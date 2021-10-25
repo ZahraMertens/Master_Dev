@@ -25,9 +25,14 @@ const typeDefs = gql`
         hourRate: Int
     }
 
-    type Auth {
+    type AuthStudent {
         token: ID!
         student: Student
+    }
+
+    type AuthTutor {
+        token: ID!
+        tutor: Tutor
     }
 
     type Query {
@@ -38,8 +43,10 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        loginStudent(email: String!, password: String!): Auth 
-        addStudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): Auth
+        loginStudent(email: String!, password: String!): AuthStudent 
+        loginTutor(email: String!, password: String!): AuthTutor
+        addStudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): AuthStudent
+        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: String!, password: String!, userType: String!): AuthTutor
     }  
 `
 
@@ -49,15 +56,3 @@ module.exports = typeDefs;
 //     token: ID!        ID has an unique identifier, in this case is the token
 //     student: Student  Refers to student profile
 // }
-
-//loginTutor(email: String!, password: String!): Auth
-
-// type Mutation {
-//         addstudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): Auth
-//         addtutor(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!, userType: String!, describtion: String!, language: String!, degree: String!, hourRate: Int!): Auth
-//     }
-
-
-//for query without authentication
-// addstudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): Student
-//         addtutor(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!, userType: String!, describtion: String!, language: String!, degree: String!, hourRate: Int!): Tutor

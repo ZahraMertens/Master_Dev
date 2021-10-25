@@ -25,3 +25,5 @@ export const LOGIN_TUTOR = gql`
        }
    }
 `;
+export const ADD_STUDENT = gql`
+`
