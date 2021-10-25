@@ -77,10 +77,10 @@ function App() {
         <Route exact path="/login-tutor">
           <LoginTutor />
         </Route>
-        <Route exact path="/tutorProfile/:studentId">
+        <Route exact path="/tutorProfile/:tutorId">
           <TutorProfile />
         </Route>
-        <Route exact path="/studentProfile/:tutorId">
+        <Route exact path="/studentProfile/:studentId">
           <StudentProfile />
         </Route>
         {/* <Route exact path="/book/:tutorId/:rate">
