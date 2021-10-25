@@ -8,6 +8,7 @@ export const LOGIN_STUDENT = gql`
                _id
                firstName
                lastName
+               email
            }
        }
    }
@@ -25,5 +26,6 @@ export const LOGIN_TUTOR = gql`
        }
    }
 `;
-export const ADD_STUDENT = gql`
-`
+
+// export const ADD_STUDENT = gql`
+// `

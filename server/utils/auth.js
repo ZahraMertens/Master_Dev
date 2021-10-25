@@ -1,9 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-const secret = "seeeccreeet";
+const secret = "secccreeeeesssssht";
 const expiration = "2h";
-
-// 1. JWT
 
 module.exports = {
   //check if there is an existing token in request

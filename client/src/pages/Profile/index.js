@@ -1,19 +1,19 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+// import { useParams } from "react-router-dom";
+// import { useQuery } from "@apollo/client";
 
-import { TUTOR_BY_ID } from "../../utils/queries";
+// import { TUTOR_BY_ID } from "../../utils/queries";
 
 export default function Profile() {
-  const { tutorId } = useParams();
+  // const { tutorId } = useParams();
 
-  const { loading, data } = useQuery(TUTOR_BY_ID, {
-    variables: { tutorId: tutorId },
-  });
+  // const { loading, data } = useQuery(TUTOR_BY_ID, {
+  //   variables: { tutorId: tutorId },
+  // });
 
-  const tutor = data?.onetutor || {};
+  // const tutor = data?.onetutor || {};
 
   return (
     <div className="profile-main">
@@ -32,12 +32,12 @@ export default function Profile() {
               <i className="fas fa-dollar-sign"></i> 30 /hr
             </h1>
             {/* <BookForm tutor={tutor} /> */}
-            <Link 
+            {/* <Link 
             className="btn btn-ld btn-warning"
             to={`/book/${tutor.id}`}
             >
               <i className="fas fa-shopping-cart"></i> BOOK A SESSION
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div className="row">
