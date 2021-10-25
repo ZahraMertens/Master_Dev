@@ -9,6 +9,7 @@ export const LOGIN_STUDENT = gql`
                firstName
                lastName
                email
+               userType
            }
        }
    }
@@ -22,6 +23,7 @@ export const LOGIN_TUTOR = gql`
                _id
                firstName
                lastName
+               userType
            }
        }
    }

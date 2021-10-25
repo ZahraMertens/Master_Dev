@@ -1,47 +1,48 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { useMutation } from "@apollo/client";
-// import { LOGIN_TUTOR } from "../../utils/mutations";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_TUTOR } from "../../utils/mutations";
 
-// import Auth from "../../utils/auth";
+import Auth from "../../utils/auth";
 
 import "./logintutor.css";
 
 export default function LoginTutor() {
-  // const [formState, setFormState] = useState({ email: "", password: "" });
 
-  // const [login, { error, data }] = useMutation(LOGIN_TUTOR);
+  const [formState, setFormState] = useState({ email: "", password: "" });
 
-  // // update state based on form input changes
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
+  const [loginTutor, { error, data }] = useMutation(LOGIN_TUTOR);
 
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  // // submit form
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log(formState);
-  //   try {
-  //     const { data } = await login({
-  //       variables: { ...formState },
-  //     });
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
-  //     Auth.login(data.login.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await loginTutor({
+        variables: { ...formState },
+      });
 
-  //   // clear form values
-  //   setFormState({
-  //     email: "",
-  //     password: "",
-  //   });
-  // };
+      Auth.login(data.loginTutor.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
+  };
 
   return (
     <div className="logintutor-main">
@@ -49,7 +50,13 @@ export default function LoginTutor() {
         <div className="row">
           <div className="col">
             <h1 className="header-login">Tutor Login:</h1>
-            <form>
+            {data ? (
+              <p>
+                Success! You may now head{" "}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+            <form onSubmit={handleFormSubmit}>
               <label
                 className="form-label label-login"
               >
@@ -60,8 +67,8 @@ export default function LoginTutor() {
                 className="form-control input-login"
                 id="validationCustom01"
                 name="email"
-                // value={formState.email}
-                // onChange={handleChange}
+                value={formState.email}
+                onChange={handleChange}
                 required
               />
               <label
@@ -74,12 +81,19 @@ export default function LoginTutor() {
                 className="form-control input-login"
                 id="validationCustom01"
                 name="password"
-                // value={formState.password}
-                // onChange={handleChange}
+                value={formState.password}
+                onChange={handleChange}
                 required
               />
               <button type="submit" className="btn btn-login btn-success">LOGIN</button>
             </form>
+             )}
+
+             {error && (
+               <div className="my-3 p-3 bg-danger text-white">
+                 Something went wrong! Please try again...
+               </div>
+             )}
           </div>
         </div>
       </div>

@@ -13,6 +13,8 @@ export default function Header() {
     Auth.logout();
   };
 
+  // console.log(Auth.getProfile().data.userType)
+
   return (
     <header className="fixed-top">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -75,8 +77,8 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <button 
-                  className="nav-link"
+                  <button
+                  className="btn btn-danger"
                   onClick={logout}
                   >
                     Logout

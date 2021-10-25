@@ -8,6 +8,7 @@ import Auth from "../../utils/auth";
 import "./loginstudent.css";
 
 export default function LoginStudent() {
+  
   const [formState, setFormState] = useState({ email: "", password: "" });
 
   const [loginStudent, { error, data }] = useMutation(LOGIN_STUDENT);
@@ -86,7 +87,7 @@ export default function LoginStudent() {
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
+                Something went wrong! Please try again...
               </div>
             )}
           </div>

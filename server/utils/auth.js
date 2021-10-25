@@ -34,9 +34,9 @@ module.exports = {
   },
 
   //Receives information which we want to include in the payload
-  signToken: function ({ email, firstName, lastName, _id }) {
+  signToken: function ({ email, firstName, lastName, _id, userType }) {
     //Create payload object
-    const payload = { email, firstName, lastName, _id };
+    const payload = { email, firstName, lastName, _id, userType };
     //Asign the values to the jwt token
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
