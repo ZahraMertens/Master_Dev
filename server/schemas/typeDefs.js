@@ -35,6 +35,13 @@ const typeDefs = gql`
         tutor: Tutor
     }
 
+    # type File {
+    #     filename: String!
+    #     mimetype: String!
+    #     encoding: String!
+    #     url: String!
+    # }
+
     type Query {
         students: [Student]
         tutors: [Tutor]
@@ -55,7 +62,7 @@ const typeDefs = gql`
 `
 
 module.exports = typeDefs;
-
+//uploadFile(file: Upload!): File!
 // type Auth {
 //     token: ID!        ID has an unique identifier, in this case is the token
 //     student: Student  Refers to student profile

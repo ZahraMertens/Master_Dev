@@ -1,8 +1,29 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { Student, Tutor } = require("../models");
 const { signToken } = require("../utils/auth");
+const path = require("path");
+const fs = require("fs");
+const {
+  GraphQLUpload,
+  graphqlUploadExpress, // A Koa implementation is also exported.
+} = require('graphql-upload');
+
+function generateString(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 
 const resolvers = {
+  // This maps the `Upload` scalar to the implementation provided
+  // by the `graphql-upload` package.
+  //Upload: GraphQLUpload,
+
   Query: {
     students: async () => {
       return Student.find();
@@ -19,15 +40,15 @@ const resolvers = {
     },
     meStudent: async (parent, args, context) => {
       if (context.user) {
-        return Student.findOne({ _id: context.user._id })
+        return Student.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     meTutor: async (parent, args, context) => {
       if (context.user) {
-        return Tutor.findOne({ _id: context.user._id })
+        return Tutor.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     onestudent: async (parent, { studentId }) => {
       return Student.findOne({ _id: studentId });
@@ -36,58 +57,92 @@ const resolvers = {
 
   Mutation: {
     loginStudent: async (parent, { email, password }) => {
-        const student = await Student.findOne({ email });
+      const student = await Student.findOne({ email });
 
-        if (!student) {
-          throw new AuthenticationError(
-            "No user found with this email address"
-          );
-        }
+      if (!student) {
+        throw new AuthenticationError("No user found with this email address");
+      }
 
-        const correctPw = await student.isCorrectPassword(password);
+      const correctPw = await student.isCorrectPassword(password);
 
-        if (!correctPw) {
-          throw new AuthenticationError("Incorrect credentials");
-        }
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
 
-        const token = signToken(student);
+      const token = signToken(student);
 
-        return { token, student };
+      return { token, student };
     },
     loginTutor: async (parent, { email, password }) => {
-        const tutor = await Tutor.findOne({ email });
+      const tutor = await Tutor.findOne({ email });
 
-        if (!tutor) {
-          throw new AuthenticationError(
-            "No user found with this email address"
-          );
-        }
+      if (!tutor) {
+        throw new AuthenticationError("No user found with this email address");
+      }
 
-        const correctPw = await tutor.isCorrectPassword(password);
+      const correctPw = await tutor.isCorrectPassword(password);
 
-        if (!correctPw) {
-          throw new AuthenticationError("Incorrect credentials");
-        }
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
 
-        const token = signToken(tutor);
+      const token = signToken(tutor);
 
-        return { token, tutor };
+      return { token, tutor };
     },
     //Parse all attributes from signup page to args param and deconstruct
-    addStudent: async (parent, {firstName, lastName, email, password, userType}) => {
-        const student = await Student.create({ firstName, lastName, email, password, userType });
-        //Imported sign token 
-        const token = signToken(student)
-        //Return token and profile
-        return { token, student }
+    addStudent: async (
+      parent,
+      { firstName, lastName, email, password, userType }
+    ) => {
+      const student = await Student.create({
+        firstName,
+        lastName,
+        email,
+        password,
+        userType,
+      });
+      //Imported sign token
+      const token = signToken(student);
+      //Return token and profile
+      return { token, student };
     },
-    addTutor: async (parent, { firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate }) => {
-        const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
-        const token = signToken(tutor)
-        return { token, tutor }
+    addTutor: async (
+      parent,
+      {
+        firstName,
+        lastName,
+        email,
+        phone,
+        password,
+        userType,
+        describtion,
+        language,
+        degree,
+        hourRate,
+      }
+    ) => {
+      const tutor = await Tutor.create({
+        firstName,
+        lastName,
+        email,
+        phone,
+        password,
+        userType,
+        describtion,
+        language,
+        degree,
+        hourRate,
+      });
+      const token = signToken(tutor);
+      return { token, tutor };
     },
-    updateStudent: async (parent, { studentId, firstName, lastName, email, password }, context) => {
-      if(context.user){
+    updateStudent: async (
+      parent,
+      { studentId, firstName, lastName, email, password },
+      context
+    ) => {
+      if (context.user) {
         return Student.findOneAndUpdate(
           { _id: studentId },
           {
@@ -102,10 +157,28 @@ const resolvers = {
             new: true,
             runValidators: true,
           }
-        )
+        );
       }
-      throw new AuthenticationError('Something went wrong!');
-    }
+      throw new AuthenticationError("Something went wrong!");
+    },
+    // The file object that we get from the second parameter of the uploadFile
+    // resolver is a Promise that resolves to an Upload type with the following attributes: 
+    // uploadFile: async (parent, { file }) => {
+    //   return args.file.then((file) => {
+    //     const { createReadStream, filename, mimetype, encoding } = await file;
+
+    //     const {ext} = path.parse(filename)
+    //     const randomfileName = generateString(12) + ext;
+    //     //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
+    //     const stream = createReadStream(); //return nodestream/file
+    //     const pathName = path.join(__dirname, `/public/images/${randomfileName}`);
+    //     await stream.pipe(fs.createWriteStream(pathName));
+
+    //     return { //{ filename, mimetype, encoding }
+    //       url: `http://localhost:3001/images/${randomfileName}`,
+    //     };
+    //   });
+    // },
   },
 };
 

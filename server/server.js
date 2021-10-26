@@ -8,6 +8,7 @@ if(process.env.NODE_ENV !== "production"){
 const express = require("express");
 const { ApolloServer } = require('apollo-server-express');
 const path = require("path");
+const cors = require("cors")
 //Import middleware to configure with apollo server
 const { authMiddleware } = require("./utils/auth");
 const db = require("./config/connection");
@@ -31,6 +32,8 @@ server.start().then(res => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
+app.use(cors())
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));

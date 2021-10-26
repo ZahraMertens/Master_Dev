@@ -25,10 +25,10 @@ export default function StudentProfile() {
   console.log(student);
 
   const [formState, setFormState] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
+    firstName: `${student.firstName}`,
+    lastName: `${student.lastName}`,
+    email: `${student.email}`,
+    password: `${student.password}`,
   });
 
   const [updateStudent, { error }] = useMutation(UPDATE_STUDENT);

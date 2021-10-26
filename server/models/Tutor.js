@@ -30,10 +30,10 @@ const tutorSchema = new Schema({
     type: String,
     required: true,
   },
-  // filename: {
-  //   type: String,
-  //   required: true,
-  // },
+  filename: {
+    type: String,
+    required: false,
+  },
   describtion: {
     type: String,
     required: true,

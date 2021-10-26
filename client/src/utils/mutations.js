@@ -122,4 +122,14 @@ export const UPDATE_STUDENT = gql`
           email
       }
     }
+  }
 `;
+
+// export const UPLOAD_FILE = gql`
+//     mutation uploadFile($file: Upload!){
+//       uploadFile(file: $file){
+//         url
+//       }
+//     }
+// `;
+
