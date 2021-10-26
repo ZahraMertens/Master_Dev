@@ -10,8 +10,8 @@ import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 import Home from "./pages/Home/index";
 import StudentSignup from "./pages/StudentSignup/index";
-import TutorSignup from "./pages/TutorSignup"
-import Results from "./pages/SearchResults/index";
+import TutorSignup from "./pages/TutorSignup";
+import SearchResults from "./pages/SearchResults/index";
 import ProfileSearch from './pages/ProfileSearch/index';
 import LoginStudent from './pages/LoginStudent/index';
 import LoginTutor from "./pages/LoginTutor/index";
@@ -67,7 +67,7 @@ function App() {
           <TutorSignup />
         </Route>
         <Route exact path="/results/:language">
-          <Results />
+          <SearchResults />
         </Route>
         <Route exact path="/profile/:tutorId">
           <ProfileSearch />

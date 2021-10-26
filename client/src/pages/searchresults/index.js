@@ -12,7 +12,7 @@ import { GET_TUTORS } from "../../utils/queries";
 
 import ResultCard from "../../components/ResultCard";
 
-export default function Results() {
+export default function SearchResults() {
 
   const { language } = useParams();
 
