@@ -97,3 +97,29 @@ export const ADD_TUTOR = gql`
     }
   }
 `;
+
+export const UPDATE_STUDENT = gql`
+    mutation updateStudent(
+      $studentId: ID!
+      $firstName: String!
+      $lastName: String!
+      $email: String!
+      $password: String!
+      $userType: String!
+    ){
+      updateStudent(
+        studentId: $studentId
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        password: $password
+        userType: $userType
+      ){
+        token
+        student {
+          firstName
+          lastName
+          email
+      }
+    }
+`;

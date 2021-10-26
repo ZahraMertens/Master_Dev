@@ -17,16 +17,21 @@ const resolvers = {
     onetutor: async (parent, { tutorId }) => {
       return Tutor.findOne({ _id: tutorId });
     },
-
-    // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-    // currentstudent: async (parent, args, context) => {
-    //     if (context.user.userType === "Student") {
-    //         return Student.findOne({ _id: context.user._id });
-    //     } else if (context.user.userType === "Tutor"){
-    //         return Tutor.findOne({ _id: context.user._id });
-    //     }
-    //     throw new AuthenticationError('You need to be logged in!');
-    // },
+    meStudent: async (parent, args, context) => {
+      if (context.user) {
+        return Student.findOne({ _id: context.user._id })
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    meTutor: async (parent, args, context) => {
+      if (context.user) {
+        return Tutor.findOne({ _id: context.user._id })
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    onestudent: async (parent, { studentId }) => {
+      return Student.findOne({ _id: studentId });
+    },
   },
 
   Mutation: {
@@ -80,6 +85,26 @@ const resolvers = {
         const tutor = await Tutor.create({ firstName, lastName, email, phone, password, userType, describtion, language, degree, hourRate });
         const token = signToken(tutor)
         return { token, tutor }
+    },
+    updateStudent: async (parent, { studentId, firstName, lastName, email, password }, context) => {
+      if(context.user){
+        return Student.findOneAndUpdate(
+          { _id: studentId },
+          {
+            $set: {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              password: password,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        )
+      }
+      throw new AuthenticationError('Something went wrong!');
     }
   },
 };

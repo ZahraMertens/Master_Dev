@@ -1,18 +1,28 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-// import { GET_TUTOR_PROFILE } from "../../utils/queries";
+import { TUTOR_BY_ID } from "../../utils/queries";
 
-export default function TutorProfile () {
+export default function TutorProfile() {
 
-    const { tutorId } = useParams();
+  const { tutorId } = useParams();
 
-    console.log(tutorId)
+  const { loading, data } = useQuery(TUTOR_BY_ID, {
+    variables: { tutorId: tutorId },
+  });
 
-    return (
-        <div>
-            <h1>Tutor</h1>
-        </div>
-    )
+  const tutor = data?.onetutor || {};
+
+  console.log(tutor.firstName);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="">
+      <h1>Tutor</h1>
+    </div>
+  );
 }

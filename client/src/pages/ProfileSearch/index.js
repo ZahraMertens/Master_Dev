@@ -4,7 +4,7 @@ import "./profile.css";
 import Placeholder from "../../assets/images/placeholder.jpg";
 import Verified from "../../assets/images/verified.png";
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";

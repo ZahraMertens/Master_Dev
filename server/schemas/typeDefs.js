@@ -40,6 +40,9 @@ const typeDefs = gql`
         tutors: [Tutor]
         searchtutor(language: String): [Tutor]
         onetutor(tutorId: ID!): Tutor
+        onestudent(studentId: ID!): Student
+        meStudent: Student
+        meTutor: Tutor
     }
 
     type Mutation {
@@ -47,6 +50,7 @@ const typeDefs = gql`
         loginTutor(email: String!, password: String!): AuthTutor
         addStudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): AuthStudent
         addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!): AuthTutor
+        updateStudent(studentId: ID!, firstName: String!, lastName: String!, email: String!, password: String!): AuthStudent
     }  
 `
 
