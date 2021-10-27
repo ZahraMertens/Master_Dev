@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server-express');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 
 const typeDefs = gql`
 
@@ -23,6 +24,7 @@ const typeDefs = gql`
         language: String
         degree: String
         hourRate: ID
+        filenameImg: String
     }
 
     type AuthStudent {
@@ -30,17 +32,19 @@ const typeDefs = gql`
         student: Student
     }
 
+    scalar Upload 
+
     type AuthTutor {
         token: ID!
         tutor: Tutor
     }
 
-    # type File {
-    #     filename: String!
-    #     mimetype: String!
-    #     encoding: String!
-    #     url: String!
-    # }
+    type File {
+        # filename: String!
+        # mimetype: String!
+        # encoding: String!
+        filename: String!
+    }
 
     type Query {
         students: [Student]
@@ -56,8 +60,9 @@ const typeDefs = gql`
         loginStudent(email: String!, password: String!): AuthStudent 
         loginTutor(email: String!, password: String!): AuthTutor
         addStudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): AuthStudent
-        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!): AuthTutor
-        updateStudent(studentId: ID!, firstName: String!, lastName: String!, email: String!, password: String!): AuthStudent
+        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!, filenameImg: String): AuthTutor
+        updateStudent(studentId: ID!, firstName: String!, lastName: String!, email: String!, password: String! ): AuthStudent
+        uploadFile(file: Upload!): File!
     }  
 `
 

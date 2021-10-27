@@ -30,6 +30,7 @@ export const TUTOR_BY_ID = gql`
       language
       degree
       hourRate
+      filenameImg
     }
   }
 `;
@@ -71,6 +72,7 @@ export const ME_TUTOR = gql`
       language
       degree
       hourRate
+      filenameImg
     }
   }
 `;

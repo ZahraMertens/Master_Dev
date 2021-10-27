@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -12,7 +12,7 @@ import { FaUser } from "react-icons/fa";
 
 // import Auth from "../../utils/auth";
 
-export default function StudentProfile() {
+export default function StudentProfile () {
   const { studentId } = useParams();
   console.log(studentId);
 
@@ -24,12 +24,29 @@ export default function StudentProfile() {
 
   console.log(student);
 
+  //Use Effect runs whenever any state changes
+  useEffect(()=> {
+    console.log("Student Changed", data?.onestudent)
+    if(data?.onestudent){
+      setFormState({
+        studentId: studentId,
+        firstName: `${student.firstName}`,
+        lastName: `${student.lastName}`,
+        email: `${student.email}`,
+        password: "",
+      })
+    }
+  },[data?.onestudent]);
+
   const [formState, setFormState] = useState({
-    firstName: `${student.firstName}`,
-    lastName: `${student.lastName}`,
-    email: `${student.email}`,
-    password: `${student.password}`,
+    studentId: studentId,
+    firstName: ``,
+    lastName: ``,
+    email: ``,
+    password: ``,
   });
+
+  console.log(student.password)
 
   const [updateStudent, { error }] = useMutation(UPDATE_STUDENT);
 
@@ -135,7 +152,6 @@ export default function StudentProfile() {
               name="password"
               value={formState.password}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="col-12">

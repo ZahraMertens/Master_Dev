@@ -1,44 +1,52 @@
-// import React, {useState} from "react";
-// import { Form, Button } from "react-bootstrap";
-// // import { useMutation } from "@apollo/client";
+import React, {useState} from "react";
+import { Form, Button } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
 
-// // import { UPLOAD_FILE } from "../../utils/mutations"
+import { UPLOAD_FILE } from "../../utils/mutations"
 
 
-// export default function FileUpload() {
+export default function FileUpload({handleUpload}) {
 
-//     // const [uploadFile] = useMutation(UPLOAD_FILE, {
-//     //     onCompleted: data => console.log(data)
-//     // });
+    const [picture, setPicture] = useState("");
+    
+    const [uploadFile, {error}] = useMutation(UPLOAD_FILE, {
+        onCompleted: data => console.log(data)
+    });
 
-//     // const fileSelectedHandler = (event) => {
-//     //     const file = event.target.files[0]
-//     //     //if no files return else causes error
-//     //     if(!file) return
 
-//     //     uploadFile({variables: {file}})
-//     // }
+    const fileSelectedHandler = async (event) => {
+        event.preventDefault();
+        
+        console.log(event.target.files[0]); //returns the file name and details
+        try {
+            const file = await event.target.files[0] //as files is an array get the first element
+            //if no files return else causes error
+            if(!file) return
 
-//     // const [picture, setPicture] = useState("")
+            const newFile =  await uploadFile({
+                variables: {file}
+            });
+            console.log(newFile)
 
-//     // const fileSelectedHandler = (event) => {
-//     //     console.log(event.target.files[0]); //returns the file name and details
-//     //     this.setPicture({
-//     //         selectedFile: event.target.files[0]
-//     //     })
-//     // }
+            setPicture(file.name)
 
-//     // const fileUploadHandler = () => {
-//     //     fetch()
-//     // }
+            handleUpload({
+                filenameImg: newFile.data.uploadFile.filename
+            });
 
-//   return (
-//     <>
-//       <Form.Group controlId="formFile" className="mb-3">
-//         <Form.Label>Upload a profile image:</Form.Label>
-//         <Form.Control type="file" onChange={this.fileSelectedHandler}/>
-//         {/* <Button onClick={this.fileUploadHandler}>Upload</Button> */}
-//       </Form.Group>
-//     </>
-//   );
-// }
+            console.log(file.name)
+
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
+  return (
+    <>
+      <Form.Group controlId="formFile" className="mb-3">
+        <Form.Label>Upload a profile image:</Form.Label>
+        <Form.Control type="file" name="picture" onChange={fileSelectedHandler}/>
+      </Form.Group>
+    </>
+  );
+}

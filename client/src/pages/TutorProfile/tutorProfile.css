@@ -1,0 +1,114 @@
+.tutorProfile-main {
+    height: 100%;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-image: url("../../assets/images/profilebg.png");
+    /* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(18,195,203,1) 30%); */
+}
+
+.tutorProfile-wrapper {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgb(238, 254, 255) 30%);
+    border-radius: 10px;
+}
+
+.tutorProfile-header {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.profile-img-tutor {
+    border-radius: 10px;
+    width: 300px;
+    margin: 30px!important;
+}
+
+.tutorProfile-lowercontainer {
+    width: 60%!important;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: start;
+}
+
+.small-box {
+    background-color: rgb(194, 241, 243);
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+.contact-profile {
+    margin-left: 10px;
+}
+
+.contact-profile-box {
+    background-color: rgb(194, 241, 243); 
+    border-radius: 20px;
+    padding-left: 20px;
+}
+
+.contact-header {
+    padding-top:10px!important;
+    font-size: 25px!important;
+    color: rgb(9, 109, 114);
+}
+
+.contact-span {
+    font-size: 20px!important;
+    color: black;
+}
+
+.rate-box {
+    margin-left: 10px;
+    margin-bottom: 50px;
+    background-color: rgb(194, 241, 243);
+    border-radius: 20px;
+}
+
+.rate-header {
+    color: rgb(78, 78, 78);
+    padding: 20px;
+    font-size: 20px!important;
+}
+
+.rate-icon {
+    color: rgb(5, 106, 131);
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.box-icon {
+    color: rgb(5, 106, 131); 
+    margin-top: 10px;
+}
+
+.p-rate {
+    padding-left: 20px;
+    font-size: 30px;
+    
+}
+
+.profile-box-header {
+    color: rgb(78, 78, 78);
+    font-size: 25px!important;
+}
+
+.p-box {
+    font-size: 20px!important;
+}
+
+.about-me {
+    margin-top: 50px!important;
+    margin-bottom: 50px!important;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.p-about {
+    font-size: 20px!important;
+}

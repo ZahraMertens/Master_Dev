@@ -30,7 +30,7 @@ const tutorSchema = new Schema({
     type: String,
     required: true,
   },
-  filename: {
+  filenameImg: {
     type: String,
     required: false,
   },

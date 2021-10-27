@@ -1,89 +1,32 @@
-//const {loading, data, error } = useQuery(Query from auth.js)
-// loading = when accesing to db we track te prgress
-// when loading finished loading= false
-// data = array of objects of data from db
-//error = undefined no error
+import React, { useState } from "react";
 
-//Mutation
-// const [addProfile, {error, data}] = useMutation(ADD_PROFILE)
-//then call function in handle form submit
-import FileUpload from "../../components/FileUpload/index";
-import "./tutorsignup.css";
+import { Modal, Button } from "react-bootstrap";
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+export default function TutorModal({tutor, show, handleClose}) {
 
-import { useMutation } from '@apollo/client';
-import { ADD_TUTOR } from '../../utils/mutations';
-
-import Auth from '../../utils/auth';
-
-export default function TutorSignup() {
-
-  const [formState, setFormState] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    phone: '',
-    describtion: '',
-    language: '',
-    degree: '',
-    hourRate: '',
-    filenameImg: '',
-    userType: "Tutor",
-  });
-
-  const [addTutor, { error, data }] = useMutation(ADD_TUTOR);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-
-    try {
-      const { data } = await addTutor({
-        variables: { ...formState },
+    const [formState, setFormState] = useState({
+        firstName: `${tutor.firstName}`,
+        lastName: `${tutor.lastName}`,
+        email: `${tutor.email}`,
+        password: `${tutor.password}`,
+        phone: `${tutor.phone}`,
+        describtion: `${tutor.describtion}`,
+        language: `${tutor.language}`,
+        degree: `${tutor.degree}`,
+        hourRate: `${tutor.hourRate}`,
+        filenameImg: `${tutor.filenameImg}`,
+        userType: "Tutor",
       });
 
-      Auth.login(data.addTutor.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const handleUpload = async (filenameImg) => {
-    await setFormState({
-      ...formState,
-      filenameImg: filenameImg.filenameImg ? filenameImg.filenameImg : formState.filenameImg
-    })
-  }
-
   return (
-    <div>
-      <div className="tutorsignup-main">
-        <div className="signup-wrapper">
-          <div className="row form-tutorsignup">
-            <div className="col">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form className="row" onSubmit={handleFormSubmit}>
+    <>
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <form className="row">
                 <div className="col-12">
-                  <h1>Tutor Sign Up</h1>
-                </div>
-                <div className="col-6">
                   <label htmlFor="validationCustom01" className="form-label">
                     First name
                   </label>
@@ -94,11 +37,11 @@ export default function TutorSignup() {
                     placeholder="Mark"
                     name="firstName"
                     value={formState.firstName}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
-                <div className="col-6">
+                <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
                     Last Name
                   </label>
@@ -109,7 +52,7 @@ export default function TutorSignup() {
                     placeholder="Doe"
                     name="lastName"
                     value={formState.lastName}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
@@ -124,7 +67,7 @@ export default function TutorSignup() {
                     placeholder="0423123456"
                     name="phone"
                     value={formState.phone}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
@@ -139,7 +82,7 @@ export default function TutorSignup() {
                     placeholder="john.doe@gmail.com"
                     name="email"
                     value={formState.email}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
@@ -154,7 +97,7 @@ export default function TutorSignup() {
                     placeholder="Bachelor in Computer Science"
                     name="degree"
                     value={formState.degree}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
@@ -169,7 +112,7 @@ export default function TutorSignup() {
                     placeholder="JavaScript"
                     name="language"
                     value={formState.language}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
                 </div>
@@ -185,14 +128,14 @@ export default function TutorSignup() {
                       aria-label="Amount (to the nearest dollar)"
                       placeholder="30"
                       name="hourRate"
-                      value={formState.hourRate}
-                      onChange={handleChange}
+                     value={formState.hourRate}
+                    //   onChange={handleChange}
                       required
                     />
                     <span className="input-group-text">.00</span>
                   </div>
                 </div>
-                <FileUpload handleUpload={handleUpload} />
+                {/* <FileUpload handleUpload={handleUpload} /> */}
                 <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
                     About Me (Short Describtion)
@@ -204,11 +147,11 @@ export default function TutorSignup() {
                     placeholder="Your professional describtion and background"
                     name="describtion"
                     value={formState.describtion}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   ></textarea>
                 </div>
-                <div className="col-12">
+                {/* <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
                     Password
                   </label>
@@ -218,44 +161,26 @@ export default function TutorSignup() {
                     id="validationCustom01"
                     name="password"
                     value={formState.password}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     required
                   />
-                </div>
-                <div className="col-12">
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="invalidCheck"
-                      required
-                    />
-                    <label className="form-check-label" htmlFor="invalidCheck">
-                      Agree to terms and conditions
-                    </label>
-                    <div className="invalid-feedback">
-                      You must agree before submitting.
-                    </div>
-                  </div>
-                </div>
+                </div> */}
                 <div className="col-12">
                   <button className="btn btn-primary" type="submit">
                     Submit form
                   </button>
                 </div>
               </form>
-              )}
-
-              {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                Oooops, something went wrong! Please try again...
-              </div>
-              )} 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button> */}
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }

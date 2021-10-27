@@ -68,6 +68,7 @@ export const ADD_TUTOR = gql`
     $hourRate: ID!
     $password: String!
     $userType: String!
+    $filenameImg: String!
   ) {
     addTutor(
       firstName: $firstName
@@ -80,6 +81,7 @@ export const ADD_TUTOR = gql`
       language: $language
       degree: $degree
       hourRate: $hourRate
+      filenameImg: $filenameImg
     ) {
       token
       tutor {
@@ -93,6 +95,7 @@ export const ADD_TUTOR = gql`
         language
         degree
         hourRate
+        filenameImg
       }
     }
   }
@@ -105,7 +108,6 @@ export const UPDATE_STUDENT = gql`
       $lastName: String!
       $email: String!
       $password: String!
-      $userType: String!
     ){
       updateStudent(
         studentId: $studentId
@@ -113,7 +115,6 @@ export const UPDATE_STUDENT = gql`
         lastName: $lastName
         email: $email
         password: $password
-        userType: $userType
       ){
         token
         student {
@@ -125,11 +126,11 @@ export const UPDATE_STUDENT = gql`
   }
 `;
 
-// export const UPLOAD_FILE = gql`
-//     mutation uploadFile($file: Upload!){
-//       uploadFile(file: $file){
-//         url
-//       }
-//     }
-// `;
+export const UPLOAD_FILE = gql`
+    mutation uploadFile($file: Upload!){
+      uploadFile(file: $file){
+        filename
+      }
+    }
+`;
 

@@ -3,10 +3,9 @@ const { Student, Tutor } = require("../models");
 const { signToken } = require("../utils/auth");
 const path = require("path");
 const fs = require("fs");
-const {
-  GraphQLUpload,
-  graphqlUploadExpress, // A Koa implementation is also exported.
-} = require('graphql-upload');
+const bcrypt = require('bcrypt');
+
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 
 function generateString(length) {
   var result = "";
@@ -22,7 +21,7 @@ function generateString(length) {
 const resolvers = {
   // This maps the `Upload` scalar to the implementation provided
   // by the `graphql-upload` package.
-  //Upload: GraphQLUpload,
+  Upload: GraphQLUpload,
 
   Query: {
     students: async () => {
@@ -95,6 +94,7 @@ const resolvers = {
       parent,
       { firstName, lastName, email, password, userType }
     ) => {
+      
       const student = await Student.create({
         firstName,
         lastName,
@@ -107,50 +107,27 @@ const resolvers = {
       //Return token and profile
       return { token, student };
     },
-    addTutor: async (
-      parent,
-      {
-        firstName,
-        lastName,
-        email,
-        phone,
-        password,
-        userType,
-        describtion,
-        language,
-        degree,
-        hourRate,
-      }
-    ) => {
-      const tutor = await Tutor.create({
-        firstName,
-        lastName,
-        email,
-        phone,
-        password,
-        userType,
-        describtion,
-        language,
-        degree,
-        hourRate,
-      });
+    addTutor: async (parent, args) => {
+      const tutor = await Tutor.create(args);
       const token = signToken(tutor);
       return { token, tutor };
     },
     updateStudent: async (
       parent,
-      { studentId, firstName, lastName, email, password },
+      { studentId, firstName, lastName, email, password }, //password
       context
     ) => {
+      const saltRounds = 10;
+      console.log(studentId)
       if (context.user) {
-        return Student.findOneAndUpdate(
+        const student = await  Student.findOneAndUpdate(
           { _id: studentId },
           {
             $set: {
               firstName: firstName,
               lastName: lastName,
               email: email,
-              password: password,
+              password: password ? await bcrypt.hash(password, saltRounds) : undefined,
             },
           },
           {
@@ -158,27 +135,37 @@ const resolvers = {
             runValidators: true,
           }
         );
+
+        if(!student){
+          throw new AuthenticationError("Can't update student!");
+        }
+
+        const token = signToken(student);
+
+        return { token, student }
       }
       throw new AuthenticationError("Something went wrong!");
     },
-    // The file object that we get from the second parameter of the uploadFile
-    // resolver is a Promise that resolves to an Upload type with the following attributes: 
-    // uploadFile: async (parent, { file }) => {
-    //   return args.file.then((file) => {
-    //     const { createReadStream, filename, mimetype, encoding } = await file;
+    //The file object that we get from the second parameter of the uploadFile
+    //resolver is a Promise that resolves to an Upload type with the following attributes: 
+    uploadFile: async (parent, { file }) => {
+        const { createReadStream, filename, mimetype, encoding } = await file;
 
-    //     const {ext} = path.parse(filename)
-    //     const randomfileName = generateString(12) + ext;
-    //     //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
-    //     const stream = createReadStream(); //return nodestream/file
-    //     const pathName = path.join(__dirname, `/public/images/${randomfileName}`);
-    //     await stream.pipe(fs.createWriteStream(pathName));
+        console.log(filename);
 
-    //     return { //{ filename, mimetype, encoding }
-    //       url: `http://localhost:3001/images/${randomfileName}`,
-    //     };
-    //   });
-    // },
+        //const {ext} = path.parse(filename)
+        const randomfileName = generateString(12) + filename;
+        console.log(randomfileName)
+        //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
+        const stream = createReadStream(); //return nodestream/file
+        const pathName = path.join(__dirname, "..", `public/uploads/${randomfileName}`);
+        await stream.pipe(fs.createWriteStream(pathName));
+        console.log(pathName)
+        return { //{ filename, mimetype, encoding }
+          filename: randomfileName
+          //url: `http://localhost:3001/images/${randomfileName}`,
+        };
+    },
   },
 };
 

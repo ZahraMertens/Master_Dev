@@ -2,11 +2,10 @@ if(process.env.NODE_ENV !== "production"){
     require("dotenv").config() //or load()
 }
 
-// const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-// const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
-
+const mongoose = require("mongoose")
 const express = require("express");
 const { ApolloServer } = require('apollo-server-express');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 const path = require("path");
 const cors = require("cors")
 //Import middleware to configure with apollo server
@@ -33,7 +32,8 @@ server.start().then(res => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(cors())
+app.use(cors());
+app.use(graphqlUploadExpress());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
