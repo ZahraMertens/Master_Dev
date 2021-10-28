@@ -4,20 +4,23 @@
         "lastName": "Doe",
         "email": "joe.doe@test.com",
         "userType": "Student",
-        "password": "test1234"
+        "password": "test1234",
+        "orders": []
     },
     {
         "firstName": "Jane",
         "lastName": "Doe",
         "email": "jane.doe@test.com",
         "userType": "Student",
-        "password": "test1234"
+        "password": "test1234",
+        "orders": []
     },
     {
         "firstName": "Jenna",
         "lastName": "Doe",
         "email": "jenna.doe@test.com",
         "userType": "Student",
-        "password": "test1234"
+        "password": "test1234",
+        "orders": []
     }
 ]

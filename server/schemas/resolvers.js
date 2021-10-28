@@ -1,10 +1,10 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Student, Tutor } = require("../models");
+const { Student, Tutor, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require('bcrypt');
-const stripe = require("stripe")
+const stripe = require("stripe")("sk_test_51JljitDQYZbnuPWjFE77MAAutk0J7amTagQjWx3mKQADSp9bkfddoZgfUyovoP6KDEJ1QkAIxyqWLTrFNY8lLfkF00L8ws4HOy")
 
 const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 
@@ -55,21 +55,21 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = new Order({ tutors: args.tutors });
       const line_items = [];
 
-      const { products } = await order.populate('products').execPopulate();
+      const { tutors } = await order.populate('tutors').execPopulate();
 
-      for (let i = 0; i < products.length; i++) {
-        const product = await stripe.products.create({
-          name: products[i].name,
-          description: products[i].description,
-          images: [`${url}/images/${products[i].image}`]
+      for (let i = 0; i < tutors.length; i++) {
+        const tutor = await stripe.tutors.create({
+          name: tutors[i].firstName + tutors[i].lastName,
+          description: "Online Tutoring Session",
+          // images: [`${url}/images/${products[i].image}`]
         });
 
         const price = await stripe.prices.create({
-          product: product.id,
-          unit_amount: products[i].price * 100,
+          tutor: tutor.id,
+          unit_amount: tutors[i].hourRate * 100,
           currency: 'usd',
         });
 
@@ -127,18 +127,8 @@ const resolvers = {
       return { token, tutor };
     },
     //Parse all attributes from signup page to args param and deconstruct
-    addStudent: async (
-      parent,
-      { firstName, lastName, email, password, userType }
-    ) => {
-      
-      const student = await Student.create({
-        firstName,
-        lastName,
-        email,
-        password,
-        userType,
-      });
+    addStudent: async (parent, args) => {
+      const student = await Student.create(args);
       //Imported sign token
       const token = signToken(student);
       //Return token and profile

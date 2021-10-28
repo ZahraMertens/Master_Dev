@@ -35,6 +35,14 @@ export const TUTOR_BY_ID = gql`
   }
 `;
 
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($onetutor: [ID]!) {
+    checkout(onetutor: $onetutor) {
+      session
+    }
+  }
+`;
+
 export const STUDENT_BY_ID = gql`
   query getSingleStudent($studentId: ID!) {
     onestudent(studentId: $studentId) {
@@ -43,6 +51,16 @@ export const STUDENT_BY_ID = gql`
       lastName
       email
       userType
+      order {
+        _id
+        purchaseDate
+        tutors {
+          _id
+          firstName
+          lastName
+          email
+        }
+      }
     }
   }
 `;
@@ -55,6 +73,7 @@ export const ME_STUDENT = gql`
       lastName
       email
       userType
+      order
     }
   }
 `;

@@ -1,5 +1,5 @@
 import "./tutorProfile.css"
-import { FaCube, FaCubes, FaBoxOpen, FaGraduationCap, FaCode, FaUser } from "react-icons/fa"
+import { FaCube, FaCubes, FaBoxOpen, FaGraduationCap, FaCode, FaUser } from "react-icons/fa";
 
 import { Button } from "react-bootstrap";
 import React, {useState} from "react";

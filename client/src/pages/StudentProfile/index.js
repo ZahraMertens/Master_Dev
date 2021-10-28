@@ -46,8 +46,6 @@ export default function StudentProfile () {
     password: ``,
   });
 
-  console.log(student.password)
-
   const [updateStudent, { error }] = useMutation(UPDATE_STUDENT);
 
   const handleChange = (event) => {
@@ -73,7 +71,6 @@ export default function StudentProfile () {
       console.error(e);
     }
   };
-
 
   if (loading) {
     return <div>Loading...</div>;

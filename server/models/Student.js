@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require('bcrypt');
+const Order = require('./Order');
 
 const studentSchema = new Schema({
   firstName: {
@@ -26,12 +27,7 @@ const studentSchema = new Schema({
     type: String,
     required: true,
   },
-  // tutor: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Tutor",
-  //   },
-  // ],
+  orders: [Order.schema]
 });
 
 //Before save bcrypt password

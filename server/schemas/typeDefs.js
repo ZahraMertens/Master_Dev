@@ -10,6 +10,13 @@ const typeDefs = gql`
         email: String
         password: String
         userType: String
+        order: [Order]
+    }
+
+    type Order {
+        _id: ID
+        purchaseDate: String
+        tutors: [Tutor]
     }
 
     type Tutor {
@@ -46,6 +53,10 @@ const typeDefs = gql`
         filename: String!
     }
 
+    type Checkout {
+        session: ID
+    }
+
     type Query {
         students: [Student]
         tutors: [Tutor]
@@ -54,6 +65,7 @@ const typeDefs = gql`
         onestudent(studentId: ID!): Student
         meStudent: Student
         meTutor: Tutor
+        checkout(tutors: [ID!]): Checkout
     }
 
     type Mutation {
