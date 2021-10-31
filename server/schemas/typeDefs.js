@@ -10,7 +10,7 @@ const typeDefs = gql`
         email: String
         password: String
         userType: String
-        order: [Order]
+        orders: [Order]
     }
 
     type Order {
@@ -65,7 +65,7 @@ const typeDefs = gql`
         onestudent(studentId: ID!): Student
         meStudent: Student
         meTutor: Tutor
-        checkout(tutors: [ID!]): Checkout
+        checkout(tutorId: ID!): Checkout
     }
 
     type Mutation {

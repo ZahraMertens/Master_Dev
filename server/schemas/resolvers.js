@@ -54,41 +54,49 @@ const resolvers = {
       return Student.findOne({ _id: studentId });
     },
     checkout: async (parent, args, context) => {
+      console.log(args); //{ tutorId: '6179f5cd414ea60ded380596' }
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ tutors: args.tutors });
+      const order = new Order({ tutors: args.tutorId });
+      //Returns Object
+      // {
+      //      tutors: [ new ObjectId("6179f5cd414ea60ded380596") ],
+      //      _id: new ObjectId("617ca0c9ebe6dea8b1ec8b86"),
+      //     purchaseDate: 2021-10-30T01:32:57.949Z
+      //  }
+      console.log(order);
       const line_items = [];
 
-      const { tutors } = await order.populate('tutors').execPopulate();
+      const { tutors } = await order.populate("tutors").execPopulate();
+      console.log(tutors);
 
-      for (let i = 0; i < tutors.length; i++) {
-        const tutor = await stripe.tutors.create({
-          name: tutors[i].firstName + tutors[i].lastName,
-          description: "Online Tutoring Session",
-          // images: [`${url}/images/${products[i].image}`]
-        });
+      const tutor = await stripe.tutors.create({
+        name: tutors[i].firstName + tutors[i].lastName,
+        description: "Online Tutoring Session",
+        // images: [`${url}/images/${products[i].image}`]
+      });
 
-        const price = await stripe.prices.create({
-          tutor: tutor.id,
-          unit_amount: tutors[i].hourRate * 100,
-          currency: 'usd',
-        });
+      const price = await stripe.prices.create({
+        tutor: tutor.id,
+        unit_amount: tutors[i].hourRate * 100,
+        currency: "usd",
+      });
 
-        line_items.push({
-          price: price.id,
-          quantity: 1
-        });
-      }
-
+      line_items.push({
+        price: price.id,
+        quantity: 1,
+      });
+        //Tells stripe the items in the order 
+        // Create stripe session
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        payment_method_types: ["card"],
         line_items,
-        mode: 'payment',
+        mode: "payment",
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`
+        cancel_url: `${url}/`,
       });
 
       return { session: session.id };
-    }
+    },
   },
 
   Mutation: {

@@ -36,8 +36,8 @@ export const TUTOR_BY_ID = gql`
 `;
 
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($onetutor: [ID]!) {
-    checkout(onetutor: $onetutor) {
+  query getCheckout($tutorId: ID!) {
+    checkout(tutorId: $tutorId) {
       session
     }
   }

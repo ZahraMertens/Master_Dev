@@ -1,0 +1,9 @@
+.cart {
+    height: 100vh;
+    padding-top: 200px;
+}
+
+.checkout-btn {
+    background-color: rgb(155, 72, 155)!important;
+    color: white;
+}

@@ -68,7 +68,7 @@ export const ADD_TUTOR = gql`
     $hourRate: ID!
     $password: String!
     $userType: String!
-    $filenameImg: String!
+    $filenameImg: String
   ) {
     addTutor(
       firstName: $firstName

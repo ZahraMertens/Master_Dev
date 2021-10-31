@@ -4,7 +4,7 @@ import "./profile.css";
 import Placeholder from "../../assets/images/placeholder.jpg";
 import Verified from "../../assets/images/verified.png";
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -53,12 +53,12 @@ export default function Profile() {
               $ {tutor.hourRate}/hr
             </h1>
             {/* <BookForm tutor={tutor} /> */}
-            {/* <Link 
-            className="btn btn-ld btn-warning"
-            to={`/book/${tutor.id}`}
+            <Link 
+              className="btn btn-ld btn-warning"
+              to={`/book/${tutor._id}`}
             >
               <i className="fas fa-shopping-cart"></i> BOOK A SESSION
-            </Link> */}
+            </Link>
           </div>
         </div>
         <div className="row">
