@@ -50,35 +50,14 @@ const tutorSchema = new Schema({
     type: Number,
     required: true,
   },
-  // availability: {
-  //   type: Number,
-  //   required: true,
-  // },
-  // comments: [
-  //   {
-  //     commentText: {
-  //       type: String,
-  //       required: true,
-  //       minlength: 1,
-  //       maxlength: 280,
-  //     },
-  //     commentAuthor: {
-  //       type: String,
-  //       required: true,
-  //     },
-  //     createdAt: {
-  //       type: Date,
-  //       default: Date.now,
-  //       get: (timestamp) => dateFormat(timestamp),
-  //     },
-  //   },
-  // ],
-  // student: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Student",
-  //   },
-  // ],
+  zoomPMI: {
+    type: String,
+    required: true,
+  },
+  zoomPass: {
+    type: String,
+    required: true,
+  }
 });
 
 //Before save bcrypt password

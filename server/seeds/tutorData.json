@@ -9,7 +9,9 @@
         "language": "JavaScript",
         "degree": "Master in Computer Science",
         "hourRate": 30,
-        "password": "test1234"
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj"
     },
     {
         "firstName": "Jason",
@@ -21,7 +23,9 @@
         "language": "Python",
         "degree": "Master in Computer Science",
         "hourRate": 30,
-        "password": "test1234"
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj"
     },
     {
         "firstName": "Brad",
@@ -33,6 +37,8 @@
         "language": "JavaScript",
         "degree": "Master in Computer Science",
         "hourRate": 30,
-        "password": "test1234"
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj"
     }
 ]

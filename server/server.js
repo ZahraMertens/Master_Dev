@@ -4,6 +4,7 @@ if(process.env.NODE_ENV !== "production"){
 
 const mongoose = require("mongoose")
 const express = require("express");
+const nodemailer = require("nodemailer");
 const { ApolloServer } = require('apollo-server-express');
 const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 const path = require("path");
@@ -38,6 +39,29 @@ app.use(graphqlUploadExpress());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
+
+// const transporter = nodemailer.createTransport({
+//   service: "hotmail",
+//   auth: {
+//     user: "master_dev-test@outlook.com",
+//     pass: "masterdev1234!"
+//   }
+// });
+
+// const options = {
+//   from: "master_dev-test@outlook.com",
+//   to: "mertens.zahra@gmail.com",
+//   subject: "Congrats! You have an upcoming tutoring session!",
+//   text: "Thank you for booking with us"
+// };
+
+// transporter.sendMail(options, function(error, info) {
+//   if(err){
+//     console.log(err);
+//     return
+//   }
+//   console.log("Sent", info.response)
+// })
 
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../client/build/index.html'));

@@ -48,7 +48,7 @@ const Cart = ({ tutor }) => {
   }, [data]);
 
   function submitCheckout() {
-    const tutorId = tutor._id;
+    const tutorId = [tutor._id];
 
     console.log(tutorId) //Returns array with id in index position 0
 

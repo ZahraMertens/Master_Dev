@@ -32,6 +32,8 @@ const typeDefs = gql`
         degree: String
         hourRate: ID
         filenameImg: String
+        zoomPMI: String
+        zoomPass: String
     }
 
     type AuthStudent {
@@ -65,7 +67,7 @@ const typeDefs = gql`
         onestudent(studentId: ID!): Student
         meStudent: Student
         meTutor: Tutor
-        checkout(tutorId: ID!): Checkout
+        checkout(tutorId: [ID]!): Checkout
     }
 
     type Mutation {
