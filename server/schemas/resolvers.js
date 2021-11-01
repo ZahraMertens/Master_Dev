@@ -57,11 +57,10 @@ const resolvers = {
       return Student.findOne({ _id: studentId });
     },
     checkout: async (parent, args, context) => {
-      console.log(context.user.email);
-      console.log(args); //{ tutorId: '6179f5cd414ea60ded380596' }
+      console.log(args.tutors); //[ '617fb3578e685039ba13b474' ]
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ tutors: args.tutorId });
-      
+      const order = new Order({ tutors: args.tutors });
+
       console.log(order);
       //Returns Object
       // {
@@ -69,7 +68,7 @@ const resolvers = {
       //      _id: new ObjectId("617ca0c9ebe6dea8b1ec8b86"),
       //     purchaseDate: 2021-10-30T01:32:57.949Z
       //  }
-      
+
       const line_items = [];
 
       const { tutors } = await order.populate("tutors").execPopulate();
@@ -99,7 +98,7 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
-      console.log(session)
+      console.log(session);
       return { session: session.id };
       // const transporter = nodemailer.createTransport({
       //   service: "hotmail",
@@ -132,8 +131,6 @@ const resolvers = {
       //   }
       //   console.log("Sent", info.response);
       // });
-
-      
     },
   },
 
@@ -177,52 +174,51 @@ const resolvers = {
       const student = await Student.create(args);
       //Imported sign token
       const token = signToken(student);
-
-      if (token) {
-        const transporter = nodemailer.createTransport({
-          service: "hotmail",
-          auth: {
-            user: "master_dev-test@outlook.com",
-            pass: "masterdev1234!",
-          },
-        });
-
-        //
-        const maillist = [args.email, "zahra.mertens@googlemail.com"];
-
-        const options = {
-          from: "master_dev-test@outlook.com",
-          to: maillist,
-          subject: "Congrats! You have an upcoming tutoring session!",
-          text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
-          html: `<h1>Hi Master Dev's,</h1>
-                 <br/>
-                 <h2>You have an upcoming session, please find the details below:</h2>
-                 <br/>
-                 <ul>
-                 <li>Tutor: Name</li>
-                 <li>Zoom URL: www.ededee.com</li>
-                 <li>Zoom Password: dbekfebda</li>
-                 <li>Student Email: ${args.email}</li>
-                 <li>Tutor Email: bejhfberjfe</li>
-                 </ul>
-                 <br/>
-                 <h2>Happy Hacking!</h2>
-                 <p>Your Master Dev Team</p>
-                 `,
-
-        };
-
-        transporter.sendMail(options, function (error, info) {
-          if (error) {
-            console.log(error);
-            return;
-          }
-          console.log("Sent", info.response);
-        });
-      }
       //Return token and profile
       return { token, student };
+
+      // if (token) {
+      //   const transporter = nodemailer.createTransport({
+      //     service: "hotmail",
+      //     auth: {
+      //       user: "master_dev-test@outlook.com",
+      //       pass: "masterdev1234!",
+      //     },
+      //   });
+
+      // const maillist = [args.email, "zahra.mertens@googlemail.com"];
+
+      // const options = {
+      //   from: "master_dev-test@outlook.com",
+      //   to: maillist,
+      //   subject: "Congrats! You have an upcoming tutoring session!",
+      //   text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
+      //   html: `<h1>Hi Master Dev's,</h1>
+      //          <br/>
+      //          <h2>You have an upcoming session, please find the details below:</h2>
+      //          <br/>
+      //          <ul>
+      //          <li>Tutor: Name</li>
+      //          <li>Zoom URL: www.ededee.com</li>
+      //          <li>Zoom Password: dbekfebda</li>
+      //          <li>Student Email: ${args.email}</li>
+      //          <li>Tutor Email: bejhfberjfe</li>
+      //          </ul>
+      //          <br/>
+      //          <h2>Happy Hacking!</h2>
+      //          <p>Your Master Dev Team</p>
+      //          `,
+
+      // };
+
+      // transporter.sendMail(options, function (error, info) {
+      //   if (error) {
+      //     console.log(error);
+      //     return;
+      //   }
+      //   console.log("Sent", info.response);
+      // });
+      //}
     },
     addTutor: async (parent, args) => {
       const tutor = await Tutor.create(args);

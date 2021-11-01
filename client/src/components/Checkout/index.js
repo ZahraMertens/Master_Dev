@@ -53,7 +53,7 @@ const Cart = ({ tutor }) => {
     console.log(tutorId) //Returns array with id in index position 0
 
     getCheckout({
-      variables: { tutorId: tutorId },
+      variables: { tutors: tutorId },
     });
   }
 

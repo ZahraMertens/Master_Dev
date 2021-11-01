@@ -69,6 +69,8 @@ export const ADD_TUTOR = gql`
     $password: String!
     $userType: String!
     $filenameImg: String
+    $zoomPMI: String!,
+    $zoomPass: String!
   ) {
     addTutor(
       firstName: $firstName
@@ -82,6 +84,8 @@ export const ADD_TUTOR = gql`
       degree: $degree
       hourRate: $hourRate
       filenameImg: $filenameImg
+      zoomPMI: $zoomPMI
+      zoomPass: $zoomPass
     ) {
       token
       tutor {
@@ -96,6 +100,8 @@ export const ADD_TUTOR = gql`
         degree
         hourRate
         filenameImg
+        zoomPMI
+        zoomPass
       }
     }
   }

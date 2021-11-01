@@ -31,6 +31,8 @@ export default function TutorSignup() {
     degree: '',
     hourRate: '',
     filenameImg: '',
+    zoomPMI: '',
+    zoomPass: '',
     userType: "Tutor",
   });
 
@@ -169,6 +171,36 @@ export default function TutorSignup() {
                     placeholder="JavaScript"
                     name="language"
                     value={formState.language}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="col-12">
+                  <label htmlFor="validationCustom01" className="form-label">
+                    Zoom Private Meeting Room URL
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="validationCustom01"
+                    placeholder="https://zoom.us/j/5551112222"
+                    name="zoomPMI"
+                    value={formState.zoomPMI}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="col-12">
+                  <label htmlFor="validationCustom01" className="form-label">
+                    Zoom Meeting Password
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="validationCustom01"
+                    placeholder=""
+                    name="zoomPass"
+                    value={formState.zoomPass}
                     onChange={handleChange}
                     required
                   />
