@@ -4,6 +4,8 @@ import "./profile.css";
 import Placeholder from "../../assets/images/placeholder.jpg";
 import Verified from "../../assets/images/verified.png";
 
+import Auth from "../../utils/auth";
+
 import { Link } from 'react-router-dom';
 
 import { useParams } from "react-router-dom";
@@ -32,6 +34,19 @@ export default function Profile() {
     return (rate * 8) -30
   }
 
+  const getToken = localStorage.getItem("id_token")
+
+  const getUserType = () => {
+    console.log(getToken)
+    if(getToken !== null){
+      console.log(Auth.getProfile().data.userType)
+      return Auth.getProfile().data.userType
+    } 
+    console.log("No token")
+  }
+
+  console.log(getUserType)
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -53,12 +68,21 @@ export default function Profile() {
               $ {tutor.hourRate}/hr
             </h1>
             {/* <BookForm tutor={tutor} /> */}
+            {getUserType() === "Student" ? (
             <Link 
               className="btn btn-ld btn-warning"
               to={`/book/${tutor._id}`}
             >
               <i className="fas fa-shopping-cart"></i> BOOK A SESSION
-            </Link>
+            </Link>) : (
+              <p>Login as a student to book a session!</p>
+            )}
+            {/* <Link 
+              className="btn btn-ld btn-warning"
+              to={`/book/${tutor._id}`}
+            >
+              <i className="fas fa-shopping-cart"></i> BOOK A SESSION
+            </Link> */}
           </div>
         </div>
         <div className="row">

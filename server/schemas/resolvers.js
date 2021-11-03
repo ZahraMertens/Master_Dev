@@ -53,6 +53,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    order: async (parent, { _id }, context) => {
+      console.log(_id);
+      if (context.user) {
+        const student = await Student.findById(context.user._id).populate({
+          path: "orders",
+          populate: "tutors",
+        });
+
+        return student.orders.id(_id);
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
     onestudent: async (parent, { studentId }) => {
       return Student.findOne({ _id: studentId });
     },
@@ -62,75 +75,89 @@ const resolvers = {
       const order = new Order({ tutors: args.tutors });
 
       console.log(order);
-      //Returns Object
-      // {
-      //      tutors: [ new ObjectId("6179f5cd414ea60ded380596") ],
-      //      _id: new ObjectId("617ca0c9ebe6dea8b1ec8b86"),
-      //     purchaseDate: 2021-10-30T01:32:57.949Z
-      //  }
 
       const line_items = [];
 
-      const { tutors } = await order.populate("tutors").execPopulate();
+      const { tutors } = await order.populate("tutors");
       console.log(tutors);
+      console.log(tutors[0].firstName);
 
-      const tutor = await stripe.tutors.create({
-        name: tutors[0].firstName + tutors[0].lastName,
-        description: "Online Tutoring Session",
-      });
+      for (let i = 0; i < tutors.length; i++) {
+        const product = await stripe.products.create({
+          name: tutors[i].firstName,
+          description: "Online Tutoring Session",
+        });
 
-      const price = await stripe.prices.create({
-        tutor: tutor.id,
-        unit_amount: tutors[0].hourRate * 100,
-        currency: "usd",
-      });
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: tutors[i].hourRate * 100,
+          currency: "usd",
+        });
 
-      line_items.push({
-        price: price.id,
-        quantity: 1,
-      });
+        line_items.push({
+          price: price.id,
+          quantity: 1,
+        });
+      }
       //Tells stripe the items in the order
       // Create stripe session
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${url}/success/${tutors[0]._id}`,
         cancel_url: `${url}/`,
       });
       console.log(session);
-      return { session: session.id };
-      // const transporter = nodemailer.createTransport({
-      //   service: "hotmail",
-      //   auth: {
-      //     user: "master_dev-test@outlook.com",
-      //     pass: "masterdev1234!",
-      //   },
-      // });
+      // if (session.success_url) {
+      //   const transporter = nodemailer.createTransport({
+      //     service: "hotmail",
+      //     auth: {
+      //       user: "master_dev-test@outlook.com",
+      //       pass: "masterdev1234!",
+      //     },
+      //   });
 
-      // //Send to student and tutor from masterdev email
-      // const maillist = [
-      //   args.email, //selected tutor email
-      //   context.user.email, //current logged in student email
-      // ];
+      //   console.log(tutors[0].email);
 
-      // const options = {
-      //   from: "master_dev-test@outlook.com",
-      //   to: maillist,
-      //   subject: "Congrats! You have an upcoming tutoring session!",
-      //   text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
-      //   html: `<h1>Hi Master Dev's,</h1>
+      //   //Send to student and tutor from masterdev email
+      //   const maillist = [
+      //     tutors[0].email, //selected tutor email
+      //     context.user.email, //current logged in student email
+      //   ];
+
+      //   const options = {
+      //     from: "master_dev-test@outlook.com",
+      //     to: maillist,
+      //     subject: "Congrats! You have an upcoming tutoring session!",
+      //     text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
+      //     html: `<h1>Hi Master Dev's,</h1>
       //          <br/>
-      //          <p>You have an upcoming sessiosion</p>`,
-      // };
+      //          <h2>You have an upcoming session, please find the details below:</h2>
+      //          <br/>
+      //          <ul>
+      //          <li>Tutor: ${tutors[0].firstName} ${tutors[0].lastName}</li>
+      //          <li>Zoom URL: ${tutors[0].zoomPMI}</li>
+      //          <li>Zoom Password: ${tutors[0].zoomPass}</li>
+      //          <li>Student Email: ${context.user.email}</li>
+      //          <li>Tutor Email: ${tutors[0].email}</li>
+      //          </ul>
+      //          <br/>
+      //          <h2>Happy Hacking!</h2>
+      //          <p>Your Master Dev Team</p>
+      //          `,
+      //   };
 
-      // transporter.sendMail(options, function (error, info) {
-      //   if (err) {
-      //     console.log(err);
-      //     return;
-      //   }
-      //   console.log("Sent", info.response);
-      // });
+      //   transporter.sendMail(options, function (error, info) {
+      //     if (err) {
+      //       console.log(err);
+      //       return;
+      //     }
+      //     console.log("Sent", info.response);
+      //   });
+      // }
+      //Creating session to be able to redirect to checkout platform of stripe
+      return { session: session.id };
     },
   },
 
@@ -176,49 +203,6 @@ const resolvers = {
       const token = signToken(student);
       //Return token and profile
       return { token, student };
-
-      // if (token) {
-      //   const transporter = nodemailer.createTransport({
-      //     service: "hotmail",
-      //     auth: {
-      //       user: "master_dev-test@outlook.com",
-      //       pass: "masterdev1234!",
-      //     },
-      //   });
-
-      // const maillist = [args.email, "zahra.mertens@googlemail.com"];
-
-      // const options = {
-      //   from: "master_dev-test@outlook.com",
-      //   to: maillist,
-      //   subject: "Congrats! You have an upcoming tutoring session!",
-      //   text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
-      //   html: `<h1>Hi Master Dev's,</h1>
-      //          <br/>
-      //          <h2>You have an upcoming session, please find the details below:</h2>
-      //          <br/>
-      //          <ul>
-      //          <li>Tutor: Name</li>
-      //          <li>Zoom URL: www.ededee.com</li>
-      //          <li>Zoom Password: dbekfebda</li>
-      //          <li>Student Email: ${args.email}</li>
-      //          <li>Tutor Email: bejhfberjfe</li>
-      //          </ul>
-      //          <br/>
-      //          <h2>Happy Hacking!</h2>
-      //          <p>Your Master Dev Team</p>
-      //          `,
-
-      // };
-
-      // transporter.sendMail(options, function (error, info) {
-      //   if (error) {
-      //     console.log(error);
-      //     return;
-      //   }
-      //   console.log("Sent", info.response);
-      // });
-      //}
     },
     addTutor: async (parent, args) => {
       const tutor = await Tutor.create(args);
@@ -286,6 +270,9 @@ const resolvers = {
         //url: `http://localhost:3001/images/${randomfileName}`,
       };
     },
+    // successPayment: async (parent, args, context) => {
+    //   console.log(args)
+    // }
   },
 };
 

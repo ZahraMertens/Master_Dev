@@ -1,12 +1,3 @@
-//const {loading, data, error } = useQuery(Query from auth.js)
-// loading = when accesing to db we track te prgress
-// when loading finished loading= false
-// data = array of objects of data from db
-//error = undefined no error
-
-//Mutation
-// const [addProfile, {error, data}] = useMutation(ADD_PROFILE)
-//then call function in handle form submit
 import FileUpload from "../../components/FileUpload/index";
 import "./tutorsignup.css";
 
@@ -69,6 +60,15 @@ export default function TutorSignup() {
     })
   }
 
+  const getToken = localStorage.getItem("id_token")
+
+  if (getToken){
+    return (
+      <div className="logout-signup">
+
+      </div>
+    )
+  } else {
   return (
     <div>
       <div className="tutorsignup-main">
@@ -290,4 +290,5 @@ export default function TutorSignup() {
       </div>
     </div>
   );
+  }
 }

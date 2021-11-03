@@ -72,10 +72,17 @@ export default function StudentProfile () {
     }
   };
 
+  const getToken = localStorage.getItem("id_token")
+
   if (loading) {
     return <div>Loading...</div>;
-  }
-
+  } else if (!getToken){
+    return (
+      <div className="checkout-error">
+        <h1>You must be logged in as a Student be be able to book a session!</h1>
+      </div>
+    )
+  } else {
   return (
     <div className="studentProfile-main">
       <div className="studentProfile-wrapper">
@@ -160,4 +167,5 @@ export default function StudentProfile () {
       </div>
     </div>
   );
+  }
 }

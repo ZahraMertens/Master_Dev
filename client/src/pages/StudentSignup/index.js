@@ -44,6 +44,15 @@ export default function StudentSignup() {
     }
   };
 
+  const getToken = localStorage.getItem("id_token")
+
+  if (getToken){
+    return (
+      <div className="logout-signup">
+
+      </div>
+    )
+  } else {
   return (
     <div>
       <div className="studentsignup-main">
@@ -169,4 +178,5 @@ export default function StudentSignup() {
       </div>
     </div>
   );
+  }
 }

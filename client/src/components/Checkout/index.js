@@ -19,31 +19,23 @@ const Cart = ({ tutor }) => {
   // const { tutorId } = useParams();
   console.log(tutor._id);
   console.log(tutor.hourRate);
-
-  // const [tutorState, setTutorState] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   hourRate: "",
-  // });
-
-  // const { loading, data } = useQuery(TUTOR_BY_ID, {
-  //   variables: { tutorId: tutorId },
-  // });
-
-  // const tutor = data?.onetutor || {};
-
-  // console.log(tutor.hourRate);
-  //const [state, dispatch] = useStoreContext();
+  
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   // We check to see if there is a data object that exists, if so this means that a checkout session was returned from the backend
   // Then we should redirect to the checkout with a reference to our session id
   useEffect(() => {
     if (data) {
+      console.log(data.checkout.session) //sessionid
       console.log(data)
-      stripePromise.then((res) => {
+      //checkout: {__typename: 'Checkout', session: 'cs_test_a11gWLj01l3ElnMP7RoLTd7fGgpzDgaLOyglXgrpAnyTDCz3QCQZkDFZ7Z'}
+      stripePromise
+      .then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
-      });
+      })
+      // .then((result) => {
+      //   console.log(result)
+      // })
     }
   }, [data]);
 

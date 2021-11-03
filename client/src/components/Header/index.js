@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import "./header.css";
 
 import UserProfile from "../UserProfile/UserProfile";
@@ -10,10 +10,13 @@ import Logo from "../../assets/images/logo.png"
 
 export default function Header() {
 
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-    window.location.reload(false);
+  const history = useHistory();
+
+  const logout = async (event) => {
+    //event.preventDefault();
+    await Auth.logout();
+    //window.location.reload(true);
+    history.push("/")
   };
 
   //Only when user logged in
@@ -62,12 +65,13 @@ export default function Header() {
                 <>
                 <UserProfile userType={Auth.getProfile().data.userType} userId={Auth.getProfile().data._id} />
                 <li className="nav-item">
-                  <p
+                  <a
                   className="nav-link logout-btn"
+                  href="/"
                   onClick={logout}
                   >
                     Logout
-                  </p>
+                  </a>
                 </li>
               </>
               ) : (

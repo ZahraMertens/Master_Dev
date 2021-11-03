@@ -67,6 +67,7 @@ const typeDefs = gql`
         onestudent(studentId: ID!): Student
         meStudent: Student
         meTutor: Tutor
+        order(_id: ID!): Order
         checkout(tutors: [ID]!): Checkout
     }
 

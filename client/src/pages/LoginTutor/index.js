@@ -44,6 +44,15 @@ export default function LoginTutor() {
     });
   };
 
+  const getToken = localStorage.getItem("id_token")
+
+  if (getToken){
+    return (
+      <div className="logout-signup">
+
+      </div>
+    )
+  } else {
   return (
     <div className="logintutor-main">
       <div className="logintutor-wrapper">
@@ -99,4 +108,5 @@ export default function LoginTutor() {
       </div>
     </div>
   );
+  }
 }

@@ -18,6 +18,7 @@ import LoginTutor from "./pages/LoginTutor/index";
 import TutorProfile from './pages/TutorProfile/index';
 import StudentProfile from './pages/StudentProfile/index';
 import CheckoutPage from "./pages/CheckoutPage/index";
+import Success from "./pages/Success/Success"
 
 
 // Construct our main GraphQL API endpoint
@@ -87,6 +88,9 @@ function App() {
         </Route>
         <Route exact path="/book/:tutorId">
           <CheckoutPage />
+        </Route>
+        <Route exact path="/success/:tutorId">
+          <Success />
         </Route>
       </main>
       <Footer />

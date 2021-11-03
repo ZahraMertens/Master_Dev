@@ -19,9 +19,20 @@ export default function CheckoutPage () {
   const tutor = data?.onetutor || {};
 
   console.log(tutor.hourRate);
+
+  const getToken = localStorage.getItem("id_token")
+
+  if (!getToken){
+    return (
+      <div className="checkout-error">
+        <h1>You must be logged in as a Student be be able to book a session!</h1>
+      </div>
+    )
+  } else {
     return (
         <div>
           <Checkout tutor={tutor} />  
         </div>
-    )
+    );
+  }
 }

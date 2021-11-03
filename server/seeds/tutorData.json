@@ -14,13 +14,13 @@
         "zoomPass": "97V7aj"
     },
     {
-        "firstName": "Jason",
-        "lastName": "Doe",
-        "email": "jane2.doe@test.com",
+        "firstName": "Zahra",
+        "lastName": "Mertens",
+        "email": "zahra.mertens@googlemail.com",
         "userType": "Tutor",
         "phone": "0412123456",
         "describtion": "I have been tutoring for 100 years",
-        "language": "Python",
+        "language": "JavaScript",
         "degree": "Master in Computer Science",
         "hourRate": 30,
         "password": "test1234",
