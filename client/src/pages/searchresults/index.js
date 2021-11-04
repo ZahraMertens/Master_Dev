@@ -27,7 +27,7 @@ export default function SearchResults() {
   console.log(tutors) 
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
 
     setNewLanguage(value)
   };

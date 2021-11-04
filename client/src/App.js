@@ -11,7 +11,7 @@ import Footer from "./components/Footer/index";
 import Home from "./pages/Home/index";
 import StudentSignup from "./pages/StudentSignup/index";
 import TutorSignup from "./pages/TutorSignup";
-import SearchResults from "./pages/SearchResults/index";
+import SearchResults from "./pages/searchresults/index";
 import ProfileSearch from './pages/ProfileSearch/index';
 import LoginStudent from './pages/LoginStudent/index';
 import LoginTutor from "./pages/LoginTutor/index";
