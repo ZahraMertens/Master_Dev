@@ -37,17 +37,12 @@ export default function Success() {
         if (tutors.length) {
           const { data } = await addOrder({ variables: { tutors } });
           const tutorData = data.addOrder.tutors;
-
-          // productData.forEach((item) => {
-          //   idbPromise('cart', 'delete', item);
-          // });
-          
         }
 
-          // setTimeout(() => {
-          //   window.location.assign('/');
-          //   localStorage.removeItem("tutor_id")
-          // }, 4000);
+          setTimeout(() => {
+            window.location.assign('/');
+            localStorage.removeItem("tutor_id")
+          }, 4000);
       }
 
       saveOrder();
