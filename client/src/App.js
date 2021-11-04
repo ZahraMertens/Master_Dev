@@ -89,7 +89,7 @@ function App() {
         <Route exact path="/book/:tutorId">
           <CheckoutPage />
         </Route>
-        <Route exact path="/success/:tutorId">
+        <Route exact path="/success">
           <Success />
         </Route>
       </main>

@@ -53,34 +53,21 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    order: async (parent, { _id }, context) => {
-      console.log(_id);
-      if (context.user) {
-        const student = await Student.findById(context.user._id).populate({
-          path: "orders",
-          populate: "tutors",
-        });
-
-        return student.orders.id(_id);
-      }
-
-      throw new AuthenticationError("Not logged in");
-    },
     onestudent: async (parent, { studentId }) => {
       return Student.findOne({ _id: studentId });
     },
     checkout: async (parent, args, context) => {
-      console.log(args.tutors); //[ '617fb3578e685039ba13b474' ]
+      //console.log(args.tutors); //[ '617fb3578e685039ba13b474' ]
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ tutors: args.tutors });
 
-      console.log(order);
+      //console.log(order);
 
       const line_items = [];
 
       const { tutors } = await order.populate("tutors");
-      console.log(tutors);
-      console.log(tutors[0].firstName);
+      //console.log(tutors);
+      //console.log(tutors[0].firstName);
 
       for (let i = 0; i < tutors.length; i++) {
         const product = await stripe.products.create({
@@ -105,57 +92,11 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: `${url}/success/${tutors[0]._id}`,
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
-      console.log(session);
-      // if (session.success_url) {
-      //   const transporter = nodemailer.createTransport({
-      //     service: "hotmail",
-      //     auth: {
-      //       user: "master_dev-test@outlook.com",
-      //       pass: "masterdev1234!",
-      //     },
-      //   });
+      //console.log(session);
 
-      //   console.log(tutors[0].email);
-
-      //   //Send to student and tutor from masterdev email
-      //   const maillist = [
-      //     tutors[0].email, //selected tutor email
-      //     context.user.email, //current logged in student email
-      //   ];
-
-      //   const options = {
-      //     from: "master_dev-test@outlook.com",
-      //     to: maillist,
-      //     subject: "Congrats! You have an upcoming tutoring session!",
-      //     text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
-      //     html: `<h1>Hi Master Dev's,</h1>
-      //          <br/>
-      //          <h2>You have an upcoming session, please find the details below:</h2>
-      //          <br/>
-      //          <ul>
-      //          <li>Tutor: ${tutors[0].firstName} ${tutors[0].lastName}</li>
-      //          <li>Zoom URL: ${tutors[0].zoomPMI}</li>
-      //          <li>Zoom Password: ${tutors[0].zoomPass}</li>
-      //          <li>Student Email: ${context.user.email}</li>
-      //          <li>Tutor Email: ${tutors[0].email}</li>
-      //          </ul>
-      //          <br/>
-      //          <h2>Happy Hacking!</h2>
-      //          <p>Your Master Dev Team</p>
-      //          `,
-      //   };
-
-      //   transporter.sendMail(options, function (error, info) {
-      //     if (err) {
-      //       console.log(err);
-      //       return;
-      //     }
-      //     console.log("Sent", info.response);
-      //   });
-      // }
       //Creating session to be able to redirect to checkout platform of stripe
       return { session: session.id };
     },
@@ -245,6 +186,121 @@ const resolvers = {
       }
       throw new AuthenticationError("Something went wrong!");
     },
+    updateTutor: async (
+      parent,
+      { tutorId, firstName, lastName, email, phone, hourRate, description, language, degree, filenameImg, zoomPass, zoomPMI}, //password
+      context
+    ) => {
+      const saltRounds = 10;
+      console.log(tutorId);
+      if (context.user) {
+        const tutor = await Tutor.findOneAndUpdate(
+          { _id: tutorId },
+          {
+            $set: {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              phone: phone,
+              hourRate: hourRate,
+              description: description,
+              language: language,
+              degree: degree,
+              filenameImg: filenameImg,
+              zoomPass: zoomPass,
+              zoomPMI: zoomPMI,
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+
+        if (!tutor) {
+          throw new AuthenticationError("Can't update tutor!");
+        }
+
+        const token = signToken(tutor);
+
+        return { token, tutor };
+      }
+      throw new AuthenticationError("Something went wrong!");
+    },
+    addOrder: async (parent, { tutors }, context) => {
+      console.log(tutors[0]); //array with id
+      const tutorId = tutors[0]
+      //console.log(context);
+      if (context.user) {
+        const tutor = await Tutor.findById(tutorId.toString()).exec();
+        console.log(tutor);
+
+        //const array = [tutor]
+        //console.log(array)
+
+        // if (tutor) {
+        //   const transporter = nodemailer.createTransport({
+        //     service: "hotmail",
+        //     auth: {
+        //       user: "master_dev-test@outlook.com",
+        //       pass: "masterdev1234!",
+        //     },
+        //   });
+
+        //   console.log(tutor.email);
+
+        //   //Send to student and tutor from masterdev email
+        //   const maillist = [
+        //     tutor.email, //selected tutor email
+        //     context.user.email, //current logged in student email
+        //   ];
+
+        //   console.log(maillist)
+
+        //   const options = {
+        //     from: "master_dev-test@outlook.com",
+        //     to: maillist,
+        //     subject: "Congrats! You have an upcoming tutoring session!",
+        //     text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
+        //     html: `<h1>Hi Master Dev's,</h1>
+        //        <br/>
+        //        <h2>You have an upcoming session, please find the details below:</h2>
+        //        <br/>
+        //        <ul>
+        //        <li>Tutor: ${tutor.firstName} ${tutor.lastName}</li>
+        //        <li>Zoom URL: ${tutor.zoomPMI}</li>
+        //        <li>Zoom Password: ${tutor.zoomPass}</li>
+        //        <li>Student Email: ${context.user.email}</li>
+        //        <li>Tutor Email: ${tutor.email}</li>
+        //        <li>Tutor Phone: ${tutor.phone}</li>
+        //        </ul>
+        //        <br/>
+        //        <h2>Happy Hacking!</h2>
+        //        <p>Your Master Dev Team</p>
+        //        `,
+        //   };
+
+        //   transporter.sendMail(options, function (error, info) {
+        //     if (error) {
+        //       console.log(error);
+        //       return;
+        //     }
+        //     console.log("Sent", info.response);
+        //   });
+        // }
+
+        const order = new Order({ tutors });
+        console.log(order)
+
+        await Student.findByIdAndUpdate({_id: context.user._id}, {
+          $push: { orders: order },
+        });
+
+        return order;
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
     //The file object that we get from the second parameter of the uploadFile
     //resolver is a Promise that resolves to an Upload type with the following attributes:
     uploadFile: async (parent, { file }) => {
@@ -278,85 +334,3 @@ const resolvers = {
 
 module.exports = resolvers;
 
-// QUERY DATA GRAPHQL
-
-// {
-//     "firstName": "Anna",
-//     "lastName": "Doe",
-//     "email": "anna@test.com",
-//     "phone": "0410234567",
-//     "password": "test1234",
-//     "userType": "Tutor",
-//     "describtion": "I have 10 years experience",
-//     "language": "JavaScript",
-//     "degree": "Bootcamp Certificate",
-//     "hourRate": 32
-//   }
-
-// query students {
-//     students {
-//       firstName
-//       lastName
-//       email
-//       pasword
-//       userType
-//       _id
-//     }
-//   }
-
-//   mutation AddstudentMutation($firstName: String!, $lastName: String!, $email: String!, $password: String!, $userType: String!) {
-//     addstudent(firstName: $firstName, lastName: $lastName, email: $email, password: $password, userType: $userType) {
-//       firstName
-//       lastName
-//       email
-//       pasword
-//       userType
-//     }
-//   }
-
-//   query tutors {
-//     tutors {
-//       _id
-//       firstName
-//       lastName
-//       email
-//       phone
-//       pasword
-//       userType
-//       describtion
-//       language
-//       degree
-//       hourRate
-//     }
-//   }
-
-//   query searchtutor($language: String) {
-//     searchtutor(language: $language) {
-//       _id
-//       firstName
-//       lastName
-//       email
-//       phone
-//       pasword
-//       userType
-//       describtion
-//       language
-//       degree
-//       hourRate
-//     }
-//   }
-
-//   mutation addtutor($firstName: String!, $lastName: String!, $email: String!, $password: String!, $userType: String!, $phone: String!, $describtion: String!, $language: String!, $degree: String!, $hourRate: Int!) {
-//     addtutor(firstName: $firstName, lastName: $lastName, email: $email, phone: $phone, password: $password, userType: $userType, describtion: $describtion, language: $language, degree: $degree, hourRate: $hourRate) {
-//       firstName
-//       lastName
-//       email
-//       phone
-//       password
-//       userType
-//       describtion
-//       language
-//       degree
-//       hourRate
-//     }
-//   }

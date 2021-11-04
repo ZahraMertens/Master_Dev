@@ -1,5 +1,7 @@
 import "./studentsignup.css";
 
+import PageNotFound from "../../components/PageNotFound/index";
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -48,9 +50,7 @@ export default function StudentSignup() {
 
   if (getToken){
     return (
-      <div className="logout-signup">
-
-      </div>
+      <PageNotFound />
     )
   } else {
   return (

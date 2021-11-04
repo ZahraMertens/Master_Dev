@@ -1,6 +1,8 @@
 import FileUpload from "../../components/FileUpload/index";
 import "./tutorsignup.css";
 
+import PageNotFound from "../../components/PageNotFound/index";
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +19,7 @@ export default function TutorSignup() {
     email: '',
     password: '',
     phone: '',
-    describtion: '',
+    description: '',
     language: '',
     degree: '',
     hourRate: '',
@@ -64,9 +66,7 @@ export default function TutorSignup() {
 
   if (getToken){
     return (
-      <div className="logout-signup">
-
-      </div>
+      <PageNotFound />
     )
   } else {
   return (
@@ -233,9 +233,9 @@ export default function TutorSignup() {
                     type="text"
                     className="form-control"
                     id="validationCustom01"
-                    placeholder="Your professional describtion and background"
-                    name="describtion"
-                    value={formState.describtion}
+                    placeholder="Your professional description and background"
+                    name="description"
+                    value={formState.description}
                     onChange={handleChange}
                     required
                   ></textarea>

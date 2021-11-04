@@ -1,0 +1,84 @@
+.check-icon {
+  color: rgb(102, 180, 0);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.results-card {
+  background-color: rgba(7, 154, 180, 0.055);
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+.pricing-container {
+  padding: 20px !important;
+}
+
+.profile-img-tutor-card {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border: 1px solid rgb(145, 145, 145);
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+/* .image-container-card {
+    justify-content: center;
+} */
+
+.info-card-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.btn-viewPofile {
+  background: #12c3cb !important;
+  color: white !important;
+  background-image: linear-gradient(
+    270deg,
+    #e064ff,
+    #f0e1ff,
+    rgba(218, 218, 218, 0),
+    rgba(175, 175, 175, 0)
+  ) !important;
+  border-radius: 20px !important;
+  background-position: 1% 50% !important;
+  background-size: 300% 300% !important;
+  transition: all 0.5s ease-out !important;
+  margin-top: 10px;
+}
+
+.btn-viewPofile:hover {
+  border-color: transparent !important;
+  color: #161616 !important;
+  background-position: 99% 50% !important;
+}
+
+.education-text {
+    font-size: 20px!important;
+}
+
+.degree-tag {
+    font-weight: bold;
+}
+
+.language-text {
+    font-size: 20px;
+}
+
+.language-tag {
+    font-weight: bold;
+}
+
+.about-tag {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.tutor-name {
+    color: #007780;
+    font-size: 35px;
+}

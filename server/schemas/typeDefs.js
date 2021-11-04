@@ -27,7 +27,7 @@ const typeDefs = gql`
         phone: String
         password: String
         userType: String
-        describtion: String
+        description: String
         language: String
         degree: String
         hourRate: ID
@@ -72,26 +72,15 @@ const typeDefs = gql`
     }
 
     type Mutation {
+        addOrder(tutors: [ID]!): Order
         loginStudent(email: String!, password: String!): AuthStudent 
         loginTutor(email: String!, password: String!): AuthTutor
         addStudent(firstName: String!, lastName: String!, email: String!, password: String!, userType: String!): AuthStudent
-        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, describtion: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!, filenameImg: String, zoomPass: String!, zoomPMI: String!): AuthTutor
-        updateStudent(studentId: ID!, firstName: String!, lastName: String!, email: String!, password: String! ): AuthStudent
+        addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, description: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!, filenameImg: String, zoomPass: String!, zoomPMI: String!): AuthTutor
+        updateStudent(studentId: ID, firstName: String, lastName: String, email: String, password: String ): AuthStudent
+        updateTutor(tutorId: ID, firstName: String, lastName: String, email: String, phone: String, description: String, language: String, degree: String, hourRate: ID, filenameImg: String, zoomPass: String, zoomPMI: String): AuthTutor
         uploadFile(file: Upload!): File!
     }  
 `
 
 module.exports = typeDefs;
-//uploadFile(file: Upload!): File!
-// type Auth {
-//     token: ID!        ID has an unique identifier, in this case is the token
-//     student: Student  Refers to student profile
-// }
-
-// addResume: async (parent, { resume }, context) => { console.log(resume)
-//     if (context.user) {
-//       const user = User.findById(context.user.id).populate("resume")
-//       return user;
-//     }
-//     throw new AuthenticationError('Not logged in');
-//   },

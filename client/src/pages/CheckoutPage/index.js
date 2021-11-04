@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Checkout.css";
+import "./CheckoutPage.css";
 import { useQuery } from '@apollo/client';
 import { useParams } from "react-router-dom";
 import { TUTOR_BY_ID } from "../../utils/queries";
@@ -30,7 +30,7 @@ export default function CheckoutPage () {
     )
   } else {
     return (
-        <div>
+        <div className="checkoutPage">
           <Checkout tutor={tutor} />  
         </div>
     );

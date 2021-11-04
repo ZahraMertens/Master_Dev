@@ -62,14 +62,14 @@ export const ADD_TUTOR = gql`
     $lastName: String!
     $email: String!
     $phone: String!
-    $describtion: String!
+    $description: String!
     $language: String!
-    $degree: String! 
+    $degree: String!
     $hourRate: ID!
     $password: String!
     $userType: String!
     $filenameImg: String
-    $zoomPMI: String!,
+    $zoomPMI: String!
     $zoomPass: String!
   ) {
     addTutor(
@@ -79,7 +79,7 @@ export const ADD_TUTOR = gql`
       password: $password
       userType: $userType
       phone: $phone
-      describtion: $describtion
+      description: $description
       language: $language
       degree: $degree
       hourRate: $hourRate
@@ -95,7 +95,7 @@ export const ADD_TUTOR = gql`
         email
         userType
         phone
-        describtion
+        description
         language
         degree
         hourRate
@@ -108,35 +108,96 @@ export const ADD_TUTOR = gql`
 `;
 
 export const UPDATE_STUDENT = gql`
-    mutation updateStudent(
-      $studentId: ID!
-      $firstName: String!
-      $lastName: String!
-      $email: String!
-      $password: String!
-    ){
-      updateStudent(
-        studentId: $studentId
-        firstName: $firstName
-        lastName: $lastName
-        email: $email
-        password: $password
-      ){
-        token
-        student {
-          firstName
-          lastName
-          email
+  mutation updateStudent(
+    $studentId: ID
+    $firstName: String
+    $lastName: String
+    $email: String
+    $password: String
+  ) {
+    updateStudent(
+      studentId: $studentId
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
+      token
+      student {
+        firstName
+        lastName
+        email
+      }
+    }
+  }
+`;
+
+export const UPDATE_TUTOR = gql`
+  mutation updateTutor(
+    $tutorId: ID
+    $firstName: String
+    $lastName: String
+    $email: String
+    $phone: String
+    $description: String
+    $language: String
+    $degree: String
+    $hourRate: ID
+    $filenameImg: String
+    $zoomPMI: String
+    $zoomPass: String
+  ) {
+    updateTutor(
+      tutorId: $tutorId
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      phone: $phone
+      description: $description
+      language: $language
+      degree: $degree
+      hourRate: $hourRate
+      filenameImg: $filenameImg
+      zoomPMI: $zoomPMI
+      zoomPass: $zoomPass
+    ) {
+      token
+      tutor {
+        firstName
+        lastName
+        email
       }
     }
   }
 `;
 
 export const UPLOAD_FILE = gql`
-    mutation uploadFile($file: Upload!){
-      uploadFile(file: $file){
-        filename
-      }
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      filename
     }
+  }
 `;
 
+export const ADD_ORDER = gql`
+  mutation addOrder($tutors: [ID]!) {
+    addOrder(tutors: $tutors) {
+      purchaseDate
+      tutors {
+        _id
+        firstName
+        lastName
+        email
+        userType
+        phone
+        description
+        language
+        degree
+        hourRate
+        filenameImg
+        zoomPMI
+        zoomPass
+      }
+    }
+  }
+`;

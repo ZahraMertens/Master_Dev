@@ -29,16 +29,6 @@ export default function TutorProfile() {
 
   console.log(tutor);
 
-  const renderSession = (rate) => {
-    console.log(rate)
-    return (rate * 5) -25
-  }
-
-  const renderDay = (rate) => {
-    console.log(rate)
-    return (rate * 8) -30
-  }
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -92,27 +82,17 @@ export default function TutorProfile() {
         <div className="row about-me tutorProfile-lowercontainer">
           <div className="col">
             <h2>About Me:</h2>
-            <p className="p-about">{tutor.describtion}</p>
+            <p className="p-about">{tutor.description}</p>
           </div>
         </div>
         <div className="row tutorProfile-lowercontainer">
           <div className="col">
-            <h2>Rates:</h2>
+            <h2>Rate:</h2>
             <div className="row">
-              <div className="col rate-box">
+              <div className="col-4 rate-box">
                 <FaCube size={28} className="rate-icon"/>
                 <h1 className="rate-header">1 hr session</h1>
                 <p className="p-rate">${tutor.hourRate}</p>
-              </div>
-              <div className="col rate-box">
-                <FaCubes size={28} className="rate-icon"/>
-                <h1 className="rate-header">5 hr session</h1>
-                <p className="p-rate">${renderSession(tutor.hourRate)}</p>
-              </div>
-              <div className="col rate-box">
-                <FaBoxOpen size={28} className="rate-icon"/>
-                <h1 className="rate-header">Whole Day (8h)</h1>
-                <p className="p-rate">${renderDay(tutor.hourRate)}</p>
               </div>
             </div>
           </div>

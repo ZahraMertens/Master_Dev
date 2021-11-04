@@ -2,7 +2,7 @@ import "./results.css";
 import { FaSearch } from "react-icons/fa";
 import Banner from "../../assets/images/bannerresult.jpg"
 
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
@@ -16,6 +16,8 @@ export default function SearchResults() {
 
   const { language } = useParams();
 
+  const [ newLanguage, setNewLanguage ] = useState("")
+
   const { loading, data } = useQuery(GET_TUTORS, {
     variables: { language: language },
   });
@@ -23,6 +25,12 @@ export default function SearchResults() {
   const tutors = data?.searchtutor || {};
 
   console.log(tutors) 
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setNewLanguage(value)
+  };
     
   if (loading) {
     return <div>Loading...</div>;
@@ -43,13 +51,16 @@ export default function SearchResults() {
                   placeholder="Java Script"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-lg"
+                  name="newLanguage"
+                  value={newLanguage}
+                  onChange={handleChange}
                 />
               </div>
             </div>
             <div className="col-2 btn-container-hero">
               <Link
                 className="btn btn-light btn-lg anothersearch-btn"
-                to={`/results/${language}`}
+                to={`/results/${newLanguage}`}
               >
                 FIND A TUTOR
               </Link>

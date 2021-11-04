@@ -1,0 +1,107 @@
+.cart {
+  width: 90%;
+  /* margin: 0 auto; */
+  margin-left: auto;
+  /* background-color: #ffffff; */
+  /* padding: 20px; */
+  border-radius: 10px;
+  border: 1px solid #ae00ff;
+  height: 100%;
+  box-shadow: #ae00ff3d 0px 5px 15px;
+  /* box-shadow: 0 5px 15px rgba(179, 179, 179, 0.5); */
+  /* border-radius: 5px; */
+  background: rgba(255, 255, 255, 0.904);
+  padding: 20px !important;
+  z-index: 3;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .cart {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+.checkout-wrapper {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.checkout-btn {
+  background: #12c3cb !important;
+  color: white !important;
+  background-image: linear-gradient(
+    270deg,
+    #ffd500,
+    #fffb00,
+    rgba(218, 218, 218, 0),
+    rgba(175, 175, 175, 0)
+  ) !important;
+  border-radius: 20px !important;
+  background-position: 1% 50% !important;
+  background-size: 300% 300% !important;
+  transition: all 0.5s ease-out !important;
+  font-size: 25px !important;
+  padding: 10px !important;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.zoom-img {
+  width: 100px;
+  /* padding: 20px; */
+}
+
+.checkout-btn:hover {
+  border-color: transparent !important;
+  color: #161616 !important;
+  background-position: 99% 50% !important;
+}
+
+.checkout-image {
+  /* margin-top: auto;
+    margin-bottom: auto; */
+  width: 500px;
+}
+
+.image-container {
+  text-align: center;
+  /* justify-content: center; */
+}
+
+.shopping-icon {
+  color: rgb(199, 199, 199) !important;
+}
+
+.shopping-header {
+  margin-bottom: 100px;
+  padding: 5px;
+  border-bottom: dashed 1px #12c3cb;
+}
+
+.shopping-item {
+  font-size: 30px !important;
+  list-style-type: decimal;
+}
+
+.shopping-item2 {
+  font-size: 30px !important;
+  margin-bottom: 30px;
+}
+
+.shopping-price-tag {
+  font-weight: bold;
+  flex: 1;
+}
+
+.shopping-price-container {
+  border-bottom: dashed 1px #12c3cb;
+  border-top: dashed 1px #12c3cb;
+  display: flex;
+  padding: 10px;
+}
+
+/* .shopping-price-price {
+    text-align: end;
+} */

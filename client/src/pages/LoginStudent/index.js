@@ -5,6 +5,8 @@ import { LOGIN_STUDENT } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
 
+import PageNotFound from "../../components/PageNotFound/index";
+
 import "./loginstudent.css";
 
 export default function LoginStudent() {
@@ -50,9 +52,7 @@ export default function LoginStudent() {
 
   if (getToken){
     return (
-      <div className="logout-signup">
-
-      </div>
+      <PageNotFound />
     )
   } else {
   return (

@@ -41,7 +41,7 @@ form {
 }
 
 .btn-search-hero {
-  background: #12c3cb!important;
+  background: #12c3cb !important;
   color: white !important;
   background-image: linear-gradient(
     270deg,
@@ -57,10 +57,10 @@ form {
 }
 
 .btn-search-hero:hover {
-    border-color: transparent!important;
-    color: #161616!important;
-    background-position: 99% 50%!important;
-  }
+  border-color: transparent !important;
+  color: #161616 !important;
+  background-position: 99% 50% !important;
+}
 
 .btn-container-hero {
   display: flex;

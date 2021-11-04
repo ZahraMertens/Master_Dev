@@ -34,7 +34,7 @@ const tutorSchema = new Schema({
     type: String,
     required: false,
   },
-  describtion: {
+  description: {
     type: String,
     required: true,
   },

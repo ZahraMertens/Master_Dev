@@ -7,6 +7,8 @@ import Auth from "../../utils/auth";
 
 import "./logintutor.css";
 
+import PageNotFound from "../../components/PageNotFound/index";
+
 export default function LoginTutor() {
 
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -48,9 +50,7 @@ export default function LoginTutor() {
 
   if (getToken){
     return (
-      <div className="logout-signup">
-
-      </div>
+      <PageNotFound />
     )
   } else {
   return (

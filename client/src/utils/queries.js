@@ -9,10 +9,11 @@ export const GET_TUTORS = gql`
       email
       phone
       userType
-      describtion
+      description
       language
       degree
       hourRate
+      filenameImg
     }
   }
 `;
@@ -26,11 +27,13 @@ export const TUTOR_BY_ID = gql`
       email
       phone
       userType
-      describtion
+      description
       language
       degree
       hourRate
       filenameImg
+      zoomPMI
+      zoomPass
     }
   }
 `;
@@ -51,7 +54,7 @@ export const STUDENT_BY_ID = gql`
       lastName
       email
       userType
-      order {
+      orders {
         _id
         purchaseDate
         tutors {
@@ -73,7 +76,16 @@ export const ME_STUDENT = gql`
       lastName
       email
       userType
-      order
+      orders {
+        _id
+        purchaseDate
+        tutors {
+          _id
+          firstName
+          lastName
+          email
+        }
+      }
     }
   }
 `;
@@ -87,7 +99,7 @@ export const ME_TUTOR = gql`
       email
       phone
       userType
-      describtion
+      description
       language
       degree
       hourRate
