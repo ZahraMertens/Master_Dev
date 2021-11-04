@@ -228,13 +228,27 @@ const resolvers = {
       throw new AuthenticationError("Something went wrong!");
     },
     addOrder: async (parent, { tutors }, context) => {
-      console.log(tutors[0]); //array with id
+      console.log(tutors); //array with id ["0w2322"]
       const tutorId = tutors[0]
+      console.log(tutorId) //"333"
       //console.log(context);
       if (context.user) {
-        const tutor = await Tutor.findById(tutorId.toString()).exec();
+        const tutor = await Tutor.findById(tutorId).exec();
         console.log(tutor);
 
+        const obj = { _id: tutors[0], firstName: "Sam" }
+
+        const order = new Order({ tutors: obj });
+        console.log(order)
+
+        await Student.findByIdAndUpdate({_id: context.user._id}, {
+          $push: { orders: order },
+        })//.populate("orders");
+
+        return order;
+      }
+
+      throw new AuthenticationError("Not logged in");
         //const array = [tutor]
         //console.log(array)
 
@@ -289,17 +303,6 @@ const resolvers = {
         //   });
         // }
 
-        const order = new Order({ tutors });
-        console.log(order)
-
-        await Student.findByIdAndUpdate({_id: context.user._id}, {
-          $push: { orders: order },
-        });
-
-        return order;
-      }
-
-      throw new AuthenticationError("Not logged in");
     },
     //The file object that we get from the second parameter of the uploadFile
     //resolver is a Promise that resolves to an Upload type with the following attributes:

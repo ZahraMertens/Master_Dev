@@ -30,8 +30,10 @@ export default function Success() {
       console.log("test log if tutor")
 
       async function saveOrder() {
+
         const tutors = [data?.onetutor._id];
         console.log(tutors);
+
         if (tutors.length) {
           const { data } = await addOrder({ variables: { tutors } });
           const tutorData = data.addOrder.tutors;
@@ -42,10 +44,10 @@ export default function Success() {
           
         }
 
-          setTimeout(() => {
-            window.location.assign('/');
-            localStorage.removeItem("tutor_id")
-          }, 4000);
+          // setTimeout(() => {
+          //   window.location.assign('/');
+          //   localStorage.removeItem("tutor_id")
+          // }, 4000);
       }
 
       saveOrder();

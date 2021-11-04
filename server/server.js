@@ -1,7 +1,4 @@
-if(process.env.NODE_ENV !== "production"){
-    require("dotenv").config() //or load()
-}
-
+require("dotenv").config() //or load()
 const mongoose = require("mongoose")
 const express = require("express");
 const nodemailer = require("nodemailer");
@@ -36,36 +33,9 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(graphqlUploadExpress());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-}
-
-// const transporter = nodemailer.createTransport({
-//   service: "hotmail",
-//   auth: {
-//     user: "master_dev-test@outlook.com",
-//     pass: "masterdev1234!"
-//   }
-// });
-
-// const options = {
-//   from: "master_dev-test@outlook.com",
-//   to: "mertens.zahra@gmail.com",
-//   subject: "Congrats! You have an upcoming tutoring session!",
-//   text: "Thank you for booking with us"
-// };
-
-// transporter.sendMail(options, function(error, info) {
-//   if(err){
-//     console.log(err);
-//     return
-//   }
-//   console.log("Sent", info.response)
-// })
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// });
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../client/build")));
+// }
 
 db.once("open", () => {
   app.listen(PORT, () => {
@@ -74,8 +44,5 @@ db.once("open", () => {
   });
 });
 
-// STRIPE
-// Stripe uses an id which they send back to the server when creating a request so no credit
-// card details get stored in the application to protect sensetive information
 
  
