@@ -69,7 +69,6 @@ export default function TutorSignup() {
       <PageNotFound />
     )
   } else {
-    
   return (
     <div>
       <div className="tutorsignup-main">
