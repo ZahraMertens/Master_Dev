@@ -29,12 +29,6 @@ export default function TutorModal({ tutor, show, handleClose }) {
 
   console.log(formState)
 
-  // useEffect(() => {
-  //   if(tutor){
-  //     console.log(tutor)
-  //   }
-  // }, [tutor]);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 

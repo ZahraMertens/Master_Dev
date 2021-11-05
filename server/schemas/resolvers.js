@@ -316,10 +316,15 @@ const resolvers = {
       console.log(randomfileName);
       //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
       const stream = createReadStream(); //return nodestream/file
+
+      const envPath = 'client/public/uploads'
+      if (process.env.NODE_ENV === "production") {
+        envPath = 'client/build/uploads/'
+      }
+
       const pathName = path.join(
         __dirname,
-        "..",
-        `public/uploads/${randomfileName}`
+        "..", "..", envPath,randomfileName
       );
       await stream.pipe(fs.createWriteStream(pathName));
       console.log(pathName);
