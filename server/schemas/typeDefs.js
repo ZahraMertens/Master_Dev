@@ -49,9 +49,6 @@ const typeDefs = gql`
     }
 
     type File {
-        # filename: String!
-        # mimetype: String!
-        # encoding: String!
         filename: String!
     }
 

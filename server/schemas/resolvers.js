@@ -329,14 +329,9 @@ const resolvers = {
       await stream.pipe(fs.createWriteStream(pathName));
       console.log(pathName);
       return {
-        //{ filename, mimetype, encoding }
-        filename: randomfileName,
-        //url: `http://localhost:3001/images/${randomfileName}`,
+        filename: randomfileName
       };
     },
-    // successPayment: async (parent, args, context) => {
-    //   console.log(args)
-    // }
   },
 };
 

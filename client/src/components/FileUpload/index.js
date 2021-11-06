@@ -16,15 +16,14 @@ export default function FileUpload({handleUpload}) {
 
     const fileSelectedHandler = async (event) => {
         event.preventDefault();
-        
         console.log(event.target.files[0]); //returns the file name and details
         try {
-            let file = await event.target.files[0] 
+            const file = await event.target.files[0] 
             console.log(file)//as files is an array get the first element
             //if no files return else causes error
-            if(!file) return
+            if (!file) return
 
-            const newFile =  await uploadFile({
+            let newFile =  await uploadFile({
                 variables: {file}
             });
             console.log(newFile)
