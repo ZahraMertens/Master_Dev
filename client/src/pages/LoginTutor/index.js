@@ -8,12 +8,13 @@ import Auth from "../../utils/auth";
 import "./logintutor.css";
 
 import PageNotFound from "../../components/PageNotFound/index";
+import Loading from "../../components/Loading/index"
 
 export default function LoginTutor() {
 
   const [formState, setFormState] = useState({ email: "", password: "" });
 
-  const [loginTutor, { error, data }] = useMutation(LOGIN_TUTOR);
+  const [loginTutor, { loading, error, data }] = useMutation(LOGIN_TUTOR);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -48,7 +49,11 @@ export default function LoginTutor() {
 
   const getToken = localStorage.getItem("id_token")
 
-  if (getToken){
+  
+
+  if (loading) {
+    return <Loading />
+  } else if (getToken){
     return (
       <PageNotFound />
     )

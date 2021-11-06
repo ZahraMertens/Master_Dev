@@ -1,0 +1,12 @@
+.loading {
+    height: 100vh;
+    background-color: #12c3cb;
+}
+
+.loading-img {
+    padding-top: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+}

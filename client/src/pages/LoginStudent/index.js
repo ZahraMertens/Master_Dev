@@ -6,6 +6,7 @@ import { LOGIN_STUDENT } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 import PageNotFound from "../../components/PageNotFound/index";
+import Loading from "../../components/Loading/index"
 
 import "./loginstudent.css";
 
@@ -13,7 +14,7 @@ export default function LoginStudent() {
   
   const [formState, setFormState] = useState({ email: "", password: "" });
 
-  const [loginStudent, { error, data }] = useMutation(LOGIN_STUDENT);
+  const [loginStudent, { loading, error, data }] = useMutation(LOGIN_STUDENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -50,7 +51,9 @@ export default function LoginStudent() {
 
   const getToken = localStorage.getItem("id_token")
 
-  if (getToken){
+  if (loading) {
+    return <Loading />
+  } else if (getToken){
     return (
       <PageNotFound />
     )

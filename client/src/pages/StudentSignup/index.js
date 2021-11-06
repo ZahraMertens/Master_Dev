@@ -99,20 +99,6 @@ export default function StudentSignup() {
                     required
                   />
                 </div>
-                {/* <div className="col-12">
-                  <label htmlFor="validationCustom01" className="form-label">
-                    Phone Number
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="validationCustom01"
-                    name="phone"
-                    value={formState.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                </div> */}
                 <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
                     Email address
