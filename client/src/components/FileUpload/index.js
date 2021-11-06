@@ -19,7 +19,8 @@ export default function FileUpload({handleUpload}) {
         
         console.log(event.target.files[0]); //returns the file name and details
         try {
-            const file = await event.target.files[0] //as files is an array get the first element
+            let file = await event.target.files[0] 
+            console.log(file)//as files is an array get the first element
             //if no files return else causes error
             if(!file) return
 
