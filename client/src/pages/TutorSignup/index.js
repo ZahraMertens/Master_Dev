@@ -55,8 +55,8 @@ export default function TutorSignup() {
     }
   };
 
-  const handleUpload = async (filenameImg) => {
-    await setFormState({
+  const handleUpload = (filenameImg) => {
+    setFormState({
       ...formState,
       filenameImg: filenameImg.filenameImg ? filenameImg.filenameImg : formState.filenameImg
     })

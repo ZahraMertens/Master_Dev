@@ -28,7 +28,7 @@ export default function FileUpload({handleUpload}) {
             });
             console.log(newFile)
 
-            setPicture(file.name)
+            setPicture(newFile.data.uploadFile.filename)
 
             handleUpload({
                 filenameImg: newFile.data.uploadFile.filename

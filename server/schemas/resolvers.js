@@ -317,7 +317,7 @@ const resolvers = {
       //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
       const stream = createReadStream(); //return nodestream/file
 
-      const envPath = 'client/public/uploads'
+      var envPath = 'client/public/uploads'
       if (process.env.NODE_ENV === "production") {
         envPath = 'client/build/uploads/'
       }
