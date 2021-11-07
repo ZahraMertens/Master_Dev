@@ -7,9 +7,9 @@ import { uploadFile } from "react-s3";
 
 const S3_BUCKET = "master-dev-app";
 const REGION = "ap-southeast-2"; //Sydney region
-const ACCESS_KEY = process.env.REACT_APP_S3_ACCESS_KEY;
+const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
 // console.log(ACCESS_KEY)
-const SECRET_ACCESS_KEY = process.env.REACT_APP_S3_SECRET_ACCESS_KEY;
+const SECRET_ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
 // console.log(SECRET_ACCESS_KEY)
 
 const config = {
