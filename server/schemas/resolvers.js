@@ -183,10 +183,9 @@ const resolvers = {
         filenameImg,
         zoomPass,
         zoomPMI,
-      }, //password
+      },
       context
     ) => {
-      const saltRounds = 10;
       console.log(tutorId);
       if (context.user) {
         const tutor = await Tutor.findOneAndUpdate(

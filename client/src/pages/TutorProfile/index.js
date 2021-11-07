@@ -1,11 +1,11 @@
 import "./tutorProfile.css"
-import { FaCube, FaCubes, FaBoxOpen, FaGraduationCap, FaCode, FaUser } from "react-icons/fa";
+import { FaCube, FaGraduationCap, FaCode, FaUser } from "react-icons/fa";
 
 import { Button } from "react-bootstrap";
 import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-// import { Link } from "react-router-dom";
+
 import TutorModal from "../../components/TutorModal/index"
 
 import { TUTOR_BY_ID } from "../../utils/queries";
@@ -32,7 +32,6 @@ export default function TutorProfile() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
 
   return (
     <div className="tutorProfile-main">

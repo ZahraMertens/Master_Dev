@@ -1,9 +1,11 @@
 import React, {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+import { Button } from "react-bootstrap";
 
 import { STUDENT_BY_ID } from "../../utils/queries";
-import { UPDATE_STUDENT } from "../../utils/mutations";
+import StudentModal from "../../components/StudentModal/index";
+// import { UPDATE_STUDENT } from "../../utils/mutations";
 
 import AllTutors from "../../components/AllTutorIds/index";
 
@@ -15,6 +17,12 @@ import { FaUser } from "react-icons/fa";
 // import Auth from "../../utils/auth";
 
 export default function StudentProfile () {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleModalOpen = () => setShow(true);
+
   const { studentId } = useParams();
   console.log(studentId);
 
@@ -84,17 +92,17 @@ export default function StudentProfile () {
   //   }
   // };
 
-  // const getToken = localStorage.getItem("id_token")
+  const getToken = localStorage.getItem("id_token")
 
   if (loading) {
     return <div>Loading...</div>;
-  }// } else if (!getToken){
-  //   return (
-  //     <div className="checkout-error">
-  //       <h1>You must be logged in as a Student be be able to book a session!</h1>
-  //     </div>
-  //   )
-  // } else {
+  } else if (!getToken){
+    return (
+      <div className="checkout-error">
+        <h1>You must be logged in as a Student be be able to book a session!</h1>
+      </div>
+    )
+  } else {
   return (
     <div className="studentProfile-main">
       <div className="studentProfile-wrapper">
@@ -170,18 +178,14 @@ export default function StudentProfile () {
               // onChange={handleChange}
             />
           </div>
+          <Button className="btn btn-warning" variant="primary" onClick={handleModalOpen}>
+                EDIT PROFILE
+             </Button>
           <AllTutors orders={student.orders} />
-          {/* {student.map((student) => (
-            <div>{getAllTutors(student.orders.tutors._id)}</div>
-          ))} */}
-          <div className="col-12">
-            <button className="btn btn-primary btn-student" type="submit">
-              Update Profile
-            </button>
-          </div>
         </form>
       </div>
+      <StudentModal student={student} show={show} handleClose={handleClose}/>
     </div>
   );
-  //}
+  }
 }

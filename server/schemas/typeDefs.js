@@ -72,6 +72,7 @@ const typeDefs = gql`
         addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, description: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!, filenameImg: String, zoomPass: String!, zoomPMI: String!): AuthTutor
         updateStudent(studentId: ID, firstName: String, lastName: String, email: String, password: String ): AuthStudent
         updateTutor(tutorId: ID, firstName: String, lastName: String, email: String, phone: String, description: String, language: String, degree: String, hourRate: ID, filenameImg: String, zoomPass: String, zoomPMI: String): AuthTutor
+
     }  
 `
 
