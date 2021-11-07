@@ -9,23 +9,23 @@ const stripe = require("stripe")(
   "sk_test_51JljitDQYZbnuPWjFE77MAAutk0J7amTagQjWx3mKQADSp9bkfddoZgfUyovoP6KDEJ1QkAIxyqWLTrFNY8lLfkF00L8ws4HOy"
 );
 
-const { GraphQLUpload, graphqlUploadExpress } = require("graphql-upload");
+//const { GraphQLUpload, graphqlUploadExpress } = require("graphql-upload");
 
-function generateString(length) {
-  var result = "";
-  var characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
+// function generateString(length) {
+//   var result = "";
+//   var characters =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//   var charactersLength = characters.length;
+//   for (var i = 0; i < length; i++) {
+//     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//   }
+//   return result;
+// }
 
 const resolvers = {
   // This maps the `Upload` scalar to the implementation provided
   // by the `graphql-upload` package.
-  Upload: GraphQLUpload,
+  //Upload: GraphQLUpload,
 
   Query: {
     students: async () => {
@@ -306,32 +306,32 @@ const resolvers = {
     },
     //The file object that we get from the second parameter of the uploadFile
     //resolver is a Promise that resolves to an Upload type with the following attributes:
-    uploadFile: async (parent, { file }) => {
-      const { createReadStream, filename, mimetype, encoding } = await file;
+    // uploadFile: async (parent, { file }) => {
+    //   const { createReadStream, filename, mimetype, encoding } = await file;
 
-      console.log(filename);
+    //   console.log(filename);
 
-      //const {ext} = path.parse(filename)
-      const randomfileName = generateString(12) + filename;
-      console.log(randomfileName);
-      //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
-      const stream = createReadStream(); //return nodestream/file
+    //   //const {ext} = path.parse(filename)
+    //   const randomfileName = generateString(12) + filename;
+    //   console.log(randomfileName);
+    //   //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
+    //   const stream = createReadStream(); //return nodestream/file
 
-      var envPath = 'client/public/uploads'
-      if (process.env.NODE_ENV === "production") {
-        envPath = 'client/build/uploads/'
-      }
+    //   var envPath = 'client/public/uploads'
+    //   if (process.env.NODE_ENV === "production") {
+    //     envPath = 'client/build/uploads/'
+    //   }
 
-      const pathName = path.join(
-        __dirname,
-        "..", "..", envPath,randomfileName
-      );
-      await stream.pipe(fs.createWriteStream(pathName));
-      console.log(pathName);
-      return {
-        filename: randomfileName
-      };
-    },
+    //   const pathName = path.join(
+    //     __dirname,
+    //     "..", "..", envPath,randomfileName
+    //   );
+    //   await stream.pipe(fs.createWriteStream(pathName));
+    //   console.log(pathName);
+    //   return {
+    //     filename: randomfileName
+    //   };
+    // },
   },
 };
 

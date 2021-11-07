@@ -1,51 +1,50 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
+import { uploadFile } from "react-s3";
 
-import { UPLOAD_FILE } from "../../utils/mutations"
+//import { UPLOAD_FILE } from "../../utils/mutations";
 
+const S3_BUCKET = "master-dev-app";
+const REGION = "ap-southeast-2"; //Sydney region
+const ACCESS_KEY = process.env.REACT_APP_S3_ACCESS_KEY;
+// console.log(ACCESS_KEY)
+const SECRET_ACCESS_KEY = process.env.REACT_APP_S3_SECRET_ACCESS_KEY;
+// console.log(SECRET_ACCESS_KEY)
 
-export default function FileUpload({handleUpload}) {
+const config = {
+  bucketName: S3_BUCKET,
+  region: REGION,
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_ACCESS_KEY,
+};
 
-    const [picture, setPicture] = useState("");
+export default function FileUpload({ handleAWS }) {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileInput = (event) => {
+    const newFile = event.target.files[0];
+    console.log(newFile)
+    setSelectedFile(newFile);
     
-    const [uploadFile, {error}] = useMutation(UPLOAD_FILE, {
-        onCompleted: data => console.log(data)
-    });
-
-
-    const fileSelectedHandler = async (event) => {
-        event.preventDefault();
-        console.log(event.target.files[0]); //returns the file name and details
-        try {
-            const file = await event.target.files[0] 
-            console.log(file)//as files is an array get the first element
-            //if no files return else causes error
-            if (!file) return
-
-            let newFile =  await uploadFile({
-                variables: {file}
-            });
-            console.log(newFile)
-
-            setPicture(newFile.data.uploadFile.filename)
-
-            handleUpload({
-                filenameImg: newFile.data.uploadFile.filename
-            });
-
-            console.log(file.name)
-
-        } catch(error) {
-            console.log(error)
-        }
+    if (newFile) {
+      uploadFile(newFile, config)
+        .then((data) => {
+          if(data){
+            //const newkey = generateString(10) + data.key
+            //console.log(newkey);
+            handleAWS({ filenameImg: data.location})
+          }
+        }) //returns obj with aws bucket, key(image name) and location (link for image in cloud)
+        .catch((err) => console.error(err));
     }
+  };
 
   return (
     <>
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Upload a profile image:</Form.Label>
-        <Form.Control type="file" name="picture" onChange={fileSelectedHandler}/>
+        <Form.Control type="file" name="picture" onChange={handleFileInput} />
       </Form.Group>
     </>
   );

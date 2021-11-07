@@ -55,7 +55,7 @@ export default function TutorSignup() {
     }
   };
 
-  const handleUpload = (filenameImg) => {
+  const handleAWS = (filenameImg) => {
     setFormState({
       ...formState,
       filenameImg: filenameImg.filenameImg ? filenameImg.filenameImg : formState.filenameImg
@@ -224,7 +224,7 @@ export default function TutorSignup() {
                     <span className="input-group-text">.00</span>
                   </div>
                 </div>
-                <FileUpload handleUpload={handleUpload} />
+                <FileUpload handleAWS={handleAWS} />
                 <div className="col-12">
                   <label htmlFor="validationCustom01" className="form-label">
                     About Me (Short Describtion)

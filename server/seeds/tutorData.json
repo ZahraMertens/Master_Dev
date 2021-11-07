@@ -12,7 +12,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "tutor1.jpg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor1.jpg"
     },
     {
         "firstName": "Brad",
@@ -27,7 +27,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "tutor2.jpg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor2.jpg"
     },
     {
         "firstName": "Jessica",
@@ -42,7 +42,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "tutor3.jpeg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/teacher12.jpg"
     },
     {
         "firstName": "Tess",
@@ -57,7 +57,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "teacher12.jpg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor3.jpeg"
     },
     {
         "firstName": "Bonny",
@@ -72,7 +72,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "teacher13.jpeg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/teacher13.jpeg"
     },
     {
         "firstName": "Tom",
@@ -87,7 +87,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "tutor4.jpg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor4.jpg"
     },
     {
         "firstName": "Jackson",
@@ -102,7 +102,7 @@
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "tutor5.jpg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor5.jpg"
     },
     {
         "firstName": "Raj",
@@ -110,13 +110,73 @@
         "email": "raj.b@gmail.com",
         "userType": "Tutor",
         "phone": "0412144434",
-        "description": "My teaching method is focused on the students themselves. Every person holds different backgrounds, like their own previous skills and tastes. Aligning the subject taught with these former interests is key to have an enjoyable learning experience. Beyond that, building up on top of basics skills and exercising creativeness alongside with problem tackling strategies has been giving the best outcomes I ever came across. I am a Business Analyst and Software Engineer and I have been giving lessons and teaching ever since I was a kid. I've taught computer science subjects as tutor and researcher during my university time.",
-        "language": "Ruby",
-        "degree": "Master in Accounting",
+        "description": "My teaching method is quite simple. I start with the basics and make sure that the student understands them well as I believe if the basics are clear, no topic can be complex. I provide my students with up to date resources and also the strategy to learn from them. I am an IT engineer currently pursuing a Masters in Data Science from Sydney University. I have been taking private tutor lessons in python since the last few years and have a good experience in competitive programming in python.",
+        "language": "Python",
+        "degree": "Bachelor in IT Engineering",
         "hourRate": 43,
         "password": "test1234",
         "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
         "zoomPass": "97V7aj",
-        "filenameImg": "tutor6.jpg"
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor6.jpg"
+    },
+    {
+        "firstName": "Matthew",
+        "lastName": "Jackson",
+        "email": "matt.jackson13@gmail.com",
+        "userType": "Tutor",
+        "phone": "0442144534",
+        "description": "I believe in making the student understand the concept in depth using practical and real world examples. Programming is all about logic and I believe in strengthening the student logic by giving lots of practice and examples. I have completed my Masters in Computer Science and carry a 13 years experience in the training field. I well versed with all programming languages. I have good communication skills and am experienced with handling students of all age groups.",
+        "language": "Ruby",
+        "degree": "Master in Computer Science",
+        "hourRate": 39,
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj",
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor8.jpg"
+    },
+    {
+        "firstName": "Jenna",
+        "lastName": "Lloyd",
+        "email": "jenna.l134@gmail.com",
+        "userType": "Tutor",
+        "phone": "0442144894",
+        "description": "I approach my classes based on the interest level of the students. If the students are not too keen on learning the topic, I try to make the lesson more engaging and try to build up an interest. And if the students are very keen on learning the topic (which I hope for all my classes) I try to make the lessons challenging so that they make the most out of their time. I have given lessons in robotics and programming for a recognized tutoring company in Dubai for over 6 months an have taken classes up to 15 students at a time.",
+        "language": "Ruby",
+        "degree": "Bachelor in Information Technologies",
+        "hourRate": 35,
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj",
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor9.jpg"
+    },
+    {
+        "firstName": "Arnoud",
+        "lastName": "Evans",
+        "email": "arn.evans90@hotmail.com",
+        "userType": "Tutor",
+        "phone": "0443444894",
+        "description": "The most important thing for me is to get the students ready for real-world or industry-ready (which is generally not the case in University education). So a lot of examples & assignments in lessons will be focused on the practicality of the subject. I am a professional developer with a total of 5+ years of experience in Full-Stack Web Development. Along with that, I have also tutored 2 courses at the University of Adelaide. Having strong expertise in JavaScript and ReactJs, other technologies involve Node, Express, MongoDB, Git, SVN, Python, JAVA.",
+        "language": "Java",
+        "degree": "Bachelor in Software Engineering",
+        "hourRate": 34,
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj",
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor10.jpg"
+    },
+    {
+        "firstName": "Grace",
+        "lastName": "Davis",
+        "email": "gracy.davis1234@hotmail.com",
+        "userType": "Tutor",
+        "phone": "0443443214",
+        "description": "My teaching methodology is practical based. You learn programming by doing it yourself. You learn by creating programs, making mistakes, finding those errors. Don't panic I will be there to guide you through every step. Let's make learning fun. I'm an experienced data analyst with a strong programming background. I love programming and teaching programming to others as well. Whether you are new to programming or just want to expand you existing knowledge I could help you with both.",
+        "language": "C++",
+        "degree": "Bachelor in Data Analysis",
+        "hourRate": 30,
+        "password": "test1234",
+        "zoomPMI": "https://us05web.zoom.us/j/3277319646?pwd=MjJLRENiWVJrNUt2LzRibXVPcmtoZz09",
+        "zoomPass": "97V7aj",
+        "filenameImg": "https://master-dev-app.s3.amazonaws.com/tutor14.jpg"
     }
 ]

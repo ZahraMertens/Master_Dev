@@ -66,7 +66,7 @@ export default function Profile() {
             <img
               src={
                 tutor.filenameImg
-                  ? `../uploads/${tutor.filenameImg}`
+                  ? `${tutor.filenameImg}`
                   : ProfileImage
               }
               className="profile-img-tutor"

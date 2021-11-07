@@ -53,7 +53,7 @@ export default function TutorModal({ tutor, show, handleClose }) {
     }
   };
 
-  const handleUpload = async (filenameImg) => {
+  const handleAWS = async (filenameImg) => {
     await setFormState({
       ...formState,
       filenameImg: filenameImg.filenameImg ? filenameImg.filenameImg : formState.filenameImg
@@ -188,7 +188,7 @@ export default function TutorModal({ tutor, show, handleClose }) {
                 required
               />
             </div>
-            <FileUpload handleUpload={handleUpload} />
+            <FileUpload handleAWS={handleAWS} />
             <div className="col-12">
               <label htmlFor="validationCustom01" className="form-label">
                 Hourly Rate $

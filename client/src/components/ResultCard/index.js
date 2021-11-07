@@ -31,7 +31,7 @@ export default function ResultCard({ tutors, language }) {
         <div key={tutor._id} className="results-card">
           <div className="row">
             <div className="col-3 image-container-card">
-              <img src={tutor.filenameImg ? `/uploads/${tutor.filenameImg}` : ProfileImage } className="profile-img-tutor-card" alt="test"></img>
+              <img src={tutor.filenameImg ? `${tutor.filenameImg}` : ProfileImage } className="profile-img-tutor-card" alt="test"></img>
             </div>
             <div className="col info-card-container">
               <h1 className="tutor-name">{tutor.firstName} {tutor.lastName}</h1>
