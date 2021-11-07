@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { AuthenticationError } = require("apollo-server-express");
 const { Student, Tutor, Order } = require("../models");
 const { signToken } = require("../utils/auth");
@@ -5,22 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const stripe = require("stripe")(
-  "sk_test_51JljitDQYZbnuPWjFE77MAAutk0J7amTagQjWx3mKQADSp9bkfddoZgfUyovoP6KDEJ1QkAIxyqWLTrFNY8lLfkF00L8ws4HOy"
-);
-
-//const { GraphQLUpload, graphqlUploadExpress } = require("graphql-upload");
-
-// function generateString(length) {
-//   var result = "";
-//   var characters =
-//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-//   var charactersLength = characters.length;
-//   for (var i = 0; i < length; i++) {
-//     result += characters.charAt(Math.floor(Math.random() * charactersLength));
-//   }
-//   return result;
-// }
+const stripe = require("stripe")(process.env.STRIPE_SK);
 
 const resolvers = {
   // This maps the `Upload` scalar to the implementation provided
@@ -57,28 +43,25 @@ const resolvers = {
       return Student.findOne({ _id: studentId });
     },
     checkout: async (parent, args, context) => {
-      //console.log(args.tutors); //[ '617fb3578e685039ba13b474' ]
       const url = new URL(context.headers.referer).origin;
       const order = new Order({ tutors: args.tutors });
-
-      //console.log(order);
 
       const line_items = [];
 
       const { tutors } = await order.populate("tutors");
-      //console.log(tutors);
-      //console.log(tutors[0].firstName);
 
+      //As only one tutor in array it returns only one product
       for (let i = 0; i < tutors.length; i++) {
         const product = await stripe.products.create({
-          name: tutors[i].firstName,
-          description: "Online Tutoring Session",
+          name: `Tutor name: ${tutors[i].firstName} ${tutors[i].lastName}`,
+          description: `One hour online tutoring session with ${tutors[i].firstName} to improve your coding skills and solve problems. Powered by MasterDev Tutoring`,
+          images: [`${tutors[0].filenameImg}`],
         });
 
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: tutors[i].hourRate * 100,
-          currency: "usd",
+          currency: "aud",
         });
 
         line_items.push({
@@ -95,9 +78,8 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
-      //console.log(session);
 
-      //Creating session to be able to redirect to checkout platform of stripe
+      //Creating session to be able to redirect to checkout platform of stripe in frontend
       return { session: session.id };
     },
   },
@@ -188,7 +170,20 @@ const resolvers = {
     },
     updateTutor: async (
       parent,
-      { tutorId, firstName, lastName, email, phone, hourRate, description, language, degree, filenameImg, zoomPass, zoomPMI}, //password
+      {
+        tutorId,
+        firstName,
+        lastName,
+        email,
+        phone,
+        hourRate,
+        description,
+        language,
+        degree,
+        filenameImg,
+        zoomPass,
+        zoomPMI,
+      }, //password
       context
     ) => {
       const saltRounds = 10;
@@ -229,28 +224,14 @@ const resolvers = {
     },
     addOrder: async (parent, { tutors }, context) => {
       console.log(tutors); //array with id ["0w2322"]
-      const tutorId = tutors[0]
-      console.log(tutorId) //"333"
+      const tutorId = tutors[0];
+      console.log(tutorId); //"333"
       //console.log(context);
       if (context.user) {
         const tutor = await Tutor.findById(tutorId).exec();
-        console.log(tutor);
-
-        const obj = { _id: tutors[0], firstName: "Sam" }
-
-        const order = new Order({ tutors: obj });
-        console.log(order)
-
-        await Student.findByIdAndUpdate({_id: context.user._id}, {
-          $push: { orders: order },
-        })//.populate("orders");
-
-        return order;
-      }
-
-      throw new AuthenticationError("Not logged in");
-        //const array = [tutor]
-        //console.log(array)
+        // console.log(tutor);
+        const array = [tutor];
+        // console.log(array);
 
         // if (tutor) {
         //   const transporter = nodemailer.createTransport({
@@ -269,16 +250,16 @@ const resolvers = {
         //     context.user.email, //current logged in student email
         //   ];
 
-        //   console.log(maillist)
+        //   console.log(maillist);
 
         //   const options = {
         //     from: "master_dev-test@outlook.com",
         //     to: maillist,
         //     subject: "Congrats! You have an upcoming tutoring session!",
-        //     text: `Hi Master Dev's, you have an upcoming session, pleadetails below:`,
+        //     text: `Hi Master Dev's, you have an upcoming session! All details are below:`,
         //     html: `<h1>Hi Master Dev's,</h1>
         //        <br/>
-        //        <h2>You have an upcoming session, please find the details below:</h2>
+        //        <h2>You have an upcoming session. All student and tutor details are below:</h2>
         //        <br/>
         //        <ul>
         //        <li>Tutor: ${tutor.firstName} ${tutor.lastName}</li>
@@ -288,6 +269,9 @@ const resolvers = {
         //        <li>Tutor Email: ${tutor.email}</li>
         //        <li>Tutor Phone: ${tutor.phone}</li>
         //        </ul>
+        //        <br/>
+        //        <p>We hope you enjoy our services!</p>
+        //        <p>If you have any trouble with organising a session please do not hesitate to contact us at master_dev-test@outlook.com.</p>
         //        <br/>
         //        <h2>Happy Hacking!</h2>
         //        <p>Your Master Dev Team</p>
@@ -303,37 +287,24 @@ const resolvers = {
         //   });
         // }
 
+        const obj = { _id: tutors[0], firstName: "Sam" };
+
+        const order = new Order({ tutors: obj });
+        console.log(order);
+
+        await Student.findByIdAndUpdate(
+          { _id: context.user._id },
+          {
+            $push: { orders: order },
+          }
+        ); //.populate("orders");
+
+        return order;
+      }
+
+      throw new AuthenticationError("Not logged in");
     },
-    //The file object that we get from the second parameter of the uploadFile
-    //resolver is a Promise that resolves to an Upload type with the following attributes:
-    // uploadFile: async (parent, { file }) => {
-    //   const { createReadStream, filename, mimetype, encoding } = await file;
-
-    //   console.log(filename);
-
-    //   //const {ext} = path.parse(filename)
-    //   const randomfileName = generateString(12) + filename;
-    //   console.log(randomfileName);
-    //   //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
-    //   const stream = createReadStream(); //return nodestream/file
-
-    //   var envPath = 'client/public/uploads'
-    //   if (process.env.NODE_ENV === "production") {
-    //     envPath = 'client/build/uploads/'
-    //   }
-
-    //   const pathName = path.join(
-    //     __dirname,
-    //     "..", "..", envPath,randomfileName
-    //   );
-    //   await stream.pipe(fs.createWriteStream(pathName));
-    //   console.log(pathName);
-    //   return {
-    //     filename: randomfileName
-    //   };
-    // },
   },
 };
 
 module.exports = resolvers;
-

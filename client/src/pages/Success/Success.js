@@ -49,6 +49,8 @@ export default function Success() {
     }
   }, [addOrder, data]);
 
+  //If there is no tutorId in local storage the page can't be found
+  //Ensures that the access to the success page is not possible through the URL /success only when redirected from stripe
   return (
     <div className="success-main">
       {tutorId ? (
