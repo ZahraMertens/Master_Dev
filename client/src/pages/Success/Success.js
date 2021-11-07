@@ -39,10 +39,10 @@ export default function Success() {
           const tutorData = data.addOrder.tutors;
         }
 
-          setTimeout(() => {
-            window.location.assign('/');
-            localStorage.removeItem("tutor_id")
-          }, 4000);
+          // setTimeout(() => {
+          //   window.location.assign('/');
+          //   localStorage.removeItem("tutor_id")
+          // }, 4000);
       }
 
       saveOrder();

@@ -5,6 +5,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { STUDENT_BY_ID } from "../../utils/queries";
 import { UPDATE_STUDENT } from "../../utils/mutations";
 
+import AllTutors from "../../components/AllTutorIds/index";
+
 import Auth from '../../utils/auth';
 
 import "./studentProfile.css";
@@ -22,67 +24,77 @@ export default function StudentProfile () {
 
   const student = data?.onestudent || {};
 
-  console.log(student);
+  console.log(student)
 
-  //Use Effect runs whenever any state changes
-  useEffect(()=> {
-    console.log("Student Changed", data?.onestudent)
-    if(data?.onestudent){
-      setFormState({
-        studentId: studentId,
-        firstName: `${student.firstName}`,
-        lastName: `${student.lastName}`,
-        email: `${student.email}`,
-        password: "",
-      })
-    }
-  },[data?.onestudent]);
+  // console.log(student.orders[0]._id)
 
-  const [formState, setFormState] = useState({
-    studentId: studentId,
-    firstName: ``,
-    lastName: ``,
-    email: ``,
-    password: ``,
-  });
+  // function getAllTutors (tutorId){
+  //   const {loading, data} = useQuery(TUTOR_BY_ID, {
+  //     variables: {tutorId: tutorId}
+  //   })
+  // }
 
-  const [updateStudent, { error }] = useMutation(UPDATE_STUDENT);
+  // console.log(student);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  // //Use Effect runs whenever any state changes
+  // useEffect(()=> {
+  //   console.log("Student Changed", data?.onestudent)
+  //   if(data?.onestudent){
+  //     setFormState({
+  //       studentId: studentId,
+  //       firstName: `${student.firstName}`,
+  //       lastName: `${student.lastName}`,
+  //       email: `${student.email}`,
+  //       password: "",
+  //     })
+  //   }
+  // },[data?.onestudent]);
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
+  // const [formState, setFormState] = useState({
+  //   studentId: studentId,
+  //   firstName: ``,
+  //   lastName: ``,
+  //   email: ``,
+  //   password: ``,
+  // });
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
+  // const [updateStudent, { error }] = useMutation(UPDATE_STUDENT);
 
-    try {
-      const { data } = await updateStudent({
-        variables: { ...formState },
-      });
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
 
-      Auth.login(data.updateStudent.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  //   setFormState({
+  //     ...formState,
+  //     [name]: value,
+  //   });
+  // };
 
-  const getToken = localStorage.getItem("id_token")
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log(formState);
+
+  //   try {
+  //     const { data } = await updateStudent({
+  //       variables: { ...formState },
+  //     });
+
+  //     Auth.login(data.updateStudent.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
+  // const getToken = localStorage.getItem("id_token")
 
   if (loading) {
     return <div>Loading...</div>;
-  } else if (!getToken){
-    return (
-      <div className="checkout-error">
-        <h1>You must be logged in as a Student be be able to book a session!</h1>
-      </div>
-    )
-  } else {
+  }// } else if (!getToken){
+  //   return (
+  //     <div className="checkout-error">
+  //       <h1>You must be logged in as a Student be be able to book a session!</h1>
+  //     </div>
+  //   )
+  // } else {
   return (
     <div className="studentProfile-main">
       <div className="studentProfile-wrapper">
@@ -96,7 +108,7 @@ export default function StudentProfile () {
             <FaUser size={70} />
           </div>
         </div>
-        <form className="row form-student" onSubmit={handleFormSubmit}>
+        <form className="row form-student">
           <div className="col-12">
             <label
               htmlFor="validationCustom01"
@@ -110,8 +122,8 @@ export default function StudentProfile () {
               id="validationCustom01"
               placeholder="Mark"
               name="firstName"
-              value={formState.firstName}
-              onChange={handleChange}
+              // value={formState.firstName}
+              // onChange={handleChange}
               required
             />
           </div>
@@ -125,8 +137,8 @@ export default function StudentProfile () {
               id="validationCustom01"
               placeholder="Doe"
               name="lastName"
-              value={formState.lastName}
-              onChange={handleChange}
+              // value={formState.lastName}
+              // onChange={handleChange}
               required
             />
           </div>
@@ -140,8 +152,8 @@ export default function StudentProfile () {
               id="validationCustom01"
               placeholder="john.doe@gmail.com"
               name="email"
-              value={formState.email}
-              onChange={handleChange}
+              // value={formState.email}
+              // onChange={handleChange}
               required
             />
           </div>
@@ -154,10 +166,14 @@ export default function StudentProfile () {
               className="form-control"
               id="validationCustom01"
               name="password"
-              value={formState.password}
-              onChange={handleChange}
+              // value={formState.password}
+              // onChange={handleChange}
             />
           </div>
+          <AllTutors orders={student.orders} />
+          {/* {student.map((student) => (
+            <div>{getAllTutors(student.orders.tutors._id)}</div>
+          ))} */}
           <div className="col-12">
             <button className="btn btn-primary btn-student" type="submit">
               Update Profile
@@ -167,5 +183,5 @@ export default function StudentProfile () {
       </div>
     </div>
   );
-  }
+  //}
 }
