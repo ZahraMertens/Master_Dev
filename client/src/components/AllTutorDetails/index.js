@@ -1,12 +1,14 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 
+import { Card } from "react-bootstrap";
+import "./AllTutorDetails.css";
+
 import { TUTOR_BY_ID } from "../../utils/queries";
 
 export default function AllTutorDetails(props) {
-
-  const tutorId = props.tutorId
-  console.log(tutorId)
+  const tutorId = props.tutorId;
+  console.log(tutorId);
 
   const { loading, data } = useQuery(TUTOR_BY_ID, {
     variables: { tutorId: tutorId },
@@ -14,15 +16,23 @@ export default function AllTutorDetails(props) {
 
   const tutor = data?.onetutor || {};
 
-  console.log(tutor)
+  console.log(tutor);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <p>{tutor.firstName}</p>
+    <div className="col">
+      <Card className="myTutor-Card" style={{ width: "13rem" }}>
+        <Card.Img variant="top" src={tutor.filenameImg} />
+        <Card.Body>
+          <Card.Title>{tutor.firstName} {tutor.lastName}</Card.Title>
+          <Card.Text>
+             {tutor.language}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

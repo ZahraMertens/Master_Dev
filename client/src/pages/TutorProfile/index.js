@@ -43,7 +43,7 @@ export default function TutorProfile() {
         </div>
         <div className="row">
           <div className="col-4">
-            <img src={tutor.filenameImg ? `/uploads/${tutor.filenameImg}` : ProfileImage } className="profile-img-tutor" alt="test"></img>
+            <img src={tutor.filenameImg ? `${tutor.filenameImg}` : ProfileImage } className="profile-img-tutor" alt="test"></img>
           </div>
           <div className="col">
             <div className="row">

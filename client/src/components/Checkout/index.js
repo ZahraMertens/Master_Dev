@@ -7,18 +7,12 @@ import CheckoutImage from "../../assets/images/checkout.png";
 import Zoom from "../../assets/images/zoom.png";
 
 import { FaShoppingCart } from "react-icons/fa";
-
 import "./checkout.css";
-// import { TUTOR_BY_ID } from "../../utils/queries";
-//import { idbPromise } from '../../utils/helpers';
-//import CartItem from '../CartItem';
 import Auth from "../../utils/auth";
-//import { useStoreContext } from '../../utils/GlobalState';
-//import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
 const stripePromise = loadStripe(
-  "pk_test_51JljitDQYZbnuPWj4ox5O5YUQEqQTZ8jRtYNLDXKY4275jmExTXudjm2tNZBi4I1zODPyb0A49UUNFrpp2a96KyU00E8EijJkt"
+  process.env.REACT_APP_STRIPE_PK
 );
 
 const Cart = ({ tutor }) => {

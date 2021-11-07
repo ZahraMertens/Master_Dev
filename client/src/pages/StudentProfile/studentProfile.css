@@ -1,26 +1,96 @@
 .studentProfile-main {
-    height: 100vh;
-    padding-top: 150px;
-    padding-bottom: 150px;
+  height: 100%;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-image: url("../../assets/images/profilebg.png");
+  background-repeat: no-repeat;
 }
 
 .studentProfile-wrapper {
-    width: 40%;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: rgb(236, 236, 236);
-    text-align: center;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(179, 179, 179, 0.959);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.781);
+  padding: 20px !important;
+  z-index: 3;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .studentProfile-wrapper {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+  }
 }
 
 .form-student {
-    text-align: start;
+  text-align: start;
 }
 
-.btn-student {
-    margin-top: 20px;
+.btn-editStudent {
+  margin-top: 20px;
+  background: #12c3cb !important;
+  color: white !important;
+  background-image: linear-gradient(
+    270deg,
+    #ffd500,
+    #fffb00,
+    rgba(218, 218, 218, 0),
+    rgba(175, 175, 175, 0)
+  ) !important;
+  border-radius: 30px !important;
+  background-position: 1% 50% !important;
+  background-size: 300% 300% !important;
+  transition: all 0.5s ease-out !important;
+  border: 0px;
+}
+
+.btn-editStudent:hover {
+  border-color: transparent !important;
+  color: #161616 !important;
+  background-position: 99% 50% !important;
+}
+
+.student-info {
+  text-align: start !important;
 }
 
 .student-label {
-    margin-top: 30px!important;
-    font-size: 20px!important;
+  margin-top: 30px !important;
+  font-size: 20px !important;
+}
+
+.studentProfile-tag {
+    font-size: 30px!important;
+    color: #106f74;
+}
+
+.studentProfile-text {
+    font-size: 25px!important;
+    color: rgb(56, 56, 56);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.studentProfile2-wrapper {
+  width: 60%;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(179, 179, 179, 0.959);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.781);
+  padding: 20px !important;
+  z-index: 3;
+}
+
+.myTutors {
+    color: rgb(73, 73, 73);
+}
+
+.allTutors-container {
+  margin-top: 50px;
 }
