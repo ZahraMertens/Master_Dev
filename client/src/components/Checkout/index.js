@@ -12,7 +12,7 @@ import Auth from "../../utils/auth";
 
 // stripePromise returns a promise with the stripe object as soon as the Stripe package loads
 const stripePromise = loadStripe(
-  `${process.env.REACT_APP_STRIPE_PK}`
+  `pk_test_51JljitDQYZbnuPWj4ox5O5YUQEqQTZ8jRtYNLDXKY4275jmExTXudjm2tNZBi4I1zODPyb0A49UUNFrpp2a96KyU00E8EijJkt`
 );
 
 const Cart = ({ tutor }) => {
