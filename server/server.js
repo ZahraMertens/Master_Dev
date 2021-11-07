@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const express = require("express");
 const nodemailer = require("nodemailer");
 const { ApolloServer } = require('apollo-server-express');
-const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
+// const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 const path = require("path");
 const cors = require("cors")
 //Import middleware to configure with apollo server
@@ -25,21 +25,19 @@ server.start().then(res => {
   server.applyMiddleware({ app });
 })
 
-// server.applyMiddleware({ app });
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("/public"));
 app.use(cors());
-app.use(graphqlUploadExpress());
+// app.use(graphqlUploadExpress());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
+// app.get("*", function (request, response) {
+//   response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+// });
 
 db.once("open", () => {
   app.listen(PORT, () => {

@@ -287,9 +287,8 @@ const resolvers = {
         //   });
         // }
 
-        const obj = { _id: tutors[0], firstName: "Sam" };
-
-        const order = new Order({ tutors: obj });
+        //add tutor to student order
+        const order = new Order({ tutors: tutor });
         console.log(order);
 
         await Student.findByIdAndUpdate(

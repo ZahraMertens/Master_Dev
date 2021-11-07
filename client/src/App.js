@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
-import { createUploadLink } from "apollo-upload-client"
+// import { createUploadLink } from "apollo-upload-client"
 import { setContext } from '@apollo/client/link/context';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +22,7 @@ import Success from "./pages/Success/Success"
 
 
 // Construct our main GraphQL API endpoint
-const httpLink = createUploadLink({
+const httpLink = createHttpLink({
   uri: '/graphql', //Uniform resource identifier
 });
 

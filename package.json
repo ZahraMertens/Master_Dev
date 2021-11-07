@@ -20,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/ZahraMertens/Master_Dev/issues"
   },
-  "homepage": "https://github.com/ZahraMertens/Master_Dev#readme",
   "dependencies": {
     "concurrently": "^6.3.0"
   }
