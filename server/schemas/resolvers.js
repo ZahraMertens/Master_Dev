@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const stripe = require("stripe")("sk_test_51JljitDQYZbnuPWjFE77MAAutk0J7amTagQjWx3mKQADSp9bkfddoZgfUyovoP6KDEJ1QkAIxyqWLTrFNY8lLfkF00L8ws4HOy");
+const stripe = require("stripe")(`${process.env.STRIPE_SK}`);
 
 const resolvers = {
   // This maps the `Upload` scalar to the implementation provided
