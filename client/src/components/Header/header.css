@@ -2,9 +2,14 @@
   background-color: rgb(255, 255, 255)!important;
 }
 
+
 .nav-link {
   color: rgb(49, 49, 49) !important;
   font-size: 20px !important;
+}
+
+.nav-text {
+  text-align: end;
 }
 
 .nav-item {

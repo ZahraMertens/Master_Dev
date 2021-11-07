@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 import { Card } from "react-bootstrap";
 import "./AllTutorDetails.css";
@@ -27,10 +28,11 @@ export default function AllTutorDetails(props) {
       <Card className="myTutor-Card" style={{ width: "13rem" }}>
         <Card.Img variant="top" src={tutor.filenameImg} />
         <Card.Body>
-          <Card.Title>{tutor.firstName} {tutor.lastName}</Card.Title>
-          <Card.Text>
-             {tutor.language}
-          </Card.Text>
+          <Card.Title>
+            {tutor.firstName} {tutor.lastName}
+          </Card.Title>
+          <Card.Text>{tutor.language}</Card.Text>
+          <Link className="btn btn-sm btn-warning" to={`/profile/${tutor._id}`}>Profile</Link>
         </Card.Body>
       </Card>
     </div>

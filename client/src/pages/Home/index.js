@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { InputGroup, FormControl } from "react-bootstrap";
-
+// import { Typeahead } from 'react-bootstrap-typeahead';
+import { Autocomplete, TextField } from "@mui/material";
+// import options from './data';
 import "./home.css";
+// import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 import { FaSearch } from "react-icons/fa";
 
@@ -12,21 +15,57 @@ import Works2 from "../../assets/images/howitworks2.png";
 import Works3 from "../../assets/images/howitworks3.png";
 import WhyUs from "../../assets/images/whyus2.png";
 
+const languages = [
+  {
+    title: "Ruby",
+  },
+  {
+    title: "JavaScript",
+  },
+  {
+    title: "Python",
+  },
+  {
+    title: "C++",
+  },
+  {
+    title: "Java",
+  },
+  {
+    title: "php",
+  },
+  {
+    title: "TypeScript",
+  },
+  {
+    title: "C#",
+  },
+  {
+    title: "Perl",
+  },
+  {
+    title: "Shell",
+  },
+  {
+    title: "Swift",
+  },
+]
+
 export default function Home() {
   // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
-  const [language, setLanguage] = useState("");
+  const [language, setLanguage] = useState("JavaScript");
 
-  const handleChange = (event) => {
-    const { target } = event;
-    const inputValue = target.value;
-    const inputType = target.name;
+  // const handleChange = (event) => {
+  //   const { target } = event;
+  //   const inputValue = target.value;
+  //   const inputType = target.name;
 
-    if (inputType === "language") {
-      setLanguage(inputValue);
-    }
-  };
+  //   if (inputType === "language") {
+  //     setLanguage(inputValue);
+  //   }
+  // };
 
-  const getToken = localStorage.getItem("id_token")
+  const getToken = localStorage.getItem("id_token");
 
   return (
     <div>
@@ -36,51 +75,54 @@ export default function Home() {
             <div className="header1">
               <div className="row justify-content-center align-middle">
                 <div className="col">
-                  <h1>Let us help you to become a master in web development</h1>
+                  <h1>
+                    Let us help you to become a master in web development.
+                  </h1>
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
                 <div className="col">
-                  <h1>And find the perfect online tutor for you today</h1>
+                  <h1>Find the perfect online tutor for you today!</h1>
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
                 <div className="col">
-                  <p>Affordable one-on-one tutition</p>
+                  <p className="p-affordable">Affordable one-on-one tutoring</p>
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
                 <div className="col-4 search-hero">
                   <div className="input-group input-group-lg">
-                    {/* <span
-                      className="input-group-text"
-                      id="inputGroup-sizing-lg"
-                    >
-                      <FaSearch />
-                    </span> */}
-                    {/* <input
-                        value={language}
-                        name="language"
-                        type="text"
-                        placeholder="Java Script"
-                        onChange={handleChange}
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-lg"
-                      /> */}
                     <InputGroup size="lg">
                       <InputGroup.Text id="basic-addon1">
                         <FaSearch />
                       </InputGroup.Text>
-                      <FormControl
+                      <Autocomplete
+                        className="autocomplete"
+                        inputValue={language}
+                        onInputChange={(_, val) => {
+                          setLanguage(val)
+                        }}
+                        options={languages.map(option => option.title)}
+                        renderInput={params => (
+                          <TextField
+                            {...params}
+                            fullWidth   
+                            className="auto-text"
+                            InputProps={{ ...params.InputProps, type: "search" }}
+                          />
+                        )}
+                      />
+                      {/* <FormControl
                         value={language}
+                        className="autocomplete"
                         name="language"
                         type="text"
                         placeholder="JavaScript"
                         onChange={handleChange}
                         aria-label="Username"
                         aria-describedby="basic-addon1"
-                      />
+                      /> */}
                     </InputGroup>
                   </div>
                 </div>
@@ -154,7 +196,7 @@ export default function Home() {
               <h1 className="howitworks-section-header">Book a session</h1>
               <p>
                 View the the tutors profile and if you like what the tutor has
-                to offer click on the 'book now' button and book a session.
+                to offer, sign up as a student and book a session.
               </p>
             </div>
             <div className="col">
@@ -170,8 +212,8 @@ export default function Home() {
                 Your journey to become a tech master starts now!
               </h1>
               <p>
-                Start learning, improve your skills, solve issues and learn from
-                experienced web developers!
+                Start learning, improve your skills, solve problems and learn
+                from experienced web developers!
               </p>
               <a href="#search">
                 <button type="button" className="btn btn-lg btn-getstarted">
@@ -193,10 +235,10 @@ export default function Home() {
             <div className="col">
               <div className="row">
                 <div className="col">
-                  <h1>one-on-one tutoring</h1>
+                  <h1>One-On-One Tutoring</h1>
                   <p>
-                    Allows the student to ask specific questions and the tutor
-                    can concentrate on your concerns
+                    Allows the student to ask specific questions so the tutor
+                    can concentrate on your concerns.
                   </p>
                 </div>
               </div>
@@ -204,7 +246,7 @@ export default function Home() {
                 <div className="col">
                   <h1>Screen Sharing</h1>
                   <p>
-                    Show your real time work and allow the tutor to inspect your
+                    Show your real time work, allow the tutor to inspect your
                     code in detail and work on it at the same time.
                   </p>
                 </div>
@@ -216,19 +258,19 @@ export default function Home() {
             <div className="col">
               <div className="row">
                 <div className="col">
-                  <h1>Screen Sharing</h1>
+                  <h1>Study From Home</h1>
                   <p>
-                    Show your real time work and allow the tutor to inspect your
-                    code in detail and work on it at the same time.
+                    You can not only improve your skills. With MasterDev we make
+                    sure that you can do it from the comfort of your home.
                   </p>
                 </div>
               </div>
               <div className="row">
                 <div className="col">
-                  <h1>Screen Sharing</h1>
+                  <h1>Cost Efficient</h1>
                   <p>
-                    Show your real time work and allow the tutor to inspect your
-                    code in detail and work on it at the same time.
+                    By booking sessions online, you decrease the tution fees by
+                    almost 50% which makes it affordable for everyone.
                   </p>
                 </div>
               </div>
@@ -249,9 +291,9 @@ export default function Home() {
               {getToken ? (
                 <p></p>
               ) : (
-              <Link className="btn signup-btn" to={`/signup-student`}>
-                SIGN UP
-              </Link>
+                <Link className="btn signup-btn" to={`/signup-student`}>
+                  SIGN UP
+                </Link>
               )}
             </div>
             <div className="col tutor-container">
@@ -266,9 +308,9 @@ export default function Home() {
               {getToken ? (
                 <p></p>
               ) : (
-              <Link className="btn signup-btn" to={`/signup-tutor`}>
-                SIGN UP
-              </Link>
+                <Link className="btn signup-btn" to={`/signup-tutor`}>
+                  SIGN UP
+                </Link>
               )}
             </div>
           </div>
