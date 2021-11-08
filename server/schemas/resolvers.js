@@ -2,16 +2,30 @@ require("dotenv").config();
 const { AuthenticationError } = require("apollo-server-express");
 const { Student, Tutor, Order } = require("../models");
 const { signToken } = require("../utils/auth");
+// const upload = require("../utils/fileUpload");
+// const singleUpload = upload.single("image");
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const stripe = require("stripe")(`${process.env.STRIPE_SK}`);
+const { GraphQLUpload, graphqlUploadExpress } = require("graphql-upload");
+
+function generateString(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 
 const resolvers = {
   // This maps the `Upload` scalar to the implementation provided
   // by the `graphql-upload` package.
-  //Upload: GraphQLUpload,
+  Upload: GraphQLUpload,
 
   Query: {
     students: async () => {
@@ -301,6 +315,37 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+    //The file object that we get from the second parameter of the uploadFile
+    //resolver is a Promise that resolves to an Upload type with the following attributes:
+    uploadFile: async (parent, { file }) => {
+      const { createReadStream, filename, mimetype, encoding } = await file;
+
+      console.log(filename);
+
+      //const {ext} = path.parse(filename)
+      const randomfileName = generateString(12) + filename;
+      console.log(randomfileName);
+      //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
+      const stream = createReadStream(); //return nodestream/file
+
+      var envPath = "client/public/uploads";
+      if (process.env.NODE_ENV === "production") {
+        envPath = "client/build/uploads/";
+      }
+
+      const pathName = path.join(
+        __dirname,
+        "..",
+        "..",
+        envPath,
+        randomfileName
+      );
+      await stream.pipe(fs.createWriteStream(pathName));
+      console.log(pathName);
+      return {
+        filename: randomfileName,
+      };
     },
   },
 };

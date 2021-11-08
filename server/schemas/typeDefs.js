@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-// const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 
 const typeDefs = gql`
 
@@ -41,7 +41,11 @@ const typeDefs = gql`
         student: Student
     }
 
-    # scalar Upload 
+    scalar Upload 
+
+    type File {
+        filename: String!
+    }
 
     type AuthTutor {
         token: ID!
@@ -72,7 +76,7 @@ const typeDefs = gql`
         addTutor(firstName: String!, lastName: String!, email: String!, phone: String!, description: String!, language: String!, degree: String!, hourRate: ID!, password: String!, userType: String!, filenameImg: String, zoomPass: String!, zoomPMI: String!): AuthTutor
         updateStudent(studentId: ID, firstName: String, lastName: String, email: String, password: String ): AuthStudent
         updateTutor(tutorId: ID, firstName: String, lastName: String, email: String, phone: String, description: String, language: String, degree: String, hourRate: ID, filenameImg: String, zoomPass: String, zoomPMI: String): AuthTutor
-
+        uploadFile(file: Upload!): File!
     }  
 `
 
