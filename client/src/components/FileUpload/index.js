@@ -7,12 +7,11 @@ import { Storage } from "aws-amplify";
 
 // import { UPLOAD_FILE } from "../../utils/mutations";
 
-const S3_BUCKET = "master-dev-app";
-const REGION = "ap-southeast-2"; //Sydney region
-const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
+const S3_BUCKET = process.env.REACT_APP_HEROKU_AWS_BUCKET
+const REGION = process.env.REACT_APP_HEROKU_AWS_DEFAULT_REGION; //Sydney region
+const ACCESS_KEY = process.env.REACT_APP_HEROKU_AWS_ACCESS_KEY_ID;
 // console.log(ACCESS_KEY)
-const SECRET_ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
-console.log(SECRET_ACCESS_KEY)
+const SECRET_ACCESS_KEY = process.env.REACT_APP_HEROKU_AWS_SECRET_ACCESS_KEY;
 
 // // Initialize the Amazon Cognito credentials provider
 // AWS.config.region = 'ap-southeast-2'; // Region
