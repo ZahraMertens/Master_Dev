@@ -239,7 +239,7 @@ export default function TutorModal({ tutor, show, handleClose }) {
                   />
                 </div> */}
             <div className="col-12">
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary update-tutor-btn" type="submit">
                 Submit form
               </button>
             </div>

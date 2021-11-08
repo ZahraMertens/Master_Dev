@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
-                <div className="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-5 search-hero">
+                <div className="col-xl-4 col-lg-4 col-md-5 col-sm-7 col-7 search-hero">
                   <div className="input-group input-group-lg">
                     <InputGroup size="lg">
                       <InputGroup.Text id="basic-addon1">
@@ -129,7 +129,7 @@ export default function Home() {
                     </InputGroup>
                   </div>
                 </div>
-                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 btn-container-hero">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-3 btn-container-hero">
                   <Link
                     type="button"
                     className="btn btn-lg btn-search-hero"
@@ -176,10 +176,10 @@ export default function Home() {
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col">
-              <img className="howitworks-img" src={Works1} alt="" />
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <img className="howitworks-img" src={Works1} alt="how it works" />
             </div>
-            <div className="col">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <h1 className="howitworks-section-header">
                 Search for a tutor by your prefered programming language
               </h1>
@@ -194,22 +194,22 @@ export default function Home() {
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <h1 className="howitworks-section-header">Book a session</h1>
               <p>
                 View the the tutors profile and if you like what the tutor has
                 to offer, sign up as a student and book a session.
               </p>
             </div>
-            <div className="col">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <img className="howitworks-img" src={Works2} alt="" />
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <img className="howitworks-img" src={Works3} alt="" />
             </div>
-            <div className="col">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <h1 className="howitworks-section-header">
                 Your journey to become a tech master starts now!
               </h1>
@@ -234,7 +234,7 @@ export default function Home() {
             </div>
           </div>
           <div className="row align-items-center">
-            <div className="col">
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
               <div className="row">
                 <div className="col">
                   <h1>One-On-One Tutoring</h1>
@@ -254,10 +254,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="col">
-              <img className="whyus-img" src={WhyUs} alt="Why us" />
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+              <div className="row justify-content-center">
+                <img className="whyus-img" src={WhyUs} alt="Why us" />
+              </div>
             </div>
-            <div className="col">
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
               <div className="row">
                 <div className="col">
                   <h1>Study From Home</h1>
@@ -283,7 +285,7 @@ export default function Home() {
       <div className="startnow-main">
         <div className="startnow-wrapper">
           <div className="row align-items-center">
-            <div className="col student-container">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 student-container">
               <h1>Student</h1>
               <ul>
                 <li>Online access 24x7</li>
@@ -298,7 +300,7 @@ export default function Home() {
                 </Link>
               )}
             </div>
-            <div className="col tutor-container">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 tutor-container">
               <h1>Tutor</h1>
               <ul>
                 <li>

@@ -29,7 +29,7 @@ export default function Header() {
       expand="lg"
       className="navbar navbar-expand-lg navbar-light bg-light"
     >
-      <Container className="container-fluid">
+      <Container className="container-fluid navbar-container">
         <Navbar.Brand>
           <Link to={"/"}>
             <img src={Logo} className="logo" alt="test" />

@@ -29,7 +29,7 @@
 
 .verified-img {
   margin-top: 10px;
-  width: 80px!important;
+  width: 80px !important;
 }
 
 .tutorProfile-main {
@@ -40,30 +40,20 @@
   /* background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(18,195,203,1) 30%); */
 }
 
-.tutorProfile-wrapper {
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgb(238, 254, 255) 30%);
-  border-radius: 10px;
-}
-
 .tutorProfile-header {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 80px;
 }
 
-.profile-img-tutor {
+.profile-img-tutor-result {
   border-radius: 10px;
   width: 300px;
-  margin: 30px!important;
+  margin: 30px !important;
 }
 
 .tutorProfile-lowercontainer {
-  width: 60%!important;
+  width: 60% !important;
   margin-left: auto;
   margin-right: auto;
   text-align: start;
@@ -80,19 +70,19 @@
 }
 
 .contact-profile-box {
-  background-color: rgb(194, 241, 243); 
+  background-color: rgb(194, 241, 243);
   border-radius: 20px;
   padding-left: 20px;
 }
 
 .contact-header {
-  padding-top:10px!important;
-  font-size: 25px!important;
+  padding-top: 10px !important;
+  font-size: 25px !important;
   color: rgb(9, 109, 114);
 }
 
 .contact-span {
-  font-size: 20px!important;
+  font-size: 20px !important;
   color: black;
 }
 
@@ -106,7 +96,7 @@
 .rate-header {
   color: rgb(78, 78, 78);
   padding: 20px;
-  font-size: 20px!important;
+  font-size: 20px !important;
 }
 
 .rate-icon {
@@ -116,33 +106,77 @@
 }
 
 .box-icon {
-  color: rgb(5, 106, 131); 
+  color: rgb(5, 106, 131);
   margin-top: 10px;
 }
 
 .p-rate {
   padding-left: 20px;
   font-size: 30px;
-  
 }
 
-.profile-box-header {
+.profile-box-header-result {
   color: rgb(78, 78, 78);
-  font-size: 25px!important;
+  font-size: 25px !important;
 }
 
 .p-box {
-  font-size: 20px!important;
+  font-size: 20px !important;
 }
 
 .about-me {
-  margin-top: 50px!important;
-  margin-bottom: 50px!important;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
   background-color: white;
   padding-top: 20px;
   padding-bottom: 20px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .p-about {
-  font-size: 20px!important;
+  font-size: 20px !important;
+}
+
+@media (max-width: 1370px) {
+  .profile-wrapper {
+    width: 90% !important;
+  }
+}
+
+@media (max-width: 1170px) {
+  .profile-img-tutor-result {
+    width: 200px;
+  }
+
+  .profile-box-header-result{
+    font-size: 20px!important;
+  }
+
+  .about-me {
+    width: 80%!important;
+  }
+}
+
+@media (max-width: 910px) {
+  .profile-box-header-result{
+    font-size: 15px!important;
+  }
+
+  .p-about{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-profile-box {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .login-p-error{
+    width: 100%;
+    text-align: center!important;
+  }
 }

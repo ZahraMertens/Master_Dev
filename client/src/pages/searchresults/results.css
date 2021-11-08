@@ -62,3 +62,23 @@
 .noResult-img {
   width: 300px;
 }
+
+@media (max-width: 875px) {
+  .anothersearch-wrapper{
+    width: 80%;
+  }
+
+  .results-wrapper{
+    width: 90%;
+  }
+}
+
+@media (max-width: 578px) {
+  .anothersearch-wrapper{
+    width: 95%;
+  }
+
+  .anothersearch-btn{
+    margin: 10px;
+  }
+}

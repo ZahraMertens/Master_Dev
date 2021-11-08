@@ -91,6 +91,22 @@
     color: rgb(73, 73, 73);
 }
 
+.update-btn-profile {
+  margin-top: 10px;
+}
+
 .allTutors-container {
   margin-top: 50px;
+}
+
+@media (max-width: 800px) {
+  .studentProfile-wrapper {
+    width: 60%;
+  }
+}
+
+@media (max-width: 700px) {
+  .studentProfile-wrapper {
+    width: 80%;
+  }
 }

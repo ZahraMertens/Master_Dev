@@ -49,7 +49,7 @@ const Cart = ({ tutor }) => {
   return (
     <div className="checkout-wrapper">
       <div className="row justify-content-center">
-        <div className="col">
+        <div className="col-xl-6 col-lg-6 col-md-7 col-sm-12 col-12">
           <div className="cart">
             <h1 className="shopping-header"><FaShoppingCart className="shopping-icon" /> Shopping Cart</h1>
             <div className="cart-content">
@@ -78,7 +78,7 @@ const Cart = ({ tutor }) => {
             )}
           </div>
         </div>
-        <div className="col image-container">
+        <div className="col-xl-6 col-lg-6 col-md-5 col-sm-12 col-12 image-container">
           <img src={CheckoutImage} className="checkout-image" alt="Checkout Icon" />
         </div>
       </div>

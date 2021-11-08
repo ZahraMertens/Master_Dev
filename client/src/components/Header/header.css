@@ -1,5 +1,11 @@
 .navbar {
   background-color: rgb(255, 255, 255)!important;
+  flex-wrap: wrap;
+}
+
+.navbar-container {
+  margin-left: 0px!important;
+  margin-right: 0px!important;
 }
 
 
@@ -40,4 +46,24 @@
 .active7:hover {
   color:#12c3cb!important;
   font-weight: bold!important;
+}
+
+@media (max-width: 1400px) {
+  .nav-item {
+    padding-left: 10px!important;
+    padding-right: 3px!important;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: block!important;
+  }
+}
+
+
+@media (max-width: 526px) {
+  .logo {
+    width: 300px;
+  }
 }

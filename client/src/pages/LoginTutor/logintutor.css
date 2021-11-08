@@ -49,3 +49,21 @@
 .btn-login {
   margin: 20px;
 }
+
+@media (max-width: 1075px) {
+  .logintutor-wrapper {
+    width: 50%;
+  }
+}
+
+@media (max-width: 705px) {
+  .logintutor-wrapper {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .logintutor-wrapper {
+    width: 90%;
+  }
+}

@@ -112,7 +112,7 @@ export default function StudentModal({ student, show, handleClose }) {
               />
             </div>
             <div className="col-12">
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary update-btn-profile" type="submit">
                 Update Profile
               </button>
             </div>

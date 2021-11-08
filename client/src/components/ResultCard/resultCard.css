@@ -82,3 +82,13 @@
     color: #007780;
     font-size: 35px;
 }
+
+@media (max-width: 575px) {
+  .profile-img-tutor-card{
+    width: 200px;
+  }
+
+  .info-card-container{
+    margin-left: 10px;
+  }
+}

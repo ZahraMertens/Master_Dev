@@ -40,7 +40,7 @@ export default function SearchResults() {
       <div className="anothersearch-main">
         <div className="container anothersearch-wrapper">
           <div className="row justify-content-center">
-            <div className="col-4">
+            <div className="col-xl-6 col-lg-6 col-md-5 col-sm-5 col-12">
               <div className="input-group input-group-lg">
                 <span className="input-group-text" id="inputGroup-sizing-lg">
                   <FaSearch />
@@ -57,7 +57,7 @@ export default function SearchResults() {
                 />
               </div>
             </div>
-            <div className="col-2 btn-container-hero">
+            <div className="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-12 btn-container-hero">
               <Link
                 className="btn btn-light btn-lg anothersearch-btn"
                 to={`/results/${newLanguage}`}

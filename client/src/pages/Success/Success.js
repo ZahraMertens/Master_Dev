@@ -39,10 +39,10 @@ export default function Success() {
           const tutorData = data.addOrder.tutors;
         }
 
-          setTimeout(() => {
-            window.location.assign('/');
-            localStorage.removeItem("tutor_id")
-          }, 4000);
+          // setTimeout(() => {
+          //   window.location.assign('/');
+          //   localStorage.removeItem("tutor_id")
+          // }, 4000);
       }
 
       saveOrder();
@@ -56,10 +56,10 @@ export default function Success() {
       {tutorId ? (
       <div className="success-wrapper">
         <div className="row">
-          <div className="col">
+          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
             <img src={Mail} className="mail-img" alt="Mail" />
           </div>
-          <div className="col text-success-message">
+          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-success-message">
             <h1>Thank you {Auth.getProfile().data.firstName},</h1>
             <h2>Your payment was successful.</h2>
             <h3>We have send you an email with all necessary details!</h3>

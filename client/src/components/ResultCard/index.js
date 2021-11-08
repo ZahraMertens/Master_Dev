@@ -30,7 +30,7 @@ export default function ResultCard({ tutors, language }) {
       {tutors.map((tutor) => (
         <div key={tutor._id} className="results-card">
           <div className="row">
-            <div className="col-3 image-container-card">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 image-container-card">
               <img src={tutor.filenameImg ? `${tutor.filenameImg}` : ProfileImage } className="profile-img-tutor-card" alt="test"></img>
             </div>
             <div className="col info-card-container">
@@ -48,7 +48,7 @@ export default function ResultCard({ tutors, language }) {
                 View Full Profile
               </Link>
             </div>
-            <div className="col-3 pricing-container">
+            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 pricing-container">
               <FaCheckCircle size={42} className="check-icon" />
               <h1>${tutor.hourRate}/hr</h1>
             </div>

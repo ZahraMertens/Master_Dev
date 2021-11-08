@@ -128,7 +128,7 @@ export default function StudentSignup() {
                     required
                   />
                 </div>
-                <div className="col-12">
+                <div className="col-12 terms">
                   <div className="form-check">
                     <input
                       className="form-check-input"

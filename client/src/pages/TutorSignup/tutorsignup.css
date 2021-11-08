@@ -22,9 +22,32 @@
   z-index: 3;
 }
 
+.terms {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .form-tutorsignup {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(5px);
+  }
+}
+
+@media (max-width: 1075px) {
+  .signup-wrapper {
+    width: 50%;
+  }
+}
+
+@media (max-width: 705px) {
+  .signup-wrapper {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .signup-wrapper {
+    width: 90%;
   }
 }

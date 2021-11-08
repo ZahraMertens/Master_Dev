@@ -191,10 +191,12 @@ form {
 
 .student-container {
   background-color: white;
+  height: 300px;
 }
 
 .tutor-container {
   background-color: #12c3cb;
+  height: 300px;
 }
 
 li {
@@ -209,6 +211,10 @@ li {
 @media (max-width: 1325px) {
   .advert-video{
     width: 400px;
+  }
+
+  .howitworks-wrapper {
+    width: 80%;
   }
 }
 
@@ -231,7 +237,22 @@ li {
   .video-text {
     font-size: 10px;
   }
+
+  .whyus-img{
+    width: 350px;
+  }
+
+  .startnow-wrapper {
+    width: 90%;
+  }
 }
+
+@media (max-width: 875px) {
+  .howitworks-img{
+    width: 300px;
+  }
+}
+
 
 @media (max-width: 768px) {
   .autocomplete {
@@ -239,7 +260,68 @@ li {
   }
 
   .advert-video{
-    width: 350px;
+    width: 500px;
+    margin-bottom: 20px!important;
+  }
+
+  .header1{
+    width: 100%;
+  }
+
+  .advert-wrapper{
+    text-align: center!important;
+  }
+
+  .text-advert-container {
+    text-align: center;
+    margin-top: 0px !important;
+  }
+
+  .video-header {
+    font-size: 30px!important;
+  }
+
+  .video-text {
+    font-size: 18px;
+  }
+
+  .whyus-img {
+    width: 500px;
+    text-align: center;
+  }
+
+  .startnow-main {
+    height: 90vh;
+  }
+
+  .student-container {
+    height: 220px;
+  }
+  
+  .tutor-container {
+    height: 220px;
+  }
+}
+
+@media (max-width: 565px) {
+
+  .advert-video{
+    width: 90%!important;
+  }
+
+  .whyus-img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 491px) {
+
+  .student-container {
+    height: 250px;
+  }
+  
+  .tutor-container {
+    height: 250px;
   }
 }
 
