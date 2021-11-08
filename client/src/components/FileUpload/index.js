@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { uploadFile } from "react-s3";
+import Amplify from "@aws-amplify/core";
+import { Storage } from "aws-amplify";
 
 //import { UPLOAD_FILE } from "../../utils/mutations";
 
@@ -12,6 +14,12 @@ const ACCESS_KEY = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
 const SECRET_ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
 // console.log(SECRET_ACCESS_KEY)
 
+// // Initialize the Amazon Cognito credentials provider
+// AWS.config.region = 'ap-southeast-2'; // Region
+// AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+//     IdentityPoolId: 'ap-southeast-2:3f05d5da-41c8-40b3-9429-71b4e4e39023',
+// });
+
 const config = {
   bucketName: S3_BUCKET,
   region: REGION,
@@ -20,19 +28,54 @@ const config = {
 };
 
 export default function FileUpload({ handleAWS }) {
+  // const ref = useRef(null);
+  // //config aws amplify service
+  // useEffect(() => {
+  //   Amplify.configure({
+  //     Auth: {
+  //       identityPoolId: "ap-southeast-2:3f05d5da-41c8-40b3-9429-71b4e4e39023",
+  //       region: "ap-southeast-2",
+  //     },
+
+  //     Storage: {
+  //       AWSS3: {
+  //         bucket: "master-dev-bucket",
+  //         region: "ap-southeast-2",
+  //       },
+  //     },
+  //   });
+  // }, []);
+
+  // const handleFileInput = (event) => {
+  //   const newFile = ref.current.files[0].name;
+  //   console.log(newFile);
+  //   Storage.put(newFile, ref.current.files[0])
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (res) {
+  //         console.log(res.key)
+  //         handleAWS({ filenameImg: res.key})
+  //       }
+  //     })
+  //     .then(() => {})
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
+
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileInput = (event) => {
     const newFile = event.target.files[0];
     console.log(newFile)
     setSelectedFile(newFile);
-    
+
     if (newFile) {
       uploadFile(newFile, config)
         .then((data) => {
           if(data){
             //const newkey = generateString(10) + data.key
-            //console.log(newkey);
+            console.log(data);
             handleAWS({ filenameImg: data.location})
           }
         }) //returns obj with aws bucket, key(image name) and location (link for image in cloud)
@@ -44,7 +87,12 @@ export default function FileUpload({ handleAWS }) {
     <>
       <Form.Group controlId="formFile" className="mb-3">
         <Form.Label>Upload a profile image:</Form.Label>
-        <Form.Control type="file" name="picture" onChange={handleFileInput} />
+        <Form.Control
+          // ref={ref}
+          type="file"
+          name="picture"
+          onChange={handleFileInput}
+        />
       </Form.Group>
     </>
   );

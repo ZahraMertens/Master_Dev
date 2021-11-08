@@ -45,7 +45,7 @@ form {
 }
 
 .autocomplete {
-  width: 90%;
+  width: 80%;
   background-color: white;
   border: none!important;
 }
@@ -55,7 +55,6 @@ form {
 }
 
 .btn-search-hero {
-  
   background: #12c3cb !important;
   color: white !important;
   background-image: linear-gradient(
@@ -89,6 +88,10 @@ form {
 
 .advert-main {
   height: 100%;
+}
+
+.advert-container {
+  width: 100%!important;
 }
 
 .advert-wrapper {
@@ -202,3 +205,42 @@ li {
   background-color: orange !important;
   margin: 20px;
 }
+
+@media (max-width: 1325px) {
+  .advert-video{
+    width: 400px;
+  }
+}
+
+@media (max-width: 1165px) {
+  .btn-search-hero {
+    background-size: 400% 400% !important;
+    font-size: 15px!important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .advert-video{
+    width: 300px;
+  }
+
+  .video-header {
+    font-size: 20px!important;
+  }
+
+  .video-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .autocomplete {
+    width: 70%;
+  }
+
+  .advert-video{
+    width: 350px;
+  }
+}
+
+

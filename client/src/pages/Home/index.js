@@ -49,7 +49,7 @@ const languages = [
   {
     title: "Swift",
   },
-]
+];
 
 export default function Home() {
   // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
@@ -91,7 +91,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="row justify-content-center align-middle">
-                <div className="col-4 search-hero">
+                <div className="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-5 search-hero">
                   <div className="input-group input-group-lg">
                     <InputGroup size="lg">
                       <InputGroup.Text id="basic-addon1">
@@ -101,15 +101,18 @@ export default function Home() {
                         className="autocomplete"
                         inputValue={language}
                         onInputChange={(_, val) => {
-                          setLanguage(val)
+                          setLanguage(val);
                         }}
-                        options={languages.map(option => option.title)}
-                        renderInput={params => (
+                        options={languages.map((option) => option.title)}
+                        renderInput={(params) => (
                           <TextField
                             {...params}
-                            fullWidth   
+                            fullWidth
                             className="auto-text"
-                            InputProps={{ ...params.InputProps, type: "search" }}
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
                           />
                         )}
                       />
@@ -126,9 +129,10 @@ export default function Home() {
                     </InputGroup>
                   </div>
                 </div>
-                <div className="col-2 btn-container-hero">
+                <div className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 btn-container-hero">
                   <Link
-                    className="btn btn-lg btn-search-hero align-start"
+                    type="button"
+                    className="btn btn-lg btn-search-hero"
                     to={`/results/${language}`}
                   >
                     FIND A TUTOR
@@ -141,27 +145,25 @@ export default function Home() {
       </div>
       <div className="advert-main">
         <div className="advert-wrapper">
-          <div className="row">
-            <div className="col">
+          <div className="row advert-container">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <video className="advert-video" controls>
                 <source src={Video} type="video/mp4" />
                 <source src="movie.ogg" type="video/ogg" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div className="col justify-content-center">
-              <div className="row text-advert-container">
-                <div className="col-6">
-                  <h1>Improve your coding skills with online tutoring</h1>
-                  <p>
-                    E learning gives the student and tutor more flexibility.
-                    With Master Dev you have access to the best tutors in the
-                    business who can help you to improve your skills, further
-                    your knowldege and find bugs & resolve issues from the
-                    comfort of your own home.
-                  </p>
-                </div>
-              </div>
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-advert-container">
+              <h1 className="video-header">
+                Improve your coding skills with online tutoring
+              </h1>
+              <p className="video-text">
+                E learning gives the student and tutor more flexibility. With
+                Master Dev you have access to the best tutors in the business
+                who can help you to improve your skills, further your knowldege
+                and find bugs & resolve issues from the comfort of your own
+                home.
+              </p>
             </div>
           </div>
         </div>
