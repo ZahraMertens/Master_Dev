@@ -38,23 +38,23 @@ As a junior web developer I want to book an online tutoring session with an expe
 ## Technologies Used
 
 * Frontend: 
- * Bootstrap and Bootsrap React UI
- * React.js
- * Apollo-Client
- * GraphQl
- * AWS (Amazon Web Services)
- * React-icons (Font Awesome)
+  * Bootstrap and Bootsrap React UI
+  * React.js
+  * Apollo-Client
+  * GraphQl
+  * AWS (Amazon Web Services)
+  * React-icons (Font Awesome)
 
 * Backend: 
- * Node.js
- * Express.js
- * JWT
- * GraphQL
- * Nodemailer
- * Apollo-server-express
- * MongoDB
- * mongoose
- * Stripe
+  * Node.js
+  * Express.js
+  * JWT
+  * GraphQL
+  * Nodemailer
+  * Apollo-server-express
+  * MongoDB
+  * mongoose
+  * Stripe
 
 
 ## Actual Behaviour
