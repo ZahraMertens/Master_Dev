@@ -246,59 +246,59 @@ const resolvers = {
         const array = [tutor];
         // console.log(array);
 
-        // if (tutor) {
-        //   const transporter = nodemailer.createTransport({
-        //     service: "hotmail",
-        //     auth: {
-        //       user: "master_dev-test@outlook.com",
-        //       pass: "masterdev1234!",
-        //     },
-        //   });
+        if (tutor) {
+          const transporter = nodemailer.createTransport({
+            service: "hotmail",
+            auth: {
+              user: "master_dev-test@outlook.com",
+              pass: "masterdev1234!",
+            },
+          });
 
-        //   console.log(tutor.email);
+          console.log(tutor.email);
 
-        //   //Send to student and tutor from masterdev email
-        //   const maillist = [
-        //     tutor.email, //selected tutor email
-        //     context.user.email, //current logged in student email
-        //   ];
+          //Send to student and tutor from masterdev email
+          const maillist = [
+            tutor.email, //selected tutor email
+            context.user.email, //current logged in student email
+          ];
 
-        //   console.log(maillist);
+          console.log(maillist);
 
-        //   const options = {
-        //     from: "master_dev-test@outlook.com",
-        //     to: maillist,
-        //     subject: "Congrats! You have an upcoming tutoring session!",
-        //     text: `Hi Master Dev's, you have an upcoming session! All details are below:`,
-        //     html: `<h1>Hi Master Dev's,</h1>
-        //        <br/>
-        //        <h2>You have an upcoming session. All student and tutor details are below:</h2>
-        //        <br/>
-        //        <ul>
-        //        <li>Tutor: ${tutor.firstName} ${tutor.lastName}</li>
-        //        <li>Zoom URL: ${tutor.zoomPMI}</li>
-        //        <li>Zoom Password: ${tutor.zoomPass}</li>
-        //        <li>Student Email: ${context.user.email}</li>
-        //        <li>Tutor Email: ${tutor.email}</li>
-        //        <li>Tutor Phone: ${tutor.phone}</li>
-        //        </ul>
-        //        <br/>
-        //        <p>We hope you enjoy our services!</p>
-        //        <p>If you have any trouble with organising a session please do not hesitate to contact us at master_dev-test@outlook.com.</p>
-        //        <br/>
-        //        <h2>Happy Hacking!</h2>
-        //        <p>Your Master Dev Team</p>
-        //        `,
-        //   };
+          const options = {
+            from: "master_dev-test@outlook.com",
+            to: maillist,
+            subject: "Congrats! You have an upcoming tutoring session!",
+            text: `Hi Master Dev's, you have an upcoming session! All details are below:`,
+            html: `<h1>Hi Master Dev's,</h1>
+               <br/>
+               <h2>You have an upcoming session. All student and tutor details are below:</h2>
+               <br/>
+               <ul>
+               <li>Tutor: ${tutor.firstName} ${tutor.lastName}</li>
+               <li>Zoom URL: ${tutor.zoomPMI}</li>
+               <li>Zoom Password: ${tutor.zoomPass}</li>
+               <li>Student Email: ${context.user.email}</li>
+               <li>Tutor Email: ${tutor.email}</li>
+               <li>Tutor Phone: ${tutor.phone}</li>
+               </ul>
+               <br/>
+               <p>We hope you enjoy our services!</p>
+               <p>If you have any trouble with organising a session please do not hesitate to contact us at master_dev-test@outlook.com.</p>
+               <br/>
+               <h2>Happy Hacking!</h2>
+               <p>Your Master Dev Team</p>
+               `,
+          };
 
-        //   transporter.sendMail(options, function (error, info) {
-        //     if (error) {
-        //       console.log(error);
-        //       return;
-        //     }
-        //     console.log("Sent", info.response);
-        //   });
-        // }
+          transporter.sendMail(options, function (error, info) {
+            if (error) {
+              console.log(error);
+              return;
+            }
+            console.log("Sent", info.response);
+          });
+        }
 
         //add tutor to student order
         const order = new Order({ tutors: tutor });

@@ -81,6 +81,7 @@ export default function StudentProfile() {
             EDIT PROFILE
           </Button>
         </div>
+
         <div className="studentProfile2-wrapper">
           <div className="row justify-content-center">
             <div className="col">
@@ -88,7 +89,11 @@ export default function StudentProfile() {
             </div>
           </div>
           <div className="row allTutors-container">
-            <AllTutors orders={student.orders} />
+            {!student.orders.length ? (
+              <p>You haven't booked any session yet...</p>
+            ) : (
+              <AllTutors orders={student.orders} />
+            )}
           </div>
         </div>
         <StudentModal student={student} show={show} handleClose={handleClose} />
