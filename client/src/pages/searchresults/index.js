@@ -24,8 +24,6 @@ export default function SearchResults() {
 
   const tutors = data?.searchtutor || {};
 
-  console.log(tutors) 
-
   const handleChange = (event) => {
     const { value } = event.target;
 
