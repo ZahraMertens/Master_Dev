@@ -84,7 +84,7 @@ export default function TutorSignup() {
             <div className="row form-tutorsignup">
               <div className="col">
                 {data ? (
-                  <p>
+                  <p className="head-back">
                     Success! You may now head{" "}
                     <Link to="/">back to the homepage.</Link>
                   </p>
@@ -104,7 +104,7 @@ export default function TutorSignup() {
                         type="text"
                         className="form-control"
                         id="validationCustom01"
-                        placeholder="Mark"
+                        placeholder="John"
                         name="firstName"
                         value={formState.firstName}
                         onChange={handleChange}

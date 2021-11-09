@@ -9,7 +9,8 @@ import "./home.css";
 
 import { FaSearch } from "react-icons/fa";
 
-import Video from "../../assets/images/e-learning-app-ad-copy.mp4";
+// import Video from "../../assets/images/e-learning-app-ad-copy.mp4";
+import Video from "../../assets/images/videoAdd.mp4";
 import Works1 from "../../assets/images/howitworks1.png";
 import Works2 from "../../assets/images/howitworks2.png";
 import Works3 from "../../assets/images/howitworks3.png";

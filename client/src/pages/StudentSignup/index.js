@@ -60,7 +60,7 @@ export default function StudentSignup() {
           <div className="row form-studentsignup">
             <div className="col">
             {data ? (
-              <p>
+              <p className="head-back">
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
