@@ -1,97 +1,106 @@
 ![Title](./assets/title.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Contributor](https://img.shields.io/badge/Contributor-1-green.svg) ![Nodejs](https://img.shields.io/badge/AppWith-NodeJS-red.svg) ![JavaScript](https://img.shields.io/badge/AppWith-ExpressJS-green.svg) ![Framework](https://img.shields.io/badge/Framework-Bootstrap-purple.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Contributor](https://img.shields.io/badge/Contributor-1-green.svg) ![Nodejs](https://img.shields.io/badge/AppWith-MERNstack-red.svg) ![Framework](https://img.shields.io/badge/Framework-Bootstrap-purple.svg)
 
 
 ## General Information
  
-* [Deployed Web Application](https://note-takeer.herokuapp.com/)
-* [GitHub repository of Note-Taker](https://github.com/ZahraMertens/Node-Taker)
+* [Deployed Web Application](https://master-dev.herokuapp.com/)
+* [GitHub repository of MasterDev](https://github.com/ZahraMertens/Master_Dev.git)
+* [Presentation Google Slides](https://docs.google.com/presentation/d/1y1rN4UsjCHLiDYlp8EpLmoTBV2U1yRSo7PsVWPa3kpQ/edit?usp=sharing)
 
 
 ## Table of Contents
 1. [General Information](#general-information)
-2. [Task Description](#task-description)
+2. [About Master Dev](#about-master-dev)
+6. [User Story](#user-story)
 3. [Installation Instructions](#installation-instructions)
 5. [Technologies Used](#technologies-used)
-6. [User Story](#user-story)
+
 7. [Actual Behaviour](#actual-behaviour)
 8. [Bonus](#bonus)
 9. [Mock-Up](#mock-up)
 10. [Credits](#credits)
 
 
-## Task Description
+## About Master Dev
 
-The Application "Note Taker" is used to write and save notes powered by express.js to save and retrieve the note data from a JSON file database. The major task to connect front-end and back-end and deploy the application on heroku.
-The back-end code is the build server with express and to conect the server with middleware, the front-end application and the database.
-
-## Installation Instructions
-
-* 1️⃣ First the user must clone the [GitHub Repo](https://github.com/ZahraMertens/Node-Taker.git) on its computer.
-
-* 2️⃣ Open the repository on your device with VS Code (or any other program)
-
-* 3️⃣ Open the command line at the folder location OR the integrated terminal 
-
-* 4️⃣ First, you MUST install the npm packages by running "npm install" in the terminal
-
-* 5️⃣ To un the application on your local device the user must run "npm start" in the terminal and will see a link such as "http://localhost:8080" if the user runs the link in the browser the application should run on the local host.
-
-* 6️⃣ To deploy the webpage the user must login heroku in the terminal and push the application to heroku. 
-   * [To see how to deploy with Git to heroku follow the link](https://devcenter.heroku.com/articles/git)
-   * When deployed to heroku the user can go to the repository and find a button in the top right corner to open the app
-
-## Technologies Used
-
-* JavaScript
-
-* Node.JS & Express.JS
-
-* Npm packages: Express, nodeman, util, uuid
-
-* FS (File System)
-
-* CSS & Bootstrap Framework
+Master Dev is a MERN stack web application which allows a junior web developer student to go to the webpage and see tutors. The user can filter the tutors by their programming language and if the student wants to book a session he/she can go to the tutor checkout and gets redirected to the stripe checkout platform. If a student successfuly books a tutor he/she will get an email, as well as the tutor who has been booked, with all the required details in order to be able to organise the meeting. Thd idea has been created due to my participation in the Coding Bootcamp of the University of Sydney. We, as students, were always able to ask questions if code was not working and I was then thinking what is going to hopen when YouTube and StackOverflow is not able to fix your problem. The solution is MASTER DEV so you can simply book a tutor and get all your questions answered.
 
 ## User Story
 
-AS A small business owner I WANT to be able to write and save notes SO THAT I can organize my thoughts and keep track of tasks I need to complete
+As a junior web developer I want to book an online tutoring session with an experienced web developer so I can master my coding skills and find solutions for my problems.
+
+## Installation Instructions
+
+* No installation required.
+
+## Technologies Used
+
+* Frontend: 
+ * Bootstrap and Bootsrap React UI
+ * React.js
+ * Apollo-Client
+ * GraphQl
+ * AWS (Amazon Web Services)
+ * React-icons (Font Awesome)
+
+* Backend: 
+ * Node.js
+ * Express.js
+ * JWT
+ * GraphQL
+ * Nodemailer
+ * Apollo-server-express
+ * MongoDB
+ * mongoose
+ * Stripe
+
 
 ## Actual Behaviour
 
-* WHEN I open the Note Taker THEN I am presented with a landing page with a link to a notes page
+* WHEN a user goes to the landing page THEN he/she can search for a tutor by programming language 
 
-* WHEN I click on the link to the notes page THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
+* WHEN the user can see results for the tutor by programming language, he/she can view the tutors profile 
 
-* WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
+* WHEN I want to become a tutor THEN I can create an account on Master Dev
 
-* WHEN I click on the Save icon THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
+* WHEN I want to become a student THEN I can create an account on Master Dev
 
-* WHEN I click on an existing note in the list in the left-hand column THEN that note appears in the right-hand column
+* WHEN I want to book a session with a tutor I need to be login in as a student
 
-* WHEN I click on the Write icon in the navigation at the top of the page THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
+* WHEN I am logged in as a student and search for a tutor by programming language THEN I will see results which show all the Profiles
 
+* WHEN I choose to view a tutors profile THEN I see all the tutors information
 
-## Bonus
+* WHEN I want to book a session with a specific tutor I can click on the "book a session" button and I am getting redirected to the shopping card 
 
-* 🏆 WHEN I press the 🗑️-Button then the note is deleted from the webpage and the database
+* WHEN I click on checkout THEN I am redirected to the stripe checkout webpage where I can complete my payment 
+
+* WHEN a payment is successful, I am getting redirected to the success page of my webpage and the tutor and student get an email with all the information which is required to book in a session
+
+* WHEN I want to modify the tutors or students data, I can go to the profile page when logged in and update the data
+
 
 ## Mock-Up
 
 🎥 The GIF shows the Landing page and the note page where the user is able to save and delete notes:
 
-![Code-Demo](./assets/note.gif)
+![Code-Demo](./assets/demo.gif)
 
 ## Credits
 
-* https://ezgif.com/crop/ezgif-3-e35ddab000ce.gif
-* https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md
-* https://devcenter.heroku.com/articles/git
-* https://www.youtube.com/watch?v=L72fhGm1tfE&t=811s
-* https://openclassrooms.com/en/courses/5614116-go-full-stack-with-node-js-express-and-mongodb/5656256-complete-the-crud-with-update-and-delete
-* https://channel9.msdn.com/Series/Beginners-Series-to-NodeJS/How-to-create-update-and-delete-APIs-with-Nodejs-and-Express-21-of-26
+* https://aws.amazon.com/
+* https://mongoosejs.com/docs/
+* https://graphql.org/
+* https://stripe.com/au
+* https://getbootstrap.com/
+* https://react-bootstrap.github.io/getting-started/introduction/
+* https://www.apollographql.com/docs/apollo-server/data/file-uploads/
+* https://nodemailer.com/about/
+* https://jwt.io/
+* https://fontawesome.com/v5.15/icons?d=gallery&p=1
+* https://spark.adobe.com/sp/
 
 
-© 2021 Zahra Mertens, Note-Taker
+© 2021 Zahra Mertens, Master Dev
