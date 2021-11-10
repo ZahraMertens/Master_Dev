@@ -2,11 +2,14 @@ import React from "react";
 import "./profile.css";
 import {
   FaCube,
+  FaCubes,
+  FaBoxOpen,
   FaGraduationCap,
   FaCode,
   FaUser,
 } from "react-icons/fa";
 import ProfileImage from "../../assets/images/placeholder.jpg";
+import Placeholder from "../../assets/images/placeholder.jpg";
 import Verified from "../../assets/images/verified.png";
 
 import Auth from "../../utils/auth";
@@ -27,10 +30,14 @@ export default function Profile() {
 
   const tutor = data?.onetutor || {};
 
+  console.log(tutor.firstName);
+
   const getToken = localStorage.getItem("id_token");
 
   const getUserType = () => {
+    console.log(getToken);
     if (getToken !== null) {
+      console.log(Auth.getProfile().data.userType);
       return Auth.getProfile().data.userType;
     }
     console.log("No token");
@@ -48,6 +55,8 @@ export default function Profile() {
       fullPhone.slice(0, 4) + "...(book to have access to further details)";
     return encodedPhone;
   }
+
+  console.log(getUserType);
 
   if (loading) {
     return <div>Loading...</div>;
