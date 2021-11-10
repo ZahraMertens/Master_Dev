@@ -20,6 +20,7 @@
 7. [Bonus](#bonus)
 8. [Mock-Up](#mock-up)
 9. [Credits](#credits)
+10. [Creator](#creator)
 
 
 ## About Master Dev
@@ -89,6 +90,12 @@ As a junior web developer I want to book an online tutoring session with an expe
 🎥 The GIF shows the Landing page and the note page where the user is able to save and delete notes:
 
 ![Code-Demo](./assets/demo.gif)
+
+## Creator
+
+<p>Zahra Mertens</p>
+
+<a href="https://www.linkedin.com/in/zahra-marie-mertens-0399771a3/"><img src="./assets/linked.gif" width="100"/></a>
 
 ## Credits
 
