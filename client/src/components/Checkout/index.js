@@ -16,9 +16,6 @@ const stripePromise = loadStripe(
 );
 
 const Cart = ({ tutor }) => {
-  // const { tutorId } = useParams();
-  console.log(tutor._id);
-  console.log(tutor.hourRate);
 
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -26,8 +23,6 @@ const Cart = ({ tutor }) => {
   // Then we should redirect to the checkout with a reference to our session id
   useEffect(() => {
     if (data) {
-      console.log(data.checkout.session); //sessionid
-      console.log(data);
       localStorage.setItem("tutor_id", tutor._id);
       //checkout: {__typename: 'Checkout', session: 'cs_test_a11gWLj01l3ElnMP7RoLTd7fGgpzDgaLOyglXgrpAnyTDCz3QCQZkDFZ7Z'}
       stripePromise.then((res) => {
@@ -38,8 +33,6 @@ const Cart = ({ tutor }) => {
 
   function submitCheckout() {
     const tutorId = [tutor._id];
-
-    console.log(tutorId); //Returns array with id in index position 0
 
     getCheckout({
       variables: { tutors: tutorId },

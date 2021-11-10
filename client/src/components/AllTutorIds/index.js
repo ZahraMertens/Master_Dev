@@ -3,8 +3,6 @@ import AllTutorDetails from '../AllTutorDetails/index';
 
 export default function AllTutorIds({orders}) {
 
-    console.log(orders)
-
     return (
         <>
             {orders.map((order) => (
