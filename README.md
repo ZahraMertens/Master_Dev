@@ -16,7 +16,7 @@
 3. [User Story](#user-story)
 4. [Installation Instructions](#installation-instructions)
 5. [Technologies Used](#technologies-used)
-6. [Actual Behaviour](#actual-behaviour)
+6. [Usage](#usage)
 7. [Bonus](#bonus)
 8. [Mock-Up](#mock-up)
 9. [Credits](#credits)
@@ -57,8 +57,9 @@ As a junior web developer I want to book an online tutoring session with an expe
   * mongoose
   * Stripe
 
+<img src="./assets/apollo.png" width="100"/> <img src="./assets/aws.png" width="100"/> <img src="./assets/graphql.png" width="100"/> <img src="./assets/jwt.png" width="100"/> <img src="./assets/mern.png" width="100"/> <img src="./assets/nodemailer.png" width="100"/> <img src="./assets/stripe.png" width="100"/>
 
-## Actual Behaviour
+## Usage
 
 * WHEN a user goes to the landing page THEN he/she can search for a tutor by programming language 
 
