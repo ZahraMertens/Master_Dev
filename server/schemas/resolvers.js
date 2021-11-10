@@ -2,30 +2,13 @@ require("dotenv").config();
 const { AuthenticationError } = require("apollo-server-express");
 const { Student, Tutor, Order } = require("../models");
 const { signToken } = require("../utils/auth");
-// const upload = require("../utils/fileUpload");
-// const singleUpload = upload.single("image");
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const stripe = require("stripe")(`${process.env.STRIPE_SK}`);
-const { GraphQLUpload, graphqlUploadExpress } = require("graphql-upload");
-
-function generateString(length) {
-  var result = "";
-  var characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
 
 const resolvers = {
-  // This maps the `Upload` scalar to the implementation provided
-  // by the `graphql-upload` package.
-  Upload: GraphQLUpload,
 
   Query: {
     students: async () => {
@@ -236,15 +219,13 @@ const resolvers = {
       throw new AuthenticationError("Something went wrong!");
     },
     addOrder: async (parent, { tutors }, context) => {
-      console.log(tutors); //array with id ["0w2322"]
+
       const tutorId = tutors[0];
-      console.log(tutorId); //"333"
-      //console.log(context);
+
       if (context.user) {
         const tutor = await Tutor.findById(tutorId).exec();
-        // console.log(tutor);
+
         const array = [tutor];
-        // console.log(array);
 
         if (tutor) {
           const transporter = nodemailer.createTransport({
@@ -255,15 +236,11 @@ const resolvers = {
             },
           });
 
-          console.log(tutor.email);
-
           //Send to student and tutor from masterdev email
           const maillist = [
             tutor.email, //selected tutor email
             context.user.email, //current logged in student email
           ];
-
-          console.log(maillist);
 
           const options = {
             from: "master_dev-test@outlook.com",
@@ -302,50 +279,18 @@ const resolvers = {
 
         //add tutor to student order
         const order = new Order({ tutors: tutor });
-        console.log(order);
 
         await Student.findByIdAndUpdate(
           { _id: context.user._id },
           {
             $push: { orders: order },
           }
-        ); //.populate("orders");
+        );
 
         return order;
       }
 
       throw new AuthenticationError("Not logged in");
-    },
-    //The file object that we get from the second parameter of the uploadFile
-    //resolver is a Promise that resolves to an Upload type with the following attributes:
-    uploadFile: async (parent, { file }) => {
-      const { createReadStream, filename, mimetype, encoding } = await file;
-
-      console.log(filename);
-
-      //const {ext} = path.parse(filename)
-      const randomfileName = generateString(12) + filename;
-      console.log(randomfileName);
-      //stream: The upload stream of the file(s) we’re uploading. We can pipe a Node.js stream to the filesystem or other cloud storage locations.
-      const stream = createReadStream(); //return nodestream/file
-
-      var envPath = "client/public/uploads";
-      if (process.env.NODE_ENV === "production") {
-        envPath = "client/build/uploads/";
-      }
-
-      const pathName = path.join(
-        __dirname,
-        "..",
-        "..",
-        envPath,
-        randomfileName
-      );
-      await stream.pipe(fs.createWriteStream(pathName));
-      console.log(pathName);
-      return {
-        filename: randomfileName,
-      };
     },
   },
 };
