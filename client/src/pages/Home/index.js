@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { InputGroup, FormControl } from "react-bootstrap";
-// import { Typeahead } from 'react-bootstrap-typeahead';
+import { InputGroup } from "react-bootstrap";
 import { Autocomplete, TextField } from "@mui/material";
-// import options from './data';
+
 import "./home.css";
-// import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 import { FaSearch } from "react-icons/fa";
 
-// import Video from "../../assets/images/e-learning-app-ad-copy.mp4";
 import Video from "../../assets/images/videoAdd.mp4";
 import Works1 from "../../assets/images/howitworks1.png";
 import Works2 from "../../assets/images/howitworks2.png";
@@ -55,16 +52,6 @@ const languages = [
 export default function Home() {
   // Use optional chaining to check if data exists and if it has a thoughts property. If not, return an empty array to use.
   const [language, setLanguage] = useState("JavaScript");
-
-  // const handleChange = (event) => {
-  //   const { target } = event;
-  //   const inputValue = target.value;
-  //   const inputType = target.name;
-
-  //   if (inputType === "language") {
-  //     setLanguage(inputValue);
-  //   }
-  // };
 
   const getToken = localStorage.getItem("id_token");
 
@@ -117,16 +104,6 @@ export default function Home() {
                           />
                         )}
                       />
-                      {/* <FormControl
-                        value={language}
-                        className="autocomplete"
-                        name="language"
-                        type="text"
-                        placeholder="JavaScript"
-                        onChange={handleChange}
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      /> */}
                     </InputGroup>
                   </div>
                 </div>

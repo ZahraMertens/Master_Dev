@@ -2,12 +2,9 @@ import "./tutorProfile.css";
 import { FaCube, FaGraduationCap, FaCode, FaUser } from "react-icons/fa";
 
 import { Button } from "react-bootstrap";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import Amplify from "@aws-amplify/core";
-import { Storage } from "aws-amplify";
-import { S3Image } from "aws-amplify-react";
 
 import TutorModal from "../../components/TutorModal/index";
 
@@ -17,9 +14,6 @@ import ProfileImage from "../../assets/images/placeholder.jpg";
 
 export default function TutorProfile() {
   const [show, setShow] = useState(false);
-
-  // const [files, setFiles] = useState([]);
-  // const [image, setImage] = useState(null)
 
   const handleClose = () => setShow(false);
   const handleModalOpen = () => setShow(true);
@@ -31,42 +25,6 @@ export default function TutorProfile() {
   });
 
   const tutor = data?.onetutor || {};
-
-  console.log(tutor);
-
-  // useEffect(() => {
-  //   Amplify.configure({
-  //     Auth: {
-  //       identityPoolId: "ap-southeast-2:3f05d5da-41c8-40b3-9429-71b4e4e39023",
-  //       region: "ap-southeast-2",
-  //     },
-
-  //     Storage: {
-  //       AWSS3: {
-  //         bucket: "master-dev-bucket",
-  //         region: "ap-southeast-2",
-  //       },
-  //     },
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   Storage.list("")
-  //   .then(files => {
-  //     setFiles(files)
-  //     console.log(files)
-  //   })
-  //   .catch(error => console.error(error))
-  // }, [])
-
-  // const showImage = (file) => {
-  //   Storage.get(file)
-  //   .then(res => {
-  //     console.log(res)
-  //     setImage(file)
-  //   })
-  //   .catch(err => console.log(err))
-  // }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -82,8 +40,6 @@ export default function TutorProfile() {
         </div>
         <div className="row">
           <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-            {/* <img src={tutor.filenameImg ? `/uploads/${tutor.filenameImg}` : ProfileImage } className="profile-img-tutor" alt="test"></img> */}
-            {/* <S3Image imgKey={tutor.filenameImg} /> */}
             <img
               src={tutor.filenameImg ? `${tutor.filenameImg}` : ProfileImage}
               className="tutorProfile-img-tutor"

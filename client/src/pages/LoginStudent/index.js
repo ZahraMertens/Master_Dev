@@ -29,13 +29,11 @@ export default function LoginStudent() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       const { data } = await loginStudent({
         variables: { ...formState },
       });
-
-      console.log(data)
 
       Auth.login(data.loginStudent.token);
     } catch (e) {

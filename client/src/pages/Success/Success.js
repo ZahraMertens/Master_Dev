@@ -12,7 +12,6 @@ import Auth from "../../utils/auth";
 
 export default function Success() {
   const tutorId = localStorage.getItem("tutor_id");
-  console.log(tutorId);
 
   const [addOrder] = useMutation(ADD_ORDER);
 
@@ -22,8 +21,6 @@ export default function Success() {
 
   const orderCreated = useRef(false);
 
-  console.log(data);
-
   useEffect(() => {
     if (data?.onetutor && !orderCreated.current) {
       orderCreated.current = true;
@@ -32,7 +29,6 @@ export default function Success() {
       async function saveOrder() {
 
         const tutors = [data?.onetutor._id];
-        console.log(tutors);
 
         if (tutors.length) {
           const { data } = await addOrder({ variables: { tutors } });

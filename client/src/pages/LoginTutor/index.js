@@ -29,7 +29,7 @@ export default function LoginTutor() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       const { data } = await loginTutor({
         variables: { ...formState },
@@ -48,8 +48,6 @@ export default function LoginTutor() {
   };
 
   const getToken = localStorage.getItem("id_token")
-
-  
 
   if (loading) {
     return <Loading />

@@ -5,16 +5,11 @@ import { Button } from "react-bootstrap";
 
 import { STUDENT_BY_ID } from "../../utils/queries";
 import StudentModal from "../../components/StudentModal/index";
-// import { UPDATE_STUDENT } from "../../utils/mutations";
 
 import AllTutors from "../../components/AllTutorIds/index";
 
-import Auth from "../../utils/auth";
-
 import "./studentProfile.css";
 import { FaUser } from "react-icons/fa";
-
-// import Auth from "../../utils/auth";
 
 export default function StudentProfile() {
   const [show, setShow] = useState(false);
@@ -23,15 +18,12 @@ export default function StudentProfile() {
   const handleModalOpen = () => setShow(true);
 
   const { studentId } = useParams();
-  console.log(studentId);
 
   const { loading, data } = useQuery(STUDENT_BY_ID, {
     variables: { studentId: studentId },
   });
 
   const student = data?.onestudent || {};
-
-  console.log(student);
 
   const getToken = localStorage.getItem("id_token");
 

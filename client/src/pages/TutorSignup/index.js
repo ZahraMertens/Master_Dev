@@ -1,7 +1,5 @@
 import FileUpload from "../../components/FileUpload/index";
 import "./tutorsignup.css";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 
 import PageNotFound from "../../components/PageNotFound/index";
 
@@ -50,7 +48,6 @@ export default function TutorSignup() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addTutor({
