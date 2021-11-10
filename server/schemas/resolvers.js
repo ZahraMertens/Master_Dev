@@ -135,7 +135,7 @@ const resolvers = {
       context
     ) => {
       const saltRounds = 10;
-      console.log(studentId);
+      
       if (context.user) {
         const student = await Student.findOneAndUpdate(
           { _id: studentId },
@@ -219,13 +219,14 @@ const resolvers = {
       throw new AuthenticationError("Something went wrong!");
     },
     addOrder: async (parent, { tutors }, context) => {
-
+      
       const tutorId = tutors[0];
-
+     
       if (context.user) {
         const tutor = await Tutor.findById(tutorId).exec();
-
+       
         const array = [tutor];
+        
 
         if (tutor) {
           const transporter = nodemailer.createTransport({
@@ -285,7 +286,7 @@ const resolvers = {
           {
             $push: { orders: order },
           }
-        );
+        ); 
 
         return order;
       }
