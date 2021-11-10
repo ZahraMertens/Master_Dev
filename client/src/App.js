@@ -6,6 +6,7 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
 import { setContext } from "@apollo/client/link/context";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,7 +25,7 @@ import StudentProfile from "./pages/StudentProfile/index";
 import CheckoutPage from "./pages/CheckoutPage/index";
 import Success from "./pages/Success/Success";
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: "/graphql", //Uniform resource identifier
 });
 
