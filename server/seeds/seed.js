@@ -11,17 +11,6 @@ db.once('open', async () => {
     await Tutor.create(tutorSeeds);
     await Student.create(studentSeeds);
 
-    // for (let i = 0; i < thoughtSeeds.length; i++) {
-    //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-    //   const user = await User.findOneAndUpdate(
-    //     { username: thoughtAuthor },
-    //     {
-    //       $addToSet: {
-    //         thoughts: _id,
-    //       },
-    //     }
-    //   );
-    // }
   } catch (err) {
     console.error(err);
     process.exit(1);

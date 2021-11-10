@@ -13,19 +13,20 @@
 ## Table of Contents
 1. [General Information](#general-information)
 2. [About Master Dev](#about-master-dev)
-6. [User Story](#user-story)
-3. [Installation Instructions](#installation-instructions)
+3. [User Story](#user-story)
+4. [Installation Instructions](#installation-instructions)
 5. [Technologies Used](#technologies-used)
-
-7. [Actual Behaviour](#actual-behaviour)
-8. [Bonus](#bonus)
-9. [Mock-Up](#mock-up)
-10. [Credits](#credits)
+6. [Actual Behaviour](#actual-behaviour)
+7. [Bonus](#bonus)
+8. [Mock-Up](#mock-up)
+9. [Credits](#credits)
 
 
 ## About Master Dev
 
-Master Dev is a MERN stack web application which allows a junior web developer student to go to the webpage and see tutors. The user can filter the tutors by their programming language and if the student wants to book a session he/she can go to the tutor checkout and gets redirected to the stripe checkout platform. If a student successfuly books a tutor he/she will get an email, as well as the tutor who has been booked, with all the required details in order to be able to organise the meeting. Thd idea has been created due to my participation in the Coding Bootcamp of the University of Sydney. We, as students, were always able to ask questions if code was not working and I was then thinking what is going to hopen when YouTube and StackOverflow is not able to fix your problem. The solution is MASTER DEV so you can simply book a tutor and get all your questions answered.
+Master Dev is a MERN stack web application which allows a junior web developer student to go to the webpage and see tutors. The user can filter the tutors by their programming language and if the student wants to book a session he/she can go to the tutor checkout and gets redirected to the stripe checkout platform. If a student successfuly books a tutor he/she will get an email, as well as the tutor who has been booked, with all the required details in order to be able to organise the meeting. 
+
+Thd idea has been created due to my participation in the Coding Bootcamp of the University of Sydney. We, as students, were always able to ask questions if code was not working and I was then thinking what is going to happen when YouTube and StackOverflow is not able to fix our problems anymore. The solution is MASTER DEV so you can simply book a tutor and get all your questions answered.
 
 ## User Story
 
