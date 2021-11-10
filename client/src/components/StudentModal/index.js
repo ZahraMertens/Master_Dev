@@ -6,7 +6,6 @@ import Auth from "../../utils/auth"
 import { UPDATE_STUDENT } from "../../utils/mutations";
 
 export default function StudentModal({ student, show, handleClose }) {
-  console.log(student);
 
   const [updateStudent, {error}] = useMutation(UPDATE_STUDENT)
 
@@ -17,8 +16,6 @@ export default function StudentModal({ student, show, handleClose }) {
     email: `${student.email}`,
     password: "",
   });
-
-  console.log(formState)
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,7 +28,6 @@ export default function StudentModal({ student, show, handleClose }) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState.language);
 
     try {
       const { data } = await updateStudent({

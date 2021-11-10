@@ -8,7 +8,6 @@ import Auth from "../../utils/auth"
 import { UPDATE_TUTOR } from "../../utils/mutations";
 
 export default function TutorModal({ tutor, show, handleClose }) {
-  console.log(tutor);
 
   const [updateTutor, {error}] = useMutation(UPDATE_TUTOR)
 
@@ -27,8 +26,6 @@ export default function TutorModal({ tutor, show, handleClose }) {
     zoomPass: `${tutor.zoomPass}`,
   });
 
-  console.log(formState)
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -40,7 +37,6 @@ export default function TutorModal({ tutor, show, handleClose }) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState.language);
 
     try {
       const { data } = await updateTutor({
@@ -208,7 +204,6 @@ export default function TutorModal({ tutor, show, handleClose }) {
                 <span className="input-group-text">.00</span>
               </div>
             </div>
-            {/* <FileUpload handleUpload={handleUpload} /> */}
             <div className="col-12">
               <label htmlFor="validationCustom01" className="form-label">
                 About Me (Short Describtion)
@@ -224,20 +219,6 @@ export default function TutorModal({ tutor, show, handleClose }) {
                 required
               ></textarea>
             </div>
-            {/* <div className="col-12">
-                  <label htmlFor="validationCustom01" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="validationCustom01"
-                    name="password"
-                    value={formState.password}
-                    // onChange={handleChange}
-                    required
-                  />
-                </div> */}
             <div className="col-12">
               <button className="btn btn-primary update-tutor-btn" type="submit">
                 Submit form
@@ -249,9 +230,6 @@ export default function TutorModal({ tutor, show, handleClose }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

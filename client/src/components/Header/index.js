@@ -1,26 +1,18 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./header.css";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-
+import { Navbar, Container, Nav } from "react-bootstrap";
 import UserProfile from "../UserProfile/UserProfile";
-
 import Auth from "../../utils/auth";
-
 import Logo from "../../assets/images/logo.png";
 
 export default function Header() {
   const history = useHistory();
 
   const logout = async (event) => {
-    //event.preventDefault();
     await Auth.logout();
-    //window.location.reload(true);
     history.push("/");
   };
-
-  //Only when user logged in
-  // console.log(Auth.getProfile().data.userType)
 
   return (
     <Navbar
