@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server-express');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
 
 const typeDefs = gql`
 
@@ -39,6 +40,8 @@ const typeDefs = gql`
         token: ID!
         student: Student
     }
+
+    scalar Upload 
 
     type AuthTutor {
         token: ID!

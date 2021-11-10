@@ -6,9 +6,12 @@ const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-const stripe = require("stripe")(`${process.env.STRIPE_SK}`);
+const stripe = require("stripe")(process.env.STRIPE_SK);
+const { GraphQLUpload, graphqlUploadExpress } = require("graphql-upload");
 
 const resolvers = {
+
+  Upload: GraphQLUpload,
 
   Query: {
     students: async () => {
