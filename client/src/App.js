@@ -25,10 +25,6 @@ import StudentProfile from "./pages/StudentProfile/index";
 import CheckoutPage from "./pages/CheckoutPage/index";
 import Success from "./pages/Success/Success";
 
-// Construct our main GraphQL API endpoint
-// const httpLink = createHttpLink({
-//   uri: '/graphql', //Uniform resource identifier
-// });
 
 const httpLink = createUploadLink({
   uri: "/graphql", //Uniform resource identifier

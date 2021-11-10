@@ -230,7 +230,6 @@ const resolvers = {
        
         const array = [tutor];
         
-
         if (tutor) {
           const transporter = nodemailer.createTransport({
             service: "hotmail",
