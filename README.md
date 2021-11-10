@@ -93,11 +93,11 @@ As a junior web developer I want to book an online tutoring session with an expe
 
 ## Creator
 
-<h1>Zahra Mertens</h1>
+<h5>Zahra Mertens</h5>
 <img src="./assets/portfolio.jpg" width="100"/>
 
-<h2>Click here to go to my LinkedIn...</h2>
-<a href="https://www.linkedin.com/in/zahra-marie-mertens-0399771a3/"><img src="./assets/linked.gif" width="100"/></a>
+<a href="https://www.linkedin.com/in/zahra-marie-mertens-0399771a3/"><h6>Click here to go to my LinkedIn...</h6></a>
+<img src="./assets/linked.gif" width="100"/>
 
 ## Credits
 
